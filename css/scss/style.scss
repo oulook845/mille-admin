@@ -1,0 +1,21 @@
+// header#header
+#header {
+  width: 286px;
+}
+
+// main#container
+#container {
+  width: calc(100% - 286px);
+  height: 100vh;
+  min-height: 440px;
+  background: #eee;
+  padding: 20px 30px;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+// footer#footer
+#footer {
+  display: none;
+}

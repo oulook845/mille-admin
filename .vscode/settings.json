@@ -1,0 +1,12 @@
+{
+    "sass.andStared": [
+
+        "active",
+        "focus",
+        "hover",
+        "nth-child"
+    ],
+    "liveSassCompile.settings.includeItems": [
+        
+    ]
+}

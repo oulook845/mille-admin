@@ -1,0 +1,22 @@
+:root {
+  --items-gap: 1vw;
+  --bd-radius: 10px;
+  --header-height: 50px;
+  --padding-left: 29px;
+  --padding-right: 30px;
+  --MainColor-Yellow: #ffeb60;
+  --MainColor-Purple: #a451f7;
+  --MainColor-Black: #222;
+  --MainColor-White: #fff;
+  --SubColor-Purple1: #e0c1ff;
+  --SubColor-Purple2: #9747ff;
+  --SubColor-Black33: #333;
+  --SubColor-Black48: #484848;
+  --SubColor-Black77: #777;
+  --SubColor-Black99: #999;
+  --SubColor-BlackED: #ededed;
+  --Stroke-Gray: #484848;
+  --AlertBadge-Active: #fc3030;
+  --RankUpBadge-Green: #77d677;
+  --RankDownBadge-Red: #ff5656;
+}

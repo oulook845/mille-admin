@@ -1,0 +1,36 @@
+// a 기본 스타일
+a.block-anchor {
+  display: block;
+}
+
+// 배경이미지 스타일
+.bg-image {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+// 배경이미지 사용시 텍스트 숨기기
+.text-hidden {
+  text-indent: -9999px;
+  color: transparent;
+  overflow: hidden;
+}
+
+// flex 컴포넌트
+.flex{
+    display: flex;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.flex-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}

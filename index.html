@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Millie</title>
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+    <link rel="stylesheet" href="./css/import.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <header id="header">
+      <div class="inner flex-between">
+        <h1 id="logo">
+          <a href="#" class="block-anchor text-hidden bg-image">밀리의서재 로고</a>
+        </h1>
+
+        <div class="utils flex-between">
+          <a id="profile" class="flex-center">
+            <img src="./images/common/admin_profile.png" alt="프로필" />
+            admin
+          </a>
+
+          <a id="now_alarm" class="block-anchor">
+            <img src="./images/common/bell_ringing.png" alt="" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- main#container -->
+    <main id="container" class="flex">
+      <!-- aside#aside_gnb -->
+      <aside id="main_gnb">
+        <nav id="gnb">
+          <ul>
+            <li id="gnb_home" class="list-active">
+              <a href="#" class="block-anchor">대시보드</a>
+            </li>
+            <li id="gnb_visit">
+              <a href="#" class="block-anchor">방문</a>
+            </li>
+            <li id="gnb_users">
+              <a href="#" class="block-anchor">사용자</a>
+            </li>
+            <li id="gnb_books">
+              <a href="#" class="block-anchor">도서</a>
+            </li>
+            <li id="gnb_notice">
+              <a href="#" class="block-anchor">게시판</a>
+            </li>
+            <li id="gnb_settings">
+              <a href="#" class="block-anchor">설정</a>
+            </li>
+          </ul>
+          <div id="dark-mode" role="button">
+            <a href="#" class="block-anchor">다크모드</a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- section -->
+      <section id="dashBoard">
+        <div class="column col60">
+          <article id="myLineChart" class="con1 dragger list-group-item" data-area="2" draggable="true">
+            <h3>이용현황</h3>
+            <div class="content">
+              <canvas></canvas>
+            </div>
+          </article>
+        </div>
+        <div class="column col40">
+          <article class="con2 dragger list-group-item" data-area="1" draggable="true">
+            <h3>Daily</h3>
+            <div class="content"></div>
+          </article>
+
+          <article class="con3 dragger list-group-item" data-area="1" draggable="true">
+            <h3>유입경로</h3>
+            <div class="content"></div>
+          </article>
+        </div>
+        <div class="column col100">
+          <article class="con4 dragger list-group-item" data-area="1" draggable="true">
+            <h3>실시간 인기 도서</h3>
+            <div class="content"></div>
+          </article>
+          <article class="con5 dragger list-group-item" data-area="1" draggable="true">
+            <h3>콘텐츠 이용 비율</h3>
+            <div class="content"></div>
+          </article>
+          <article class="con6 dragger list-group-item" data-area="1" draggable="true">
+            <h3>문의</h3>
+            <div class="content"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="visit">
+        <article>일일 활성 사용자 수 (DAU)</article>
+        <article>월간 활성 사용자 수 (MAU)</article>
+        <article>재방문률</article>
+        <article>방문대 시간대 분석</article>
+        <article>사용자 인구 통계</article>
+        <article>유입경로로</article>
+      </section>
+
+      <section id="users">
+        <article>평균 이용 시간 (평균 체류 시간)</article>
+        <article>신규 가입 & 이탈률</article>
+        <article>전자책, 오디오 사용 비율</article>
+        <article>1인 평균 독서 시간</article>
+        <article>완독 지지수</article>
+      </section>
+
+      <section id="books">
+        <article>인기 도서 순위 (일간/주간/월간 Top10)</article>
+        <article>인기 도서 키워드</article>
+        <article>장르별 이용현황</article>
+        <article>유저 독서 순위</article>
+        <article>밀리 컨텐츠 성과 (이용률, 완독률)</article>
+        <article>대여 가능 책 재고 관리리</article>
+      </section>
+
+      <section id="noticeBoard">
+        <article>피드관리</article>
+        <article>책 리뷰</article>
+        <article>공지사항</article>
+        <article>문의</article>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer id="footer">
+      <div class="inner"></div>
+    </footer>
+
+    <!-- sortable.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/sortable.js"></script>
+    <script src="./js/dashboard.js"></script>
+  </body>
+</html>

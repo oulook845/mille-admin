@@ -1,0 +1,30 @@
+#container {
+  section#dashBoard {
+    .column {
+      
+      .dragger {
+        &.con1 {
+          // max-width: 800px;
+          // &#myLineChart {
+           
+          // }
+        }
+        // &.con2{
+        // }
+        // &.con3{
+        // }
+        // &.con4{
+        // }
+        // &.con5{
+        // }
+        // &.con6{
+        // }
+
+        // 움직이는 요소
+        &.blue-background-class {
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+}
