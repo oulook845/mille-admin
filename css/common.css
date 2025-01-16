@@ -24,7 +24,7 @@ header#header .inner #logo {
   height: 50px;
 }
 header#header .inner #logo a {
-  background-image: url(../../images/common/logo_black.png);
+  background-image: url(../images/common/logo_black.png);
   background-size: auto;
 }
 header#header .inner .utils {
@@ -80,28 +80,28 @@ header#header .inner .utils a#profile {
   position: absolute;
 }
 #container aside#main_gnb #gnb ul li#gnb_home a::before {
-  background-image: url(../../images/common/Icon_home.png);
+  background-image: url(../images/common/Icon_home.png);
 }
 #container aside#main_gnb #gnb ul li#gnb_visit a::before {
-  background-image: url(../../images/common/Icon_visit.png);
+  background-image: url(../images/common/Icon_visit.png);
 }
 #container aside#main_gnb #gnb ul li#gnb_users a::before {
-  background-image: url(../../images/common/Icon_users.png);
+  background-image: url(../images/common/Icon_users.png);
 }
 #container aside#main_gnb #gnb ul li#gnb_books a::before {
-  background-image: url(../../images/common/Icon_books.png);
+  background-image: url(../images/common/Icon_books.png);
 }
 #container aside#main_gnb #gnb ul li#gnb_notice a::before {
-  background-image: url(../../images/common/Icon_notice.png);
+  background-image: url(../images/common/Icon_notice.png);
 }
 #container aside#main_gnb #gnb ul li#gnb_settings a::before {
-  background-image: url(../../images/common/Icon_settings.png);
+  background-image: url(../images/common/Icon_settings.png);
 }
 #container aside#main_gnb #gnb #dark-mode {
   margin-top: 80px;
 }
 #container aside#main_gnb #gnb #dark-mode a::before {
-  background-image: url(../../images/common/Icon_darkMode.png);
+  background-image: url(../images/common/Icon_darkMode.png);
 }
 #container section {
   width: 100%;

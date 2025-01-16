@@ -24,7 +24,7 @@ header#header {
       width: 100px;
       height: 50px;
       a {
-        background-image: url(../../images/common/logo_black.png);
+        background-image: url(../images/common/logo_black.png);
         background-size: auto;
       }
     }
@@ -87,32 +87,32 @@ header#header {
           }
           &#gnb_home {
             a::before {
-              background-image: url(../../images/common/Icon_home.png);
+              background-image: url(../images/common/Icon_home.png);
             }
           }
           &#gnb_visit {
             a::before {
-              background-image: url(../../images/common/Icon_visit.png);
+              background-image: url(../images/common/Icon_visit.png);
             }
           }
           &#gnb_users {
             a::before {
-              background-image: url(../../images/common/Icon_users.png);
+              background-image: url(../images/common/Icon_users.png);
             }
           }
           &#gnb_books {
             a::before {
-              background-image: url(../../images/common/Icon_books.png);
+              background-image: url(../images/common/Icon_books.png);
             }
           }
           &#gnb_notice {
             a::before {
-              background-image: url(../../images/common/Icon_notice.png);
+              background-image: url(../images/common/Icon_notice.png);
             }
           }
           &#gnb_settings {
             a::before {
-              background-image: url(../../images/common/Icon_settings.png);
+              background-image: url(../images/common/Icon_settings.png);
             }
           }
         }
@@ -120,7 +120,7 @@ header#header {
       #dark-mode {
         margin-top:80px;
         a::before {
-          background-image: url(../../images/common/Icon_darkMode.png);
+          background-image: url(../images/common/Icon_darkMode.png);
         }
       }
     }
