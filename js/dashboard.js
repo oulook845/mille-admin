@@ -93,5 +93,5 @@ const config = {
 }; // config
 
 // 그래프 그리기
-const ctx = document.getElementById("myLineChart").querySelector("canvas").getContext("2d");
+const ctx = document.getElementById("usage-Status").querySelector("canvas").getContext("2d");
 const myLineChart = new Chart(ctx, config);

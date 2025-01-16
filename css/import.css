@@ -11,3 +11,7 @@
 @import url(./books.css);
 @import url(./noticeBoard.css); */
 /*  */
+
+section{
+    display: none;
+}

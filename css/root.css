@@ -1,9 +1,10 @@
 :root {
-  --items-gap: 1vw;
+  --items-gap: 1.04vw;
   --bd-radius: 10px;
   --header-height: 50px;
-  --padding-left: 29px;
+  --padding-left: 30px;
   --padding-right: 30px;
+  --container-padding: 1.56vw;
   --MainColor-Yellow: #ffeb60;
   --MainColor-Purple: #a451f7;
   --MainColor-Black: #222;
@@ -19,4 +20,6 @@
   --AlertBadge-Active: #fc3030;
   --RankUpBadge-Green: #77d677;
   --RankDownBadge-Red: #ff5656;
+  --RankNewBadge-gold: #FEC417;
+  --Font-Gray: #777777;
 }

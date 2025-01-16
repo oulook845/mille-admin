@@ -1,10 +1,11 @@
 :root {
   // 공통 스타일
-  --items-gap: 1vw; // #container 요소간의 간격
+  --items-gap: 1.04vw; // #container 요소간의 간격 20px
   --bd-radius: 10px; // 공통 border-radius
   --header-height: 50px; // header 공통통 높이
-  --padding-left: 29px;
+  --padding-left: 30px;
   --padding-right: 30px;
+  --container-padding: 1.56vw; // container 전체 padding 30px
 
   // 밀리의 서재 메인컬러
   --MainColor-Yellow: #ffeb60; // 밀리 메인컬러 노랑색상
@@ -28,7 +29,8 @@
   --AlertBadge-Active: #fc3030; // 새로운 알림이 있을 때
   --RankUpBadge-Green: #77d677; // 순위가 올랐을 때 색상
   --RankDownBadge-Red: #ff5656; // 순위가 떨어졌을 때 색상
+  --RankNewBadge-gold: #FEC417; // 순위에 처음 들어왔을 때 색상
 
   // font style
-  // --Font-Gray : #777777;
+  --Font-Gray : #777777;
 }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   font-family: "Pretendard-R";
 }
@@ -18,6 +19,8 @@ header#header {
   background-color: var(--MainColor-white);
   transition: 0.75s;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 9999;
 }
 header#header .inner #logo {
   width: 100px;
@@ -38,7 +41,7 @@ header#header .inner .utils a#profile {
 }
 
 #container {
-  height: calc(100% - var(--header-height));
+  height: calc(100vh - var(--header-height));
 }
 #container aside#main_gnb {
   width: 258px;
@@ -106,8 +109,7 @@ header#header .inner .utils a#profile {
 #container section {
   width: 100%;
   height: 100%;
-  display: none;
-  padding: 30px;
+  padding: var(--container-padding);
 }
 #container section#dashBoard {
   display: flex;
@@ -132,21 +134,41 @@ header#header .inner .utils a#profile {
   flex-direction: column;
 }
 #container section div.column article.dragger {
+  height: 100%;
+  font-size: 20px;
+  overflow: hidden;
   background: #fff;
   border: 1px solid var(--SubColor-Black48);
   border-radius: var(--bd-radius);
-  font-size: 20px;
-  overflow: hidden;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 }
 #container section div.column article.dragger h3 {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 37px;
   line-height: 37px;
   padding-left: 24px;
+  padding-right: 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   background-color: var(--MainColor-Yellow);
+}
+#container section div.column article.dragger h3 .data-refresh {
+  content: "";
+  cursor: pointer;
+  display: block;
+  padding: 12px;
+  background-image: url(../images/dashboard/data-refresh.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+}
+#container section div.column article.dragger h3 .data-more {
+  content: "더보기";
+  cursor: pointer;
+  display: block;
 }
 #container section div.column article.dragger .content {
   height: calc(100% - 40px) !important;

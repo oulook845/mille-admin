@@ -30,7 +30,7 @@
 
     <!-- main#container -->
     <main id="container" class="flex">
-      <!-- aside#aside_gnb -->
+      <!-- aside#aside_gnb ----------------->
       <aside id="main_gnb">
         <nav id="gnb">
           <ul>
@@ -59,41 +59,66 @@
         </nav>
       </aside>
 
-      <!-- section -->
+      <!-- section ---------------------------->
       <section id="dashBoard">
         <div class="column col60">
-          <article id="myLineChart" class="con1 dragger list-group-item" data-area="2" draggable="true">
+          <!-- 이용현황 -->
+          <article id="usage-Status" class="dragger list-group-item" data-area="2" draggable="true">
             <h3>이용현황</h3>
             <div class="content">
               <canvas></canvas>
             </div>
           </article>
         </div>
+
         <div class="column col40">
-          <article class="con2 dragger list-group-item" data-area="1" draggable="true">
+          <!-- 데일리 -->
+          <article class="dragger list-group-item" data-area="1" draggable="true">
             <h3>Daily</h3>
             <div class="content"></div>
           </article>
-
-          <article class="con3 dragger list-group-item" data-area="1" draggable="true">
+          <!-- 유입경로 -->
+          <article class="dragger list-group-item" data-area="1" draggable="true">
             <h3>유입경로</h3>
             <div class="content"></div>
           </article>
         </div>
+
         <div class="column col100">
-          <article class="con4 dragger list-group-item" data-area="1" draggable="true">
-            <h3>실시간 인기 도서</h3>
-            <div class="content"></div>
+          <!-- 실시간 인기 도서 -->
+          <article id="popular-Books" class="dragger list-group-item" data-area="1" draggable="true">
+            <h3>실시간 인기 도서 <span class="data-refresh"></span></h3>
+            <div class="content">
+              <label for="popular-Books-search">
+                <input type="search" id="popular-Books-search" placeholder="무의식은 어떻게 나를 설계하는가">
+                <i class="search"></i>
+              </label>
+              <ol>
+                <li>무의식은 어떻게 나를 설계하는가<span class="books_nowRank" data-transRank="rank-Up">3</span></li>
+                <li>하루 한 장, 작지만 큰 변화의 힘<span class="books_nowRank" data-transRank="rank-Down">1</span></li>
+                <li>고전이 답했다 마땅히 살아야 할 삶에 대하여<span class="books_nowRank" data-transRank="rank-Up">3</span></li>
+                <li>트렌드 코리아 2025<span class="books_nowRank" data-transRank="rank-Up">3</span></li>
+                <li>어른의 행복은 조용하다<span class="books_nowRank" data-transRank="rank-Down">2</span></li>
+                <li>이처럼 사소한 것들<span class="books_nowRank" data-transRank="rank-Up">6</span></li>
+                <li>돌이킬 수 있는<span class="books_nowRank" data-transRank="New-rank">New</span></li>
+                <li>B주류 경제학<span class="books_nowRank" data-transRank="rank-Up">1</span></li>
+              </ol>
+            </div>
           </article>
-          <article class="con5 dragger list-group-item" data-area="1" draggable="true">
+
+          <!-- 콘텐츠 이용 비율 -->
+          <article class="dragger list-group-item" data-area="1" draggable="true">
             <h3>콘텐츠 이용 비율</h3>
             <div class="content"></div>
           </article>
-          <article class="con6 dragger list-group-item" data-area="1" draggable="true">
+          
+          <!-- 문의 -->
+          <article class="dragger list-group-item" data-area="1" draggable="true">
             <h3>문의</h3>
             <div class="content"></div>
           </article>
         </div>
+
       </section>
 
       <section id="visit">
