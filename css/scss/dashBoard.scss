@@ -1,14 +1,13 @@
 #container {
   section#dashBoard {
     .column {
-      
       .dragger {
         // &#usage-Status {
         // }
         &#popular-Books {
-          .content{
-            padding:20px 30px;
-            input#popular-Books-search{
+          .content {
+            padding: 20px 30px;
+            input#popular-Books-search {
               display: block;
               width: 100%;
               height: 30px;
@@ -16,8 +15,8 @@
               border-radius: 3px;
               font-size: 12px;
               text-indent: 14px;
-              color:var(--Font-Gray);
-              i{
+              color: var(--Font-Gray);
+              i {
                 display: block;
                 width: 16px;
                 height: 16px;
@@ -25,34 +24,47 @@
               }
             }
 
-            ol{
+            ol#popular-Books-list {
+              width: 100%;
               height: calc(100% - 50px);
-              list-style:decimal inside;
-              font-size:12px;
+              list-style: decimal inside;
               margin-top: 2.78vh;
               overflow-y: scroll;
-              padding-right:5px;
-              li{
+              scrollbar-width: none;
+              // padding-right: 5px;
+              li {
                 height: 34px;
                 line-height: 34px;
+                font-size: 14px;
+                padding: 0 5px;
                 position: relative;
-                &:not(:last-child){
+                overflow: hidden;
+                &:not(:last-child) {
                   border-bottom: 1px solid var(--SubColor-Black99);
                 }
 
-                span.books_nowRank{
+                span.book_name {
+                  display: inline-block;
+                  transform: translateY(10px);
+                  opacity: 0;
+                  transition: 0.75s;
+                }
+                span.books_nowRank {
                   height: 10px;
                   line-height: 10px;
-                  display:flex;
-                  gap:2px;
+                  display: flex;
+                  gap: 2px;
                   font-size: 8px;
 
                   position: absolute;
-                  right:0;
-                  top:50%;
-                  margin-top:-5px;
+                  right: 0;
+                  top: 50%;
+                  margin-top: -5px;
 
-                  &::before{
+                  transform: translateY(10px);
+                  opacity: 0;
+                  transition: 0.75s;
+                  &::before {
                     content: "";
                     display: block;
                     width: 8px;
@@ -62,27 +74,38 @@
                     background-size: auto;
                   }
 
-                  &[data-transRank="rank-Up"]{
+                  &[data-transRank="rank-Up"] {
                     color: var(--RankUpBadge-Green);
-                    &::before{
+                    &::before {
                       background-image: url(../images/dashboard/rankUp_arrow.png);
                     }
                   }
-                  &[data-transRank="rank-Down"]{
+                  &[data-transRank="rank-Hold"] {
+                    color: var(--SubColor-Black77);
+                    transform: translateX(-50%);
+                    &::before {
+                      content: "";
+                      font-size: 18px;
+                    }
+                  }
+                  &[data-transRank="rank-Down"] {
                     color: var(--RankDownBadge-Red);
-                    &::before{
+                    &::before {
                       background-image: url(../images/dashboard/rankDown_arrow.png);
                     }
                   }
-                  &[data-transRank="New-rank"]{
+                  &[data-transRank="New-rank"] {
                     color: var(--RankNewBadge-gold);
+                    &::before {
+                      content: "";
+                      width: 100%;
+                    }
                   }
                 }
               }
             }
           }
         }
-        
 
         // 움직이는 요소
         &.blue-background-class {

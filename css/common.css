@@ -28,6 +28,7 @@ header#header .inner #logo {
 }
 header#header .inner #logo a {
   background-image: url(../images/common/logo_black.png);
+  background-position: left;
   background-size: auto;
 }
 header#header .inner .utils {
@@ -38,6 +39,23 @@ header#header .inner .utils a#profile {
   height: 50px;
   gap: 14px;
   color: var(--MainColor-black);
+}
+header#header .inner .utils a#now_alarm {
+  width: 32px;
+  height: 36px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+header#header .inner .utils a#now_alarm::after {
+  content: "";
+  display: block;
+  padding: 2.5px;
+  border-radius: 50%;
+  background-color: var(--AlertBadge-Active);
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 #container {
@@ -59,11 +77,12 @@ header#header .inner .utils a#profile {
   padding-left: var(--padding-left);
 }
 #container aside#main_gnb #gnb a::before {
-  width: 25px;
+  width: 16px;
   height: 100%;
   display: block;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
   content: "";
   mix-blend-mode: difference;
 }
@@ -140,7 +159,7 @@ header#header .inner .utils a#profile {
   background: #fff;
   border: 1px solid var(--SubColor-Black48);
   border-radius: var(--bd-radius);
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.25);
 }
 #container section div.column article.dragger h3 {
   display: flex;
@@ -148,8 +167,7 @@ header#header .inner .utils a#profile {
   width: 100%;
   height: 37px;
   line-height: 37px;
-  padding-left: 24px;
-  padding-right: 20px;
+  padding: 0 var(--items-gap);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

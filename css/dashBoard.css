@@ -17,23 +17,32 @@
   height: 16px;
   background-image: #000;
 }
-#container section#dashBoard .column .dragger#popular-Books .content ol {
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list {
+  width: 100%;
   height: calc(100% - 50px);
   list-style: decimal inside;
-  font-size: 12px;
   margin-top: 2.78vh;
   overflow-y: scroll;
-  padding-right: 5px;
+  scrollbar-width: none;
 }
-#container section#dashBoard .column .dragger#popular-Books .content ol li {
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li {
   height: 34px;
   line-height: 34px;
+  font-size: 14px;
+  padding: 0 5px;
   position: relative;
+  overflow: hidden;
 }
-#container section#dashBoard .column .dragger#popular-Books .content ol li:not(:last-child) {
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li:not(:last-child) {
   border-bottom: 1px solid var(--SubColor-Black99);
 }
-#container section#dashBoard .column .dragger#popular-Books .content ol li span.books_nowRank {
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li span.book_name {
+  display: inline-block;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: 0.75s;
+}
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank {
   height: 10px;
   line-height: 10px;
   display: flex;
@@ -43,8 +52,11 @@
   right: 0;
   top: 50%;
   margin-top: -5px;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: 0.75s;
 }
-#container section#dashBoard .column .dragger#popular-Books .content ol li span.books_nowRank::before {
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank::before {
   content: "";
   display: block;
   width: 8px;
@@ -53,20 +65,32 @@
   background-position: center;
   background-size: auto;
 }
-#container section#dashBoard .column .dragger#popular-Books .content ol li span.books_nowRank[data-transRank=rank-Up] {
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=rank-Up] {
   color: var(--RankUpBadge-Green);
 }
-#container section#dashBoard .column .dragger#popular-Books .content ol li span.books_nowRank[data-transRank=rank-Up]::before {
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=rank-Up]::before {
   background-image: url(../images/dashboard/rankUp_arrow.png);
 }
-#container section#dashBoard .column .dragger#popular-Books .content ol li span.books_nowRank[data-transRank=rank-Down] {
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=rank-Hold] {
+  color: var(--SubColor-Black77);
+  transform: translateX(-50%);
+}
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=rank-Hold]::before {
+  content: "";
+  font-size: 18px;
+}
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=rank-Down] {
   color: var(--RankDownBadge-Red);
 }
-#container section#dashBoard .column .dragger#popular-Books .content ol li span.books_nowRank[data-transRank=rank-Down]::before {
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=rank-Down]::before {
   background-image: url(../images/dashboard/rankDown_arrow.png);
 }
-#container section#dashBoard .column .dragger#popular-Books .content ol li span.books_nowRank[data-transRank=New-rank] {
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=New-rank] {
   color: var(--RankNewBadge-gold);
+}
+#container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=New-rank]::before {
+  content: "";
+  width: 100%;
 }
 #container section#dashBoard .column .dragger.blue-background-class {
   opacity: 0.3;

@@ -27,9 +27,11 @@ header#header {
       height: 50px;
       a {
         background-image: url(../images/common/logo_black.png);
+        background-position: left;
         background-size: auto;
       }
     }
+
     .utils {
       gap: 3px;
       a#profile {
@@ -38,6 +40,23 @@ header#header {
         gap: 14px;
         // color: var(--darkMode-black);
         color: var(--MainColor-black);
+      }
+      a#now_alarm{
+        width: 32px;
+        height: 36px;
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+        &::after{
+          content: "";
+          display: block;
+          padding:calc(5px / 2);
+          border-radius: 50%;
+          background-color: var(--AlertBadge-Active);
+          position: absolute;
+          right: 0;
+          top:0;
+        }
       }
     }
   }
@@ -63,11 +82,12 @@ header#header {
         gap: 10px;
         padding-left: var(--padding-left);
         &::before {
-          width: 25px;
+          width: 16px; // 원래 20px
           height: 100%;
           display: block;
           background-repeat: no-repeat;
           background-position: center;
+          background-size: contain;
           content: "";
           mix-blend-mode: difference;
         }
@@ -75,6 +95,7 @@ header#header {
       ul {
         li {
           position: relative;
+
           &.list-active {
             color: var(--MainColor-Black);
             background-color: var(--MainColor-White);
@@ -165,7 +186,7 @@ header#header {
         background: #fff;
         border: 1px solid var(--SubColor-Black48);
         border-radius: var(--bd-radius);
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.25);
 
         h3 {
           display: flex;
@@ -173,8 +194,10 @@ header#header {
           width: 100%;
           height: 37px;
           line-height: 37px;
-          padding-left: 24px;
-          padding-right: 20px;
+          // padding-left: 24px;
+          // padding-right: 20px;
+          padding:0 var(--items-gap);
+          
           // 넘어가면 ... 표시
           white-space: nowrap;
           overflow: hidden;
