@@ -2,8 +2,11 @@
   section#dashBoard {
     .column {
       .dragger {
-        // &#usage-Status {
-        // }
+        &#usage-Status {
+          .content{
+            padding:30px;
+          }
+        }
         &#popular-Books {
           .content {
             padding: 20px 30px;

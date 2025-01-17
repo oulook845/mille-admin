@@ -1,3 +1,6 @@
+#container section#dashBoard .column .dragger#usage-Status .content {
+  padding: 30px;
+}
 #container section#dashBoard .column .dragger#popular-Books .content {
   padding: 20px 30px;
 }
