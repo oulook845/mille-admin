@@ -2,63 +2,141 @@
 function usageStatus() {
   // 데이터 준비
   const data = {
-    labels: ["1.05", "1.06", "1.07", "1.08", "1.09", "1.10", "1.11"], // X축 값
+    labels: ["", "1.05", "1.06", "1.07", "1.08", "1.09", "1.10", "1.11", " "], // X축 값
     datasets: [
       {
         label: "", //데이터 세트가 무엇을 의미하는지
-        data: [500000, 700000, 500000, 600000, 500000, 800000, 600000, 400000, 600000, 450000, 600000, 793250], // Y축 값
-        borderColor: "#A451F7", // 선 색상
+        data: [500000, 700000, 500000, 600000, 500000, 800000, 600000, 793250, 793250], // Y축 값
+        borderWidth: 1,
+        borderColor: "#a451f7", // 선 색상
         backgroundColor: "transparent",
         fill: false, // 선 아래 영역을 채울지 여부
-        tension: 0.7, // 선의 곡률 조정
+        tension: 0.5, // 선의 곡률 조정
       },
     ], //datasets
   }; // data
 
   // 그래프 설정
   const config = {
-    type: "line", // 그래프 유형 line, bar, pie, doughnut, radar, scatter, bubble, mixed
+    type: "line", // 그래프 유형
     data: data,
     options: {
+      interaction: {
+        mode: "index", // X축 인덱스를 기준으로 툴팁 표시
+        intersect: false, // 교차하지 않아도 툴팁 표시
+      },
+
       scales: {
         x: {
-          position: "bottom", // X축을 하단에 배치
+          offset: false, // 레이블을 축 끝에서 약간 떨어뜨림 true
+          beginAtZero: true,
+          min: 0, // X축 최소값 설정
+          max: " ",
+          ticks: {
+            padding: 0, // 레이블과 축 사이의 간격 설정
+            font: {
+              size: 10,
+            },
+            color: "#222",
+          },
           grid: {
-            // 격자선 설정
-            display: false, // 격자선 표시 여부
-            color: "rgba(0, 0, 0, 0.1)", // 격자선 색상
-            lineWidth: 1, // 격자선 두께
+            display: true, // 격자선 표시 여부
+            lineWidth: function (context) {
+              if (context.index === 0) {
+                return "2";
+              }
+              return "false";
+            },
+            color: "#E0C1FF",
           },
         },
         y: {
-          position: "left", // Y축을 왼쪽에 배치
-          beginAtZero: false, // Y축이 0부터 시작 (true)
-          min: 0, // Y축의 최소값을 0으로 설정
-          max: 1000000, // Y축의 최대값을 1000000으로 설정
+          offset: 0,
+          beginAtZero: true,
+          min: 0,
+          max: 1000000,
           ticks: {
-            // 축의 눈금 설정정
-            stepSize: 100000, // 눈금 간격을 100000으로 설정
+            stepSize: 200000,
             font: {
-              size: 14, // 글꼴 크기 설정
-              family: "Arial", // 글꼴 패밀리 설정
+              size: 10,
             },
-            color: "#222", // 눈금 글꼴 색상
+            color: "#222",
+          },
+          grid: {
+            display: true,
+            lineWidth: function (context) {
+              if (context.index === 0) {
+                return "2";
+              }
+              return "0.5";
+            },
+            color: function (context) {
+              if (context.index === 0) {
+                return "#E0C1FF"; // 0번째 라벨 색상 변경
+              }
+              return "#999"; // 나머지 라벨 색상 유지
+            },
+          },
+          afterDataLimits(scale) {
+            scale.max = scale.max * 1.2; // Y축 최대값을 기존 데이터 최대값의 120%로 설정
           },
         },
-      }, // scales
-
-      responsive: true, // 화면 크기 변경 시 차트 크기 자동 조정 (true)
-      maintainAspectRatio: false, // 비율을 유지하지 않음 (false)
-
+      },
+      elements: {
+        point: {
+          pointRadius: 1,
+          pointHoverRadius: 5,
+          pointBackgroundColor: "transparent",
+          pointBorderColor: "transparent",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "#A451F7",
+        },
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false, // 차트 제목 보이기 여부
+        },
+        tooltip: {
+          mode: "index",
+          titleAlign: "center", // 제목 중앙 정렬
+          bodyAlign: "center", // 본문 중앙 정렬
+          footerAlign: "center", // 바닥글 중앙 정렬 (필요한 경우)
+          
+          position: "average", // 툴팁이 데이터 포인트의 중심 위에 표시
+          yAlign: "bottom", // 툴팁을 아래쪽에 표시
+          callbacks: {
+            title(tooltipItems) {
+              const label = tooltipItems[0].label; // 첫 번째 tooltipItem의 레이블
+              const date = new Date(`2025-${label}`);
+              const options = { month: "long", day: "2-digit", weekday: "short" };
+              return date.toLocaleDateString("ko-KR", options); // 날짜 형식 변환
+            },
+          },
+          backgroundColor: "#E0C1FF",
+          titleColor: "#333",
+          bodyColor: "#333",
+          borderColor: "#9747FF",
+          borderWidth: 1,
+          padding: 10,
+          displayColors: false,
+          titleFont:{
+            weight:"normal",
+          },
+          font:{
+            weight:"normal",
+          },
+        },
+      },
       animation: {
-        duration: 1000, // 애니메이션 지속 시간
-      }, // animation
-    }, //options
+        duration: 1000, // 애니메이션 지속 시간 설정
+      },
+    },
   }; // config
-
   // 그래프 그리기
   const ctx = document.getElementById("usage-Status").querySelector("canvas").getContext("2d");
-  const myLineChart = new Chart(ctx, config);
+  const usageStatus_chart = new Chart(ctx, config);
 }
 
 // 실시간 인기도서 ####################################################

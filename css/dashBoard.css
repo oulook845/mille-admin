@@ -14,11 +14,20 @@
   text-indent: 14px;
   color: var(--Font-Gray);
 }
-#container section#dashBoard .column .dragger#popular-Books .content input#popular-Books-search i {
+#container section#dashBoard .column .dragger#popular-Books .content label {
+  position: relative;
+}
+#container section#dashBoard .column .dragger#popular-Books .content button.search {
   display: block;
   width: 16px;
   height: 16px;
-  background-image: #000;
+  background-image: url(../images/common/Icon_search.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 5px;
 }
 #container section#dashBoard .column .dragger#popular-Books .content ol#popular-Books-list {
   width: 100%;

@@ -6,6 +6,7 @@
           .content{
             padding:30px;
           }
+          
         }
         &#popular-Books {
           .content {
@@ -19,12 +20,22 @@
               font-size: 12px;
               text-indent: 14px;
               color: var(--Font-Gray);
-              i {
-                display: block;
-                width: 16px;
-                height: 16px;
-                background-image: #000;
-              }
+            }
+            label{
+              // display: flex;
+              position: relative;
+            }
+            button.search {
+              display: block;
+              width: 16px;
+              height: 16px;
+              background-image: url(../images/common/Icon_search.png);
+              background-repeat: no-repeat;
+              background-position: center;
+              cursor: pointer;
+              position: absolute;
+              right:10px;
+              top:5px;
             }
 
             ol#popular-Books-list {
