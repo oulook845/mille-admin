@@ -62,15 +62,16 @@ header#header .inner .utils a#now_alarm::after {
 
 #container {
   height: calc(100% - var(--header-height));
+  margin-top: var(--header-height);
 }
 #container aside#main_gnb {
   width: 258px;
-  height: 100%;
+  height: calc(100% - var(--header-height));
   color: var(--MainColor-White);
   background: var(--MainColor-Black);
   position: fixed;
   left: 0;
-  top: 50px;
+  top: var(--header-height);
 }
 #container aside#main_gnb #gnb {
   width: 100%;
@@ -210,7 +211,6 @@ header#header .inner .utils a#now_alarm::after {
 }
 #container section div.column article.dragger .content canvas {
   width: 100% !important;
-  height: 100% !important;
   overflow: auto;
 }
 

@@ -68,16 +68,17 @@ header#header {
 #container {
   height: calc(100% - var(--header-height));
   // height: 100%;
+  margin-top: var(--header-height);
 
   // main_gnb
   aside#main_gnb {
     width: 258px;
-    height: 100%;
+    height: calc(100% - var(--header-height));
     color: var(--MainColor-White);
     background: var(--MainColor-Black);
     position: fixed;
     left:0;
-    top:50px;
+    top:var(--header-height);
     #gnb {
       width: 100%;
       height: 100%;
@@ -243,7 +244,7 @@ header#header {
           height: calc(100% - 40px) !important;
           canvas {
             width: 100% !important;
-            height: 100% !important;
+            // height: 100% !important;
             overflow: auto;
             //   border: 1px solid #000;
           }
