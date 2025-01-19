@@ -1,13 +1,86 @@
 #container {
   section#dashBoard {
     .column {
-      .dragger {
+      article.dragger {
+
+        // 이용현황 ###########################
         &#usage-Status {
-          .content{
-            padding:30px;
+          .content {
+            padding: 50px 30px;
+            #usageStatus_nav{
+              #period_Select{
+                width: fit-content;
+                display: flex;
+                border-radius: 3px;
+                border: 1px solid var(--MainColor-Purple);
+                margin-left: 60px;
+                .period_Btn{
+                  display: block;
+                  cursor: pointer;
+                  width: 40px;
+                  height: 20px;
+                  text-align: center;
+                  line-height: 20px;
+                  border-radius: 3px;
+                  color: var(--Font-Gray);
+                  font-size: 10px;
+                  &.active{
+                    color:var(--MainColor-White);
+                    background-color: var(--MainColor-Purple);
+                  }
+                  // &.weekly{}
+                  // &.monthly{}
+                }
+              }
+              #timeFrame_wrap{
+                div.timeFrame{
+                  width: 145px;
+                  height: 20px;
+                  margin:0 3px;
+                  position: relative;
+                  overflow: hidden;
+                  ul.timeFrame_list{
+                    width: fit-content;
+                    margin-left:-145px;
+                    position: absolute;
+                    left:0;
+                    top:0;
+                    transition: .5s;
+                    li{
+                      width: 145px;
+                      height: 20px;
+                      line-height: 20px;
+                      font-size: 12px;
+                      text-align: center;
+                      white-space: nowrap;
+                    }
+                  }
+                }
+                .timeFrame_btn{
+                  width: 20px;
+                  height: 20px;
+                  line-height: 20px;
+                  text-align: center;
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  background-size: auto;
+                  cursor: pointer;
+                  &.prevBtn{
+                    background-image: url(../images/common/arrow_prevBtn.png);
+                  }
+                  &.nextBtn{
+                    background-image: url(../images/common/arrow_nextBtn.png);
+                  }
+                }
+              }
+            }
+            canvas{
+              margin-top: 40px;
+            }
           }
-          
         }
+
+        // 실시간 인기도서 ###########################
         &#popular-Books {
           .content {
             padding: 20px 30px;
@@ -21,7 +94,7 @@
               text-indent: 14px;
               color: var(--Font-Gray);
             }
-            label{
+            label {
               // display: flex;
               position: relative;
             }
@@ -34,15 +107,15 @@
               background-position: center;
               cursor: pointer;
               position: absolute;
-              right:10px;
-              top:5px;
+              right: 10px;
+              top: 5px;
             }
 
             ol#popular-Books-list {
               width: 100%;
               height: calc(100% - 50px);
               list-style: decimal inside;
-              margin-top: 2.78vh;
+              margin-top: 20px;
               overflow-y: scroll;
               scrollbar-width: none;
               // padding-right: 5px;

@@ -99,11 +99,24 @@ function usageStatus() {
           display: false, // 차트 제목 보이기 여부
         },
         tooltip: {
+          callbacks: {
+            title(tooltipItems) {
+              const label = tooltipItems[0].label;
+              // 레이블이 빈 문자열인 경우 툴팁 제목을 빈 문자열로 반환하여 툴팁을 숨김
+              return label === "" ? "" : label;
+            },
+            label(tooltipItem) {
+              if (data.labels[tooltipItem.dataIndex] === "") {
+                return ""; // 레이블이 빈 문자열인 경우 본문도 숨김
+              }
+              return tooltipItem.dataset.label + ": " + tooltipItem.raw; // 기본 본문 반환
+            },
+          },
           mode: "index",
           titleAlign: "center", // 제목 중앙 정렬
           bodyAlign: "center", // 본문 중앙 정렬
           footerAlign: "center", // 바닥글 중앙 정렬 (필요한 경우)
-          
+
           position: "average", // 툴팁이 데이터 포인트의 중심 위에 표시
           yAlign: "bottom", // 툴팁을 아래쪽에 표시
           callbacks: {
@@ -121,11 +134,11 @@ function usageStatus() {
           borderWidth: 1,
           padding: 10,
           displayColors: false,
-          titleFont:{
-            weight:"normal",
+          titleFont: {
+            weight: "normal",
           },
-          font:{
-            weight:"normal",
+          font: {
+            weight: "normal",
           },
         },
       },
@@ -137,6 +150,40 @@ function usageStatus() {
   // 그래프 그리기
   const ctx = document.getElementById("usage-Status").querySelector("canvas").getContext("2d");
   const usageStatus_chart = new Chart(ctx, config);
+
+  // 주간 || 월간 토글버튼
+  const periodSelect = document.getElementById("period_Select");
+  const periodBtns = periodSelect.querySelectorAll(".period_Btn");
+  periodBtns.forEach((periodBtn) => {
+    periodBtn.addEventListener("click", function () {
+      for (btn of periodBtns) {
+        btn.classList.remove("active");
+      }
+      this.classList.add("active");
+    });
+  });
+  // 기간 선택 버튼
+  const timeFrame = document.getElementById("timeFrame_wrap");
+  const timeFrame_btn = timeFrame.querySelectorAll(".timeFrame_btn");
+  const timeFrame_list = timeFrame.querySelector(".timeFrame_list");
+  const list_width = 145; // 리스트 하나의 너비 = 움직일 거리
+  const timeFrame_totalList= timeFrame_list.querySelectorAll("li").length -1 
+  let timeFrame_idx = 0; // 현재 보이는 리스트
+  timeFrame_btn.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      let toggle = this.getAttribute("data-toggle"); // 무슨 버튼 눌렀는지 data- 가져오기
+      if (toggle == "prev") {
+        if(timeFrame_idx >= 0){
+          timeFrame_idx--; // 왼쪽으로 이동
+        }
+      } else if (toggle == "next") {
+        if(timeFrame_idx < timeFrame_totalList - 1 ){
+          timeFrame_idx++; // 오른쪽으로 이동
+        }
+      }
+      timeFrame_list.style.transform = `translateX(${- timeFrame_idx * list_width}px)`; // 실제 리스트 움직임
+    });
+  });
 }
 
 // 실시간 인기도서 ####################################################

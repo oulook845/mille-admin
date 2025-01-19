@@ -16,10 +16,12 @@ header#header {
   padding-left: var(--padding-left);
   padding-right: var(--padding-right);
   // background-color: var(--darkMode-white);
-  background-color: var(--MainColor-white);
+  background-color: var(--MainColor-White);
   transition: 0.75s;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-  position: relative;
+  position: fixed;
+  left:0;
+  top:0;
   z-index: 9999;
   .inner {
     #logo {
@@ -41,21 +43,21 @@ header#header {
         // color: var(--darkMode-black);
         color: var(--MainColor-black);
       }
-      a#now_alarm{
+      a#now_alarm {
         width: 32px;
         height: 36px;
         display: flex;
         align-items: flex-end;
         position: relative;
-        &::after{
+        &::after {
           content: "";
           display: block;
-          padding:calc(5px / 2);
+          padding: calc(5px / 2);
           border-radius: 50%;
           background-color: var(--AlertBadge-Active);
           position: absolute;
           right: 0;
-          top:0;
+          top: 0;
         }
       }
     }
@@ -64,7 +66,8 @@ header#header {
 
 // main#container
 #container {
-  height: calc(100vh - var(--header-height));
+  height: calc(100% - var(--header-height));
+  // height: 100%;
 
   // main_gnb
   aside#main_gnb {
@@ -72,7 +75,12 @@ header#header {
     height: 100%;
     color: var(--MainColor-White);
     background: var(--MainColor-Black);
+    position: fixed;
+    left:0;
+    top:50px;
     #gnb {
+      width: 100%;
+      height: 100%;
       a {
         width: 100%;
         height: 60px;
@@ -151,8 +159,11 @@ header#header {
 
   // section 공통 스타일일
   section {
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
+    width: calc(100% - 258px);
+    height: fit-content;
+    margin-left:258px;
     padding: var(--container-padding);
 
     &#dashBoard {
@@ -178,6 +189,14 @@ header#header {
         width: 40%;
         flex-direction: column;
       }
+      &.row60 {
+        // height: calc(55% - 10px);
+        height: 526px;
+      }
+      &.row40 {
+        // height: calc(45% - 10px);
+        height: 406px;
+      }
 
       article.dragger {
         height: 100%;
@@ -186,7 +205,7 @@ header#header {
         background: #fff;
         border: 1px solid var(--SubColor-Black48);
         border-radius: var(--bd-radius);
-        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.25);
 
         h3 {
           display: flex;
@@ -196,9 +215,9 @@ header#header {
           line-height: 37px;
           // padding-left: 24px;
           // padding-right: 20px;
-          padding:0 var(--items-gap);
+          padding: 0 var(--items-gap);
           border-bottom: 1px solid var(--SubColor-Black48);
-          
+
           // 넘어가면 ... 표시
           white-space: nowrap;
           overflow: hidden;

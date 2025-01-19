@@ -61,19 +61,35 @@
 
       <!-- section ---------------------------->
       <section id="dashBoard">
-        <div class="column col60">
+        <div class="column col60 row60">
           <!-- 이용현황 -->
           <article id="usage-Status" class="dragger list-group-item" data-area="2" draggable="true">
             <h3>이용현황</h3>
             <div class="content">
+              <div id="usageStatus_nav" class="flex-between">
+                <div id="period_Select">
+                  <span role="button" class="period_Btn weekly active">주간</span>
+                  <span role="button" class="period_Btn monthly">월간</span>
+                </div>
+                <div id="timeFrame_wrap" class="flex">
+                  <span class="timeFrame_btn prevBtn" data-toggle="prev"></span>
+                  <div class="timeFrame">
+                    <ul class="timeFrame_list flex">
+                      <li>2024.12.01 ~ 2024.12.31</li>
+                      <li>2025.01.05 ~ 2025.01.11</li>
+                      <li>2025.02.01 ~ 2025.02.28</li>
+                    </ul>
+                  </div>
+                  <span class="timeFrame_btn nextBtn" data-toggle="next"></span>
+                </div>
+              </div>
               <canvas></canvas>
             </div>
             <!-- <span id="tooltip"></span> -->
           </article>
-          
         </div>
 
-        <div class="column col40">
+        <div class="column col40 row60">
           <!-- 데일리 -->
           <article class="dragger list-group-item" data-area="1" draggable="true">
             <h3>Daily</h3>
@@ -86,7 +102,7 @@
           </article>
         </div>
 
-        <div class="column col100">
+        <div class="column col100 row40">
           <!-- 실시간 인기 도서 -->
           <article id="popular-Books" class="dragger list-group-item" data-area="1" draggable="true">
             <h3>실시간 인기 도서 <span class="data-refresh"></span></h3>
@@ -124,10 +140,7 @@
                   <span class="book_name"></span>
                   <span class="books_nowRank" data-transRank="New-rank"></span>
                 </li>
-                <li>
-                  <span class="book_name"></span
-                  ><span class="books_nowRank" data-transRank="rank-Hold"></span>
-                </li>
+                <li><span class="book_name"></span><span class="books_nowRank" data-transRank="rank-Hold"></span></li>
               </ol>
             </div>
           </article>
