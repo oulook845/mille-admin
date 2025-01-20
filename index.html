@@ -91,9 +91,37 @@
 
         <div class="column col40 row60">
           <!-- 데일리 -->
-          <article class="dragger list-group-item" data-area="1" draggable="true">
-            <h3>Daily</h3>
-            <div class="content"></div>
+          <article id="dailyinform" class="dragger list-group-item" data-area="1" draggable="true">
+            <h3>Daily<span class="data-refresh"></span></h3>
+            <div class="content">
+              <div id="datetime"></div>
+              <div id="informData">
+                <div class="dataWrap">
+                  <h4 class="dataTitle">이용자 수</h4>
+                  <p class="nowData">793,250명</p>
+                  <p class="thanWrap">
+                    <span class="thanYester">어제보다</span>
+                    <span class="thanData" data-than="up">+15,568명 (1.96%)</span>
+                  </p>
+                </div>
+                <div class="dataWrap">
+                  <h4 class="dataTitle">평균 사용시간</h4>
+                  <p class="nowData">3시간 25분</p>
+                  <p class="thanWrap">
+                    <span class="thanYester">어제보다</span>
+                    <span class="thanData" data-than="down">-37분 (14.62%)</span>
+                  </p>
+                </div>
+                <div class="dataWrap">
+                  <h4 class="dataTitle">신규 가입자</h4>
+                  <p class="nowData">5,378명</p>
+                  <p class="thanWrap">
+                    <span class="thanYester">어제보다</span>
+                    <span class="thanData" data-than="up">+345명 (6.85%)</span>
+                  </p>
+                </div>
+              </div>
+            </div>
           </article>
           <!-- 유입경로 -->
           <article class="dragger list-group-item" data-area="1" draggable="true">
@@ -152,9 +180,11 @@
           </article>
 
           <!-- 문의 -->
-          <article class="dragger list-group-item" data-area="1" draggable="true">
-            <h3>문의</h3>
-            <div class="content"></div>
+          <article id="inquiry" class="dragger list-group-item" data-area="1" draggable="true">
+            <h3>문의 <a href="#" class="more-btn">더보기</a></h3>
+            <div class="content">
+              <ul id="inquiry_list"></ul>
+            </div>
           </article>
         </div>
       </section>
@@ -204,6 +234,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/sortable.js"></script>
-    <script src="./js/dashboard.js"></script>
+    <script type="module" src="./js/dashboard.js"></script>
   </body>
 </html>

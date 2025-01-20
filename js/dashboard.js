@@ -1,12 +1,14 @@
+import { usageStatus_Data, popularList_Array, inquiryData } from "./dashboardData.js";
+
 // 이용현황 ####################################################
 function usageStatus() {
   // 데이터 준비
   const data = {
-    labels: ["", "1.05", "1.06", "1.07", "1.08", "1.09", "1.10", "1.11", " "], // X축 값
+    labels: usageStatus_Data.labels, // X축 값 : 기간
     datasets: [
       {
         label: "", //데이터 세트가 무엇을 의미하는지
-        data: [500000, 700000, 500000, 600000, 500000, 800000, 600000, 793250, 793250], // Y축 값
+        data: usageStatus_Data.datasets, // Y축 값 : 이용자
         borderWidth: 1,
         borderColor: "#a451f7", // 선 색상
         backgroundColor: "transparent",
@@ -147,6 +149,7 @@ function usageStatus() {
       },
     },
   }; // config
+
   // 그래프 그리기
   const ctx = document.getElementById("usage-Status").querySelector("canvas").getContext("2d");
   const usageStatus_chart = new Chart(ctx, config);
@@ -167,84 +170,32 @@ function usageStatus() {
   const timeFrame_btn = timeFrame.querySelectorAll(".timeFrame_btn");
   const timeFrame_list = timeFrame.querySelector(".timeFrame_list");
   const list_width = 145; // 리스트 하나의 너비 = 움직일 거리
-  const timeFrame_totalList= timeFrame_list.querySelectorAll("li").length -1 
+  const timeFrame_totalList = timeFrame_list.querySelectorAll("li").length - 1;
   let timeFrame_idx = 0; // 현재 보이는 리스트
   timeFrame_btn.forEach((btn) => {
     btn.addEventListener("click", function () {
       let toggle = this.getAttribute("data-toggle"); // 무슨 버튼 눌렀는지 data- 가져오기
       if (toggle == "prev") {
-        if(timeFrame_idx >= 0){
+        if (timeFrame_idx >= 0) {
           timeFrame_idx--; // 왼쪽으로 이동
         }
       } else if (toggle == "next") {
-        if(timeFrame_idx < timeFrame_totalList - 1 ){
+        if (timeFrame_idx < timeFrame_totalList - 1) {
           timeFrame_idx++; // 오른쪽으로 이동
         }
       }
-      timeFrame_list.style.transform = `translateX(${- timeFrame_idx * list_width}px)`; // 실제 리스트 움직임
+      timeFrame_list.style.transform = `translateX(${-timeFrame_idx * list_width}px)`; // 실제 리스트 움직임
     });
   });
 }
 
 // 실시간 인기도서 ####################################################
-// 새로고침하면 인기도서 순위 변경
 function shuffleRank() {
+  // 새로고침하면 인기도서 순위 변경
   const popular_Books = document.getElementById("popular-Books"); // 실시간 인기도서 영역
   const popularList = popular_Books.querySelector("ol#popular-Books-list"); // 실시간 인기도서 리스트
   const popularList_Elems = popularList.querySelectorAll("li"); //
   const popularList_shuffleButton = popular_Books.querySelector(".data-refresh"); // 실시간 인기도서 새로고침 버튼
-
-  // 인기 도서 리스트 TOP8
-  let popularList_Array = [
-    {
-      id: 0,
-      bookName: "무의식은 어떻게 나를 설계하는가",
-      nowRank: "3",
-      transRank: "rank-Up",
-    },
-    {
-      id: 1,
-      bookName: "하루 한 장, 작지만 큰 변화의 힘",
-      nowRank: "1",
-      transRank: "rank-Down",
-    },
-    {
-      id: 2,
-      bookName: "고전이 답했다 마땅히 살아야 할 삶에 대하여",
-      nowRank: "3",
-      transRank: "rank-Up",
-    },
-    {
-      id: 3,
-      bookName: "트렌드 코리아 2025",
-      nowRank: "3",
-      transRank: "rank-Up",
-    },
-    {
-      id: 4,
-      bookName: "어른의 행복은 조용하다",
-      nowRank: "2",
-      transRank: "rank-Down",
-    },
-    {
-      id: 5,
-      bookName: "이처럼 사소한 것들",
-      nowRank: "6",
-      transRank: "rank-Up",
-    },
-    {
-      id: 6,
-      bookName: "돌이킬 수 있는",
-      nowRank: "New",
-      transRank: "New-rank",
-    },
-    {
-      id: 7,
-      bookName: "B주류 경제학",
-      nowRank: "1",
-      transRank: "rank-Hold",
-    },
-  ];
 
   // 인기도서 기본 순위
   function popularList_default() {
@@ -293,7 +244,7 @@ function shuffleRank() {
 
     function getRandomRankStatus() {
       const statuses = ["rank-Up", "rank-Down", "New-rank", "rank-Hold"];
-      const randomIndex = Math.floor(Math.random() * 3) + 1;
+      const randomIndex = Math.floor(Math.random() * statuses.length);
       return statuses[randomIndex];
     }
     // 인기도서 책제목, 순위 입력하기
@@ -308,7 +259,7 @@ function shuffleRank() {
         case "rank-Up":
         case "rank-Down":
           popularList_Array[idx].nowRank = Math.floor(Math.random() * 2) + 1;
-          popularList_Array[idx].nowRank = -popularList_Array[idx].nowRank;
+          popularList_Array[idx].nowRank = popularList_Array[idx].nowRank;
           break;
         case "New-rank":
           popularList_Array[idx].nowRank = "New";
@@ -339,11 +290,66 @@ function shuffleRank() {
   popularList_shuffleButton.addEventListener("click", shuffleAndCompare);
 }
 
+// 데일리 ####################################################
+function dailyInformation() {
+  // 현재시간 화면에 구현 #datetime
+  function updateDateTime() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+
+    const formattedDateTime = `${year}.${month}.${day} (${hours}:${minutes})`;
+    document.getElementById("datetime").textContent = formattedDateTime;
+  }
+  setInterval(updateDateTime, 1000);
+
+  const dailyInform = document.getElementById("dailyinform");
+  const dailyInform_shuffleButton = dailyInform.querySelector(".data-refresh"); // 문의 새로고침 버튼
+
+  function shuffleDailyInform(){
+    
+  }
+  dailyInform_shuffleButton.addEventListener("click", shuffleDailyInform);
+  
+}
+
+// 문의 ####################################################
+function inquiryBoard() {
+  const inquiryBoard = document.getElementById("inquiry");
+  const inquiry_listWrap = document.getElementById("inquiry_list");
+  const inquiry_list = inquiry_listWrap.querySelectorAll("li");
+
+  for (let idx = 0; idx < inquiryData.length; idx++) {
+    const li = document.createElement("li");
+
+    const idElement = document.createElement("span");
+    idElement.className = "inquiry_id";
+    idElement.textContent = inquiryData[idx].id;
+    li.appendChild(idElement);
+
+    const contentElement = document.createElement("p");
+    contentElement.className = "inquiry_content";
+    contentElement.textContent = inquiryData[idx].content;
+    li.appendChild(contentElement);
+
+    const badgeElement = document.createElement("i");
+    badgeElement.className = "inquiry_badge";
+    badgeElement.textContent = inquiryData[idx].badgeBollean === "true" ? "New" : "";
+    li.appendChild(badgeElement);
+
+    inquiry_listWrap.appendChild(li);
+  }
+}
+
 // #######################################
 
 usageStatus(); //#이용현황
 shuffleRank(); //#실시간 인기도서
-//#데일리
+dailyInformation(); //#데일리
 //#유입경로
 //#콘텐츠 이용비율
-//#문의
+inquiryBoard(); //#문의
