@@ -6,6 +6,20 @@ export let usageStatus_Data = {
     datasets : [583034, 723850, 520185, 620600, 510038, 838856, 610940, 793250, 793250], // Y축 값
 }// data
 
+// 유입경로 데이터 ##################################
+export let trafficSource_Data = {
+  browserType :{
+    naver : 863,
+    google : 571,
+    daum : 292,
+  },
+  socialType : {
+    instagram : 734,
+    twitter : 639,
+    facebook : 172,
+  },
+}
+
 // 인기도서 데이터 ##################################
 export let popularList_Array = [
     {

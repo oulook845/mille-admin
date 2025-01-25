@@ -1,4 +1,4 @@
-import { usageStatus_Data, popularList_Array, inquiryData } from "./dashboardData.js";
+import { usageStatus_Data, trafficSource_Data, popularList_Array, inquiryData } from "./dashboardData.js";
 
 // 이용현황 ####################################################
 function usageStatus() {
@@ -87,9 +87,11 @@ function usageStatus() {
       elements: {
         point: {
           pointRadius: 1,
-          pointHoverRadius: 5,
+          pointHoverRadius: 3,
           pointBackgroundColor: "transparent",
           pointBorderColor: "transparent",
+          // hover시 스타일 변화
+          pointHoverBorderWidth: 2,
           pointHoverBackgroundColor: "#fff",
           pointHoverBorderColor: "#A451F7",
         },
@@ -119,7 +121,7 @@ function usageStatus() {
           bodyAlign: "center", // 본문 중앙 정렬
           footerAlign: "center", // 바닥글 중앙 정렬 (필요한 경우)
 
-          position: "average", // 툴팁이 데이터 포인트의 중심 위에 표시
+          position: "nearest", // 툴팁이 데이터 포인트의 중심 위에 표시 (average 또는 nearest)
           yAlign: "bottom", // 툴팁을 아래쪽에 표시
           callbacks: {
             title(tooltipItems) {
@@ -151,8 +153,8 @@ function usageStatus() {
   }; // config
 
   // 그래프 그리기
-  const ctx = document.getElementById("usage-Status").querySelector("canvas").getContext("2d");
-  const usageStatus_chart = new Chart(ctx, config);
+  const usageStatus_ctx = document.getElementById("usage-Status").querySelector("canvas").getContext("2d");
+  const usageStatus_chart = new Chart(usageStatus_ctx, config);
 
   // 주간 || 월간 토글버튼
   const periodSelect = document.getElementById("period_Select");
@@ -186,6 +188,58 @@ function usageStatus() {
       }
       timeFrame_list.style.transform = `translateX(${-timeFrame_idx * list_width}px)`; // 실제 리스트 움직임
     });
+  });
+}
+
+// 데일리 ####################################################
+function dailyInformation() {
+  // 현재시간 화면에 구현 #datetime
+
+  const dailyInform = document.getElementById("dailyinform");
+  const dailyInform_shuffleButton = dailyInform.querySelector(".data-refresh"); // 문의 새로고침 버튼
+
+  function shuffleDailyInform() {}
+  dailyInform_shuffleButton.addEventListener("click", shuffleDailyInform);
+}
+
+// 유입경로 ####################################################
+function trafficSource() {
+  const trafficSource = document.getElementById("trafficSource");
+  const trafficBrowser = trafficSource.querySelector(".trafficSearch");
+  const trafficBrowser_list = trafficBrowser.querySelectorAll("li");
+  const trafficSocial = trafficSource.querySelector(".trafficSNS");
+  const trafficSocial_list = trafficSocial.querySelectorAll("li");
+
+  function calculateTotal(obj) {
+    return Object.values(obj).reduce((sum, value) => sum + value, 0);
+  }
+  function calculate_Percentages(obj) {
+    const total = calculateTotal(obj);
+    return Object.entries(obj).reduce((result, [key, value]) => {
+      result[key] = ((value / total) * 100).toFixed(2);
+      return result;
+    }, {});
+  }
+
+  const browserTypeTotal = calculateTotal(trafficSource_Data.browserType);
+  const socialTypeTotal = calculateTotal(trafficSource_Data.socialType);
+
+  const browserType_Percentages = calculate_Percentages(trafficSource_Data.browserType);
+  const socialType_Percentages = calculate_Percentages(trafficSource_Data.socialType);
+
+  // dom에 있는 list : width에 퍼센트 값 넘겨주기
+  trafficBrowser_list.forEach((browserList, index) => {
+    const key = Object.keys(browserType_Percentages)[index];
+    if (key) {
+      browserList.style.width = browserType_Percentages[key] + "%";
+    }
+  });
+
+  trafficSocial_list.forEach((socialList, index) => {
+    const key = Object.keys(socialType_Percentages)[index];
+    if (key) {
+      socialList.style.width = socialType_Percentages[key] + "%";
+    }
   });
 }
 
@@ -290,31 +344,77 @@ function shuffleRank() {
   popularList_shuffleButton.addEventListener("click", shuffleAndCompare);
 }
 
-// 데일리 ####################################################
-function dailyInformation() {
-  // 현재시간 화면에 구현 #datetime
-  function updateDateTime() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    const seconds = String(now.getSeconds()).padStart(2, "0");
+// 콘텐츠 이용 비율 ####################################################
+function contentStatus() {
+  const contentStatus_data = {
+    labels: [" 전자책", " 오디오북", " 챗북"], // X축 값
+    datasets: [
+      {
+        label: false, //데이터 세트가 무엇을 의미하는지
+        data: [52, 38, 10], // Y축 값
+        borderColor: "transparent", // 선 색상
+        backgroundColor: ["#E0C1FF", "#FFF298", "#EDEDED"],
+        cutout: "55%", // 도넛 중심 크기 조절
+      },
+    ], //datasets
+  }; // contentStatus_data
 
-    const formattedDateTime = `${year}.${month}.${day} (${hours}:${minutes})`;
-    document.getElementById("datetime").textContent = formattedDateTime;
-  }
-  setInterval(updateDateTime, 1000);
+  // 그래프 설정
+  const contentStatus_config = {
+    type: "doughnut", // 그래프 유형 line, bar, pie, doughnut, radar, scatter, bubble, mixed
+    data: contentStatus_data,
+    options: {
+      rotation: -45 * Math.PI, // 시작지점 변화
+      scales: {
+        x: {
+          display: false, // 격자선 표시 여부
+        },
+        y: {
+          display: false,
+        },
+      }, // scales
+      layout: {
+        margin: {
+          left: 500,
+          right: 0,
+          top: 0,
+          bottom: 0,
+        },
+      },
 
-  const dailyInform = document.getElementById("dailyinform");
-  const dailyInform_shuffleButton = dailyInform.querySelector(".data-refresh"); // 문의 새로고침 버튼
+      responsive: true, // 화면 크기 변경 시 차트 크기 자동 조정
+      maintainAspectRatio: false, // 비율을 유지하지 않음
 
-  function shuffleDailyInform(){
-    
-  }
-  dailyInform_shuffleButton.addEventListener("click", shuffleDailyInform);
-  
+      animation: {
+        duration: 1000, // 애니메이션 지속 시간
+      }, // animation
+
+      plugins: {
+        legend: {
+          display: true,
+          position: "right",
+          align: "start",
+          labels: {
+            usePointStyle: true,
+            padding: 15,
+            boxWidth: 8, // 아이콘 너비
+            boxHeight: 8, // 아이콘 높이
+            font: {
+              size: 8,
+            },
+          },
+        }, //legend
+        title: {
+          // 차트의 제목 (차트가 무엇을 나타내는지, 차트 상단에 표시)
+          display: false,
+        },
+      }, //plugins
+    }, //options
+  }; // contentStatus_config
+
+  // 그래프 그리기
+  const contentStatus_ctx = document.getElementById("content-Status").querySelector("canvas").getContext("2d");
+  const contentStatus_Chart = new Chart(contentStatus_ctx, contentStatus_config);
 }
 
 // 문의 ####################################################
@@ -345,11 +445,33 @@ function inquiryBoard() {
   }
 }
 
+// 현재 날짜 출력(데일리, 유입경로) ####################################################
+function updateDateTime() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const seconds = String(now.getSeconds()).padStart(2, "0");
+
+  // 데일리에 yyyy.mm.dd (hh:mm) 출력
+  const formattedDateTime = `${year}.${month}.${day} (${hours}:${minutes})`;
+  document.getElementById("dailyinform").querySelector(".datetime").textContent = formattedDateTime;
+
+  // 유입경로에 yyyy.mm 출력
+  const trafficDateTime = `${year}.${month}`;
+  document.getElementById("trafficSource").querySelector(".datetime").textContent = trafficDateTime;
+
+  // 콘텐츠 이용비율에 yyyy.mm 출력
+  document.getElementById("content-Status").querySelector(".datetime").textContent = trafficDateTime;
+}
+setInterval(updateDateTime, 1000);
 // #######################################
 
 usageStatus(); //#이용현황
 shuffleRank(); //#실시간 인기도서
 dailyInformation(); //#데일리
-//#유입경로
-//#콘텐츠 이용비율
+trafficSource(); //#유입경로
+contentStatus(); //#콘텐츠 이용비율
 inquiryBoard(); //#문의

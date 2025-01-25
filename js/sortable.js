@@ -42,9 +42,11 @@ columns.forEach((column) => {
       }
     }
   }
-  // oneList_dragDisable();
+  oneList_dragDisable();
 });
 
+
+/////////////////////////////////////////////////////
 // .draggers 크기 업데이트
 function scaleCheck() {
   items.forEach((dragger) => {
@@ -54,22 +56,22 @@ function scaleCheck() {
     let dragger__scale = dragger.getAttribute("data-area");
     dragger.style.flex = dragger__scale;
 
-    let drg__width = dragger.offsetWidth;
-    let w_value = 300;
+    // let drg__width = dragger.offsetWidth;
+    // let w_value = 300;
     // 200보다 작으면 배경색상 변화
-    for (let i = 0; i < items.length; i++) {
-      if (drg__width < w_value) {
-        // dragger.style.backgroundColor = "#333";
-        // contents.style.display = "none";
-      } else {
-        // dragger.style.backgroundColor = "#fff";
-        // contents.style.display = "block";
-      }
-    }
+    // for (let i = 0; i < items.length; i++) {
+    //   if (drg__width < w_value) {
+    //     // dragger.style.backgroundColor = "#333";
+    //     // contents.style.display = "none";
+    //   } else {
+    //     // dragger.style.backgroundColor = "#fff";
+    //     // contents.style.display = "block";
+    //   }
+    // }
   });
 }
 scaleCheck();
 
-window.addEventListener("resize", function () {
-  scaleCheck();
-});
+// window.addEventListener("resize", function () {
+//   scaleCheck();
+// });

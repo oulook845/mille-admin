@@ -170,7 +170,7 @@
 #container section#dashBoard .column article.dragger#dailyinform .content {
   padding: 15px 18px;
 }
-#container section#dashBoard .column article.dragger#dailyinform .content #datetime {
+#container section#dashBoard .column article.dragger#dailyinform .content .datetime {
   text-align: end;
   font-size: 10px;
   color: var(--MainColor-Black);
@@ -220,6 +220,42 @@
 }
 #container section#dashBoard .column article.dragger#dailyinform .content #informData .dataWrap p.thanWrap span.thanData[data-than=down]::after {
   background-image: url(../images/dashboard/trend_down.png);
+}
+#container section#dashBoard .column article.dragger#trafficSource .content {
+  padding: 15px 18px;
+}
+#container section#dashBoard .column article.dragger#trafficSource .content .time {
+  text-align: end;
+  font-size: 10px;
+  color: var(--MainColor-Black);
+}
+#container section#dashBoard .column article.dragger#trafficSource .content #trafficData {
+  margin-top: 20px;
+}
+#container section#dashBoard .column article.dragger#trafficSource .content #trafficData h4.dataTitle {
+  font-size: 12px;
+}
+#container section#dashBoard .column article.dragger#trafficSource .content #trafficData ul.data_wrap {
+  margin-top: 10px;
+  border-radius: 3px;
+}
+#container section#dashBoard .column article.dragger#trafficSource .content #trafficData ul.data_wrap li {
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 8px;
+}
+#container section#dashBoard .column article.dragger#trafficSource .content #trafficData ul.data_wrap li:nth-child(1) {
+  background-color: var(--SubColor-Purple1);
+}
+#container section#dashBoard .column article.dragger#trafficSource .content #trafficData ul.data_wrap li:nth-child(2) {
+  background-color: var(--SubColor-Yellow1);
+}
+#container section#dashBoard .column article.dragger#trafficSource .content #trafficData ul.data_wrap li:nth-child(3) {
+  background-color: var(--SubColor-BlackED);
+}
+#container section#dashBoard .column article.dragger#trafficSource .content #trafficData .trafficSNS {
+  margin-top: 35px;
 }
 #container section#dashBoard .column article.dragger#inquiry h3 a.more-btn {
   font-size: 12px;
@@ -272,4 +308,22 @@
   content: "";
   display: block;
   clear: both;
+}
+#container section#dashBoard .column article.dragger#content-Status .content {
+  padding: 17px 29px;
+  position: relative;
+}
+#container section#dashBoard .column article.dragger#content-Status .content .time {
+  text-align: end;
+  font-size: 10px;
+  color: var(--MainColor-Black);
+}
+#container section#dashBoard .column article.dragger#content-Status .content .graphWrap {
+  width: calc(100% - 60px);
+  height: 270px;
+  margin: 0 auto;
+  position: absolute;
+  left: 0px;
+  right: 0;
+  top: 45px;
 }
