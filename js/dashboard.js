@@ -105,15 +105,16 @@ function usageStatus() {
         tooltip: {
           callbacks: {
             title(tooltipItems) {
-              const label = tooltipItems[0].label;
-              // 레이블이 빈 문자열인 경우 툴팁 제목을 빈 문자열로 반환하여 툴팁을 숨김
-              return label === "" ? "" : label;
+              const label = tooltipItems[0].label; // 첫 번째 tooltipItem의 레이블
+              const date = new Date(`2025-${label}`);
+              const options = { month: "long", day: "2-digit", weekday: "short" };
+              return date.toLocaleDateString("ko-KR", options); // 날짜 형식 변환
             },
             label(tooltipItem) {
               if (data.labels[tooltipItem.dataIndex] === "") {
                 return ""; // 레이블이 빈 문자열인 경우 본문도 숨김
               }
-              return tooltipItem.dataset.label + ": " + tooltipItem.raw; // 기본 본문 반환
+              return tooltipItem.dataset.label + tooltipItem.raw; // 기본 본문 반환
             },
           },
           mode: "index",
@@ -123,15 +124,7 @@ function usageStatus() {
 
           position: "nearest", // 툴팁이 데이터 포인트의 중심 위에 표시 (average 또는 nearest)
           yAlign: "bottom", // 툴팁을 아래쪽에 표시
-          callbacks: {
-            title(tooltipItems) {
-              const label = tooltipItems[0].label; // 첫 번째 tooltipItem의 레이블
-              const date = new Date(`2025-${label}`);
-              const options = { month: "long", day: "2-digit", weekday: "short" };
-              return date.toLocaleDateString("ko-KR", options); // 날짜 형식 변환
-            },
-          },
-          backgroundColor: "#E0C1FF",
+          backgroundColor: "rgba(224, 193, 255, 0.5)",
           titleColor: "#333",
           bodyColor: "#333",
           borderColor: "#9747FF",
@@ -347,48 +340,33 @@ function shuffleRank() {
 // 콘텐츠 이용 비율 ####################################################
 function contentStatus() {
   const contentStatus_data = {
-    labels: [" 전자책", " 오디오북", " 챗북"], // X축 값
+    labels: ["전자책", "오디오북", "챗북"], // X축 값
     datasets: [
       {
-        label: false, //데이터 세트가 무엇을 의미하는지
+        label: false, // 데이터 세트가 무엇을 의미하는지
         data: [52, 38, 10], // Y축 값
         borderColor: "transparent", // 선 색상
         backgroundColor: ["#E0C1FF", "#FFF298", "#EDEDED"],
         cutout: "55%", // 도넛 중심 크기 조절
+        radius: 100, // 기본적으로 모든 세그먼트는 80 (%로 하면 반응형)
+        hoverOffset: 12,
       },
-    ], //datasets
-  }; // contentStatus_data
+    ], // datasets
+  };
 
-  // 그래프 설정
   const contentStatus_config = {
-    type: "doughnut", // 그래프 유형 line, bar, pie, doughnut, radar, scatter, bubble, mixed
+    type: "doughnut", // 그래프 유형
     data: contentStatus_data,
     options: {
       rotation: -45 * Math.PI, // 시작지점 변화
-      scales: {
-        x: {
-          display: false, // 격자선 표시 여부
-        },
-        y: {
-          display: false,
-        },
-      }, // scales
-      layout: {
-        margin: {
-          left: 500,
-          right: 0,
-          top: 0,
-          bottom: 0,
-        },
-      },
-
       responsive: true, // 화면 크기 변경 시 차트 크기 자동 조정
       maintainAspectRatio: false, // 비율을 유지하지 않음
-
+      circumference: 360, // 보이는 차트 크기
       animation: {
+        animateRotate:true, // 처음에 회전하면서 생성
+        animateScale:true, // 처음에 커지면서 생성
         duration: 1000, // 애니메이션 지속 시간
-      }, // animation
-
+      },
       plugins: {
         legend: {
           display: true,
@@ -403,16 +381,28 @@ function contentStatus() {
               size: 8,
             },
           },
-        }, //legend
-        title: {
-          // 차트의 제목 (차트가 무엇을 나타내는지, 차트 상단에 표시)
-          display: false,
         },
-      }, //plugins
-    }, //options
-  }; // contentStatus_config
+        // tooltip: {
+        //   callbacks: {
+        //     label: function(tooltipItem) {
+        //       const index = tooltipItem.dataIndex;
+        //       const value = tooltipItem.raw;
+        //       return `${contentStatus_data.labels[index]}: ${value}%`;  // 툴팁에 라벨과 값을 표시
+        //     }
+        //   }
+        // }
+        tooltip: false,
+      },
 
-  // 그래프 그리기
+      interaction: {
+        mode: "nearest", // hover 시 가까운 데이터 요소에 반응
+        intersect: false,
+      },
+    },
+  };
+
+
+  // 차트 그리기
   const contentStatus_ctx = document.getElementById("content-Status").querySelector("canvas").getContext("2d");
   const contentStatus_Chart = new Chart(contentStatus_ctx, contentStatus_config);
 }
