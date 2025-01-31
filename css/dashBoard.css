@@ -238,6 +238,8 @@
 #container section#dashBoard .column article.dragger#trafficSource .content #trafficData ul.data_wrap {
   margin-top: 10px;
   border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.25);
 }
 #container section#dashBoard .column article.dragger#trafficSource .content #trafficData ul.data_wrap li {
   height: 20px;
@@ -319,12 +321,11 @@
   color: var(--MainColor-Black);
 }
 #container section#dashBoard .column article.dragger#content-Status .content .graphWrap {
-  width: 100%;
+  width: calc(100% - 60px);
   height: 270px;
   margin: 0 auto;
   position: absolute;
   left: 0px;
   right: 0;
   top: 45px;
-  border: 1px solid #000;
 }

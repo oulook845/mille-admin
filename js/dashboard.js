@@ -191,7 +191,87 @@ function dailyInformation() {
   const dailyInform = document.getElementById("dailyinform");
   const dailyInform_shuffleButton = dailyInform.querySelector(".data-refresh"); // 문의 새로고침 버튼
 
-  function shuffleDailyInform() {}
+  const users_info = document.getElementById("usersCount"); // 이용자수
+  const averageTime_info = document.getElementById("averageTime"); // 평균 사용시간
+  const newUser_info = document.getElementById("newUser"); // 신규 가입자
+
+  const dataWraps = document.querySelectorAll(".dataWrap"); // 종류별 데이터 영역
+
+  let beforeData_array = [777682, 168, 5033];
+  let thanData_array = [15568, 37, 345];
+  let trueData_array = [];
+  // trueData_array에 초기값 적용
+  beforeData_array.forEach((beforeData, idx) => {
+    trueData_array.push(beforeData_array[idx] + thanData_array[idx]);
+  });
+
+  // 호출하면 데일리영역에 데이터 계산해서 적용
+  function dailyArea_DataPush() {
+    dataWraps.forEach((dataWrap, idx) => {
+      let trueData = dataWrap.querySelector(".trueData");
+      let thanData = dataWrap.querySelector(".thanData");
+
+      let type = trueData.getAttribute("data-type");
+      let trueData_result = null; // 데이터 type에따라 다른형식으로 출력
+      let thanData_result = null;
+      let per = Math.round((thanData_array[idx] / trueData_array[idx]) * 100);
+
+      switch (type) {
+        case "user":
+          trueData_result = Number(trueData_array[idx]).toLocaleString() + "명"; // 세자리마다 , 표시
+          thanData_result = `${thanData_array[idx]}명 (${per}%)`;
+          break;
+        case "time":
+          // 현재 시간 표시
+          let true_hour = Math.floor(trueData_array[idx] / 60);
+          let true_min = trueData_array[idx] % 60;
+          // 시,분 표시 또는 분만 표시
+          if(true_hour > 0){
+            trueData_result = `${true_hour}시 ${true_min}분`;
+          }else{
+            trueData_result = `${true_min}분`;
+          }
+
+          // 비교 시간 표시
+          let than_hour = Math.floor(thanData_array[idx] / 60);
+          let than_min = thanData_array[idx] % 60;
+          // 시,분 표시 또는 분만 표시
+          if(than_hour > 0){
+            thanData_result = `${than_hour}시 ${than_min}분 (${per}%)`;
+          }else{
+            thanData_result = `${than_min}분 (${per}%)`;
+          }
+          break;
+        default:
+          return;
+      }
+
+      trueData.textContent = trueData_result; // 현재값 적용
+      thanData.textContent = thanData_result; // 비교값 적용
+      thanData.setAttribute("data-than","up")
+    });
+  }
+  dailyArea_DataPush(); // 초기 실행
+
+  function shuffleDailyInform() {
+    // 비교값을 업데이트 (+랜덤 양수)
+    thanData_array = thanData_array.map((thanData, idx) => {
+      let plusData = parseInt(Math.random() * 10) * 5;
+      // console.log(plusData)
+      let shuffleData = thanData + plusData;
+
+      return shuffleData;
+    });
+
+    // 이전값 + 비교값 = 현재값으로 업데이트
+    trueData_array = trueData_array.map((trueData, idx) => {
+      let afterData = beforeData_array[idx] + thanData_array[idx];
+
+      return afterData;
+    });
+    dailyArea_DataPush(); // 정보 업데이트
+  }
+
   dailyInform_shuffleButton.addEventListener("click", shuffleDailyInform);
 }
 
@@ -237,7 +317,7 @@ function trafficSource() {
 }
 
 // 실시간 인기도서 ####################################################
-function shuffleRank() {
+function popularList() {
   // 새로고침하면 인기도서 순위 변경
   const popular_Books = document.getElementById("popular-Books"); // 실시간 인기도서 영역
   const popularList = popular_Books.querySelector("ol#popular-Books-list"); // 실시간 인기도서 리스트
@@ -349,7 +429,9 @@ function contentStatus() {
         backgroundColor: ["#E0C1FF", "#FFF298", "#EDEDED"],
         cutout: "55%", // 도넛 중심 크기 조절
         radius: 100, // 기본적으로 모든 세그먼트는 80 (%로 하면 반응형)
-        hoverOffset: 12,
+        // hoverOffset: 12, // 호버시 크기 변화
+        hoverBorderWidth: 7, // 호버시 보더 두께
+        hoverBorderColor: ["#CB97FF", "#FFEC6F", "#D5D5D5"], // 호버시 보더 색상 변화
       },
     ], // datasets
   };
@@ -363,8 +445,8 @@ function contentStatus() {
       maintainAspectRatio: false, // 비율을 유지하지 않음
       circumference: 360, // 보이는 차트 크기
       animation: {
-        animateRotate:true, // 처음에 회전하면서 생성
-        animateScale:true, // 처음에 커지면서 생성
+        animateRotate: true, // 처음에 회전하면서 생성
+        animateScale: true, // 처음에 커지면서 생성
         duration: 1000, // 애니메이션 지속 시간
       },
       plugins: {
@@ -382,17 +464,22 @@ function contentStatus() {
             },
           },
         },
-        // tooltip: {
-        //   callbacks: {
-        //     label: function(tooltipItem) {
-        //       const index = tooltipItem.dataIndex;
-        //       const value = tooltipItem.raw;
-        //       return `${contentStatus_data.labels[index]}: ${value}%`;  // 툴팁에 라벨과 값을 표시
-        //     }
-        //   }
-        // }
-        tooltip: false,
+        tooltip: {
+          callbacks: {
+            label: function (tooltipItem) {
+              const index = tooltipItem.dataIndex;
+              const value = tooltipItem.raw;
+              return `${value}%`; // 툴팁에 라벨과 값을 표시
+              // return `${contentStatus_data.labels[index]}: ${value}%`;
+            },
+          },
+        },
+        // tooltip: false,
       },
+
+      // onHover: (event, activeElements) => {
+      //   console.log(activeElements)
+      // },
 
       interaction: {
         mode: "nearest", // hover 시 가까운 데이터 요소에 반응
@@ -400,7 +487,6 @@ function contentStatus() {
       },
     },
   };
-
 
   // 차트 그리기
   const contentStatus_ctx = document.getElementById("content-Status").querySelector("canvas").getContext("2d");
@@ -460,7 +546,7 @@ setInterval(updateDateTime, 1000);
 // #######################################
 
 usageStatus(); //#이용현황
-shuffleRank(); //#실시간 인기도서
+popularList(); //#실시간 인기도서
 dailyInformation(); //#데일리
 trafficSource(); //#유입경로
 contentStatus(); //#콘텐츠 이용비율
