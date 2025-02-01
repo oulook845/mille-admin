@@ -226,9 +226,9 @@ function dailyInformation() {
           let true_hour = Math.floor(trueData_array[idx] / 60);
           let true_min = trueData_array[idx] % 60;
           // 시,분 표시 또는 분만 표시
-          if(true_hour > 0){
+          if (true_hour > 0) {
             trueData_result = `${true_hour}시 ${true_min}분`;
-          }else{
+          } else {
             trueData_result = `${true_min}분`;
           }
 
@@ -236,9 +236,9 @@ function dailyInformation() {
           let than_hour = Math.floor(thanData_array[idx] / 60);
           let than_min = thanData_array[idx] % 60;
           // 시,분 표시 또는 분만 표시
-          if(than_hour > 0){
+          if (than_hour > 0) {
             thanData_result = `${than_hour}시 ${than_min}분 (${per}%)`;
-          }else{
+          } else {
             thanData_result = `${than_min}분 (${per}%)`;
           }
           break;
@@ -248,7 +248,7 @@ function dailyInformation() {
 
       trueData.textContent = trueData_result; // 현재값 적용
       thanData.textContent = thanData_result; // 비교값 적용
-      thanData.setAttribute("data-than","up")
+      thanData.setAttribute("data-than", "up");
     });
   }
   dailyArea_DataPush(); // 초기 실행
@@ -278,14 +278,18 @@ function dailyInformation() {
 // 유입경로 ####################################################
 function trafficSource() {
   const trafficSource = document.getElementById("trafficSource");
+  const trafficGraphs = trafficSource.querySelectorAll(".trafficGraph");
   const trafficBrowser = trafficSource.querySelector(".trafficSearch");
   const trafficBrowser_list = trafficBrowser.querySelectorAll("li");
   const trafficSocial = trafficSource.querySelector(".trafficSNS");
   const trafficSocial_list = trafficSocial.querySelectorAll("li");
+  const traffic_dataWrap = trafficSource.querySelectorAll(".data_wrap");
 
+  // 데이터 전체 값구하기
   function calculateTotal(obj) {
     return Object.values(obj).reduce((sum, value) => sum + value, 0);
   }
+  // 전체 데이터에서 퍼센트로 반환
   function calculate_Percentages(obj) {
     const total = calculateTotal(obj);
     return Object.entries(obj).reduce((result, [key, value]) => {
@@ -294,25 +298,76 @@ function trafficSource() {
     }, {});
   }
 
-  const browserTypeTotal = calculateTotal(trafficSource_Data.browserType);
-  const socialTypeTotal = calculateTotal(trafficSource_Data.socialType);
-
+  // 브라우저 유입 퍼센트값
   const browserType_Percentages = calculate_Percentages(trafficSource_Data.browserType);
+  // sns 유입 퍼센트값
   const socialType_Percentages = calculate_Percentages(trafficSource_Data.socialType);
 
   // dom에 있는 list : width에 퍼센트 값 넘겨주기
+  // 브라우저 유입에 width전달
   trafficBrowser_list.forEach((browserList, index) => {
     const key = Object.keys(browserType_Percentages)[index];
     if (key) {
       browserList.style.width = browserType_Percentages[key] + "%";
     }
   });
-
+  // SNS 유입에 width전달
   trafficSocial_list.forEach((socialList, index) => {
     const key = Object.keys(socialType_Percentages)[index];
     if (key) {
       socialList.style.width = socialType_Percentages[key] + "%";
     }
+  });
+
+  // hover시 tooltip 이벤트
+  traffic_dataWrap.forEach((dataWrap) => {
+    // 마우스 올라가면 tiptool 만들기
+    dataWrap.addEventListener("mouseenter", function () {
+      // tiptool 요소가 있는지 확인
+      let existingTiptool = this.querySelector("#traffic_tiptool");
+      let current_Content;
+
+      // 마우스가 올라간 카테고리 구별
+      let data_liElems = this.querySelectorAll("li");
+      
+      // tiptool 없으면 tiptool 요소 생성
+      if (!existingTiptool) {
+        let tiptool = document.createElement("div");
+        let tiptool_value = document.createElement("p");
+        let tiptool_data = document.createElement("p");
+        tiptool.id = "traffic_tiptool";
+        this.appendChild(tiptool);
+        tiptool.appendChild(tiptool_value);
+        tiptool.appendChild(tiptool_data);
+
+        data_liElems.forEach((data_liElem) => {
+          data_liElem.addEventListener("mouseenter", function () {
+            current_Content = this.textContent;
+            let per = this.offsetWidth;
+            tiptool_value.textContent = current_Content;
+            tiptool_data.textContent = `${per}명 유입`;
+          });
+        });
+      }
+
+      // 마우스 움직이면 따라 움직이기
+      this.addEventListener("mousemove", function (e) {
+        existingTiptool = this.querySelector("#traffic_tiptool");
+        let mouseX = e.clientX;
+        let mouseY = e.clientY;
+        existingTiptool.style.left = mouseX + "px";
+        existingTiptool.style.top = mouseY + "px";
+      });
+    });
+
+    // 마우스 떠나면 tiptool 요소 제거
+    dataWrap.addEventListener("mouseleave", function () {
+      let existingTiptool = this.querySelector("#traffic_tiptool");
+
+      if (existingTiptool) {
+        existingTiptool.remove();
+      }
+    });
   });
 }
 
