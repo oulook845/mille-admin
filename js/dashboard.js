@@ -1,7 +1,7 @@
 import { usageStatus_Data, trafficSource_Data, popularList_Array, inquiryData } from "./dashboardData.js";
 
 // 이용현황 ####################################################
-function usageStatus() {
+function usageStatus(year, month, day) {
   // 데이터 준비
   const data = {
     labels: usageStatus_Data.labels, // X축 값 : 기간
@@ -164,9 +164,12 @@ function usageStatus() {
   const timeFrame = document.getElementById("timeFrame_wrap");
   const timeFrame_btn = timeFrame.querySelectorAll(".timeFrame_btn");
   const timeFrame_list = timeFrame.querySelector(".timeFrame_list");
+
   const list_width = 145; // 리스트 하나의 너비 = 움직일 거리
-  const timeFrame_totalList = timeFrame_list.querySelectorAll("li").length - 1;
+  const timeFrame_totalCount = timeFrame_list.querySelectorAll("li").length - 1;
   let timeFrame_idx = 0; // 현재 보이는 리스트
+
+  // 기간 선택 버튼 이벤트
   timeFrame_btn.forEach((btn) => {
     btn.addEventListener("click", function () {
       let toggle = this.getAttribute("data-toggle"); // 무슨 버튼 눌렀는지 data- 가져오기
@@ -175,7 +178,7 @@ function usageStatus() {
           timeFrame_idx--; // 왼쪽으로 이동
         }
       } else if (toggle == "next") {
-        if (timeFrame_idx < timeFrame_totalList - 1) {
+        if (timeFrame_idx < timeFrame_totalCount - 1) {
           timeFrame_idx++; // 오른쪽으로 이동
         }
       }
@@ -270,6 +273,7 @@ function dailyInformation() {
       return afterData;
     });
     dailyArea_DataPush(); // 정보 업데이트
+    updateDateTime(); // 기간 업데이트
   }
 
   dailyInform_shuffleButton.addEventListener("click", shuffleDailyInform);
@@ -284,6 +288,11 @@ function trafficSource() {
   const trafficSocial = trafficSource.querySelector(".trafficSNS");
   const trafficSocial_list = trafficSocial.querySelectorAll("li");
   const traffic_dataWrap = trafficSource.querySelectorAll(".data_wrap");
+
+  let browserType = trafficSource_Data.browserType;
+  let socialType = trafficSource_Data.socialType;
+  let browserData = [browserType.naver, browserType.google, browserType.daum];
+  let socialData = [socialType.instagram, socialType.twitter, socialType.facebook];
 
   // 데이터 전체 값구하기
   function calculateTotal(obj) {
@@ -329,8 +338,8 @@ function trafficSource() {
 
       // 마우스가 올라간 카테고리 구별
       let data_liElems = this.querySelectorAll("li");
-      
       // tiptool 없으면 tiptool 요소 생성
+
       if (!existingTiptool) {
         let tiptool = document.createElement("div");
         let tiptool_value = document.createElement("p");
@@ -340,12 +349,23 @@ function trafficSource() {
         tiptool.appendChild(tiptool_value);
         tiptool.appendChild(tiptool_data);
 
-        data_liElems.forEach((data_liElem) => {
+        let trafficType = this.dataset.type; // 호버중인 traffic type 구분
+        let per = [];
+        switch (trafficType) {
+          case "browser":
+            per = browserData;
+            break;
+          case "social":
+            per = socialData;
+            break;
+          default:
+            return;
+        }
+        data_liElems.forEach((data_liElem, idx) => {
           data_liElem.addEventListener("mouseenter", function () {
             current_Content = this.textContent;
-            let per = this.offsetWidth;
             tiptool_value.textContent = current_Content;
-            tiptool_data.textContent = `${per}명 유입`;
+            tiptool_data.textContent = `${per[idx]}명 유입`;
           });
         });
       }
@@ -363,7 +383,6 @@ function trafficSource() {
     // 마우스 떠나면 tiptool 요소 제거
     dataWrap.addEventListener("mouseleave", function () {
       let existingTiptool = this.querySelector("#traffic_tiptool");
-
       if (existingTiptool) {
         existingTiptool.remove();
       }
@@ -586,6 +605,23 @@ function updateDateTime() {
   const minutes = String(now.getMinutes()).padStart(2, "0");
   const seconds = String(now.getSeconds()).padStart(2, "0");
 
+  // 이전기간 선택
+  const daysAgo_Day7 = new Date(now.setDate(now.getDate() - 7)); // 7일전
+  const daysAgo7_year = daysAgo_Day7.getFullYear();
+  const daysAgo7_month = daysAgo_Day7.getMonth() + 1;
+  const daysAgo7_day = daysAgo_Day7.getDate();
+  console.log(daysAgo_Day7);
+  console.log(daysAgo7_month);
+  console.log(daysAgo7_day);
+
+  // 이후기간 선택
+  
+
+  //이용현황 기간 최신 업데이트 yyyy.mm.dd 출력
+  const timeFrame_listItems = document.getElementById("timeFrame_wrap").querySelectorAll("li");
+
+  timeFrame_listItems[1].textContent = `${daysAgo7_year}.${daysAgo7_month}.${daysAgo7_day} ~ ${year}.${month}.${day}`;
+
   // 데일리에 yyyy.mm.dd (hh:mm) 출력
   const formattedDateTime = `${year}.${month}.${day} (${hours}:${minutes})`;
   document.getElementById("dailyinform").querySelector(".datetime").textContent = formattedDateTime;
@@ -597,7 +633,8 @@ function updateDateTime() {
   // 콘텐츠 이용비율에 yyyy.mm 출력
   document.getElementById("content-Status").querySelector(".datetime").textContent = trafficDateTime;
 }
-setInterval(updateDateTime, 1000);
+// setInterval(updateDateTime, 1000);
+updateDateTime();
 // #######################################
 
 usageStatus(); //#이용현황

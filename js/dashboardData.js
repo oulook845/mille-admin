@@ -117,3 +117,5 @@ export let inquiryData = [
     badgeBollean: "false",
   },
 ];
+
+
