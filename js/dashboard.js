@@ -1,7 +1,7 @@
 import { usageStatus_Data, trafficSource_Data, popularList_Array, inquiryData } from "./dashboardData.js";
 
 // 이용현황 ####################################################
-function usageStatus(year, month, day) {
+function usageStatus() {
   // 데이터 준비
   const data = {
     labels: usageStatus_Data.labels, // X축 값 : 기간
@@ -505,6 +505,7 @@ function contentStatus() {
         radius: 100, // 기본적으로 모든 세그먼트는 80 (%로 하면 반응형)
         // hoverOffset: 12, // 호버시 크기 변화
         hoverBorderWidth: 7, // 호버시 보더 두께
+        hoverBorderRadius: 1,
         hoverBorderColor: ["#CB97FF", "#FFEC6F", "#D5D5D5"], // 호버시 보더 색상 변화
       },
     ], // datasets
@@ -596,38 +597,69 @@ function inquiryBoard() {
 }
 
 // 현재 날짜 출력(데일리, 유입경로) ####################################################
-function updateDateTime() {
+export function updateDateTime() {
   const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  const hours = String(now.getHours()).padStart(2, "0");
-  const minutes = String(now.getMinutes()).padStart(2, "0");
-  const seconds = String(now.getSeconds()).padStart(2, "0");
+  const formatDate = (date) => {
+    return {
+      year: date.getFullYear(),
+      month: String(date.getMonth() + 1).padStart(2, "0"),
+      day: String(date.getDate()).padStart(2, "0"),
+      hours: String(date.getHours()).padStart(2, "0"),
+      minutes: String(date.getMinutes()).padStart(2, "0"),
+      seconds: String(date.getSeconds()).padStart(2, "0"),
+    };
+  };
 
-  // 이전기간 선택
-  const daysAgo_Day7 = new Date(now.setDate(now.getDate() - 7)); // 7일전
-  const daysAgo7_year = daysAgo_Day7.getFullYear();
-  const daysAgo7_month = daysAgo_Day7.getMonth() + 1;
-  const daysAgo7_day = daysAgo_Day7.getDate();
-  console.log(daysAgo_Day7);
-  console.log(daysAgo7_month);
-  console.log(daysAgo7_day);
+  // 오늘 선택
+  const currentDate = formatDate(now);
+  // 이전기간 선택 (6일 전)
+  const daysAgo_Day7 = new Date(now.getTime() - 6 * 24 * 60 * 60 * 1000);
+  const daysAgo7Date = formatDate(daysAgo_Day7);
 
-  // 이후기간 선택
-  
+  // 이전기간 선택 (7일 전)
+  const daysAgo_Week1_end = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+  const daysAgo1Week_end = formatDate(daysAgo_Week1_end);
+  // 이전기간 선택 (13일 전)
+  const daysAgo_Week1_start = new Date(now.getTime() - 13 * 24 * 60 * 60 * 1000);
+  const daysAgo1Week_start = formatDate(daysAgo_Week1_start);
+
+  // 이전기간 선택 (1일 후)
+  const daysLater_Day1 = new Date(now.getTime() + 1 * 24 * 60 * 60 * 1000);
+  const daysLater1Date = formatDate(daysLater_Day1);
+  // 이후기간 선택 (7일 후)
+  const daysLater_Day7 = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+  const daysLater7Date = formatDate(daysLater_Day7);
+
+  function getLastWeekDates(select_Date) {
+    const dates = [];
+    
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date(select_Date);
+      date.setDate(select_Date.getDate() - i);
+
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+
+      dates.push(`${month}-${day}`);
+    }
+    return dates;
+  }
+  const lastWeekDates = getLastWeekDates(now);
 
   //이용현황 기간 최신 업데이트 yyyy.mm.dd 출력
   const timeFrame_listItems = document.getElementById("timeFrame_wrap").querySelectorAll("li");
 
-  timeFrame_listItems[1].textContent = `${daysAgo7_year}.${daysAgo7_month}.${daysAgo7_day} ~ ${year}.${month}.${day}`;
+  // 날짜선택 리스트 3개 (월간)
+  timeFrame_listItems[0].textContent = `${daysAgo1Week_start.year}.${daysAgo1Week_start.month}.${daysAgo1Week_start.day} ~ ${daysAgo1Week_end.year}.${daysAgo1Week_end.month}.${daysAgo1Week_end.day}`;
+  timeFrame_listItems[1].textContent = `${daysAgo7Date.year}.${daysAgo7Date.month}.${daysAgo7Date.day} ~ ${currentDate.year}.${currentDate.month}.${currentDate.day}`;
+  timeFrame_listItems[2].textContent = `${daysLater1Date.year}.${daysLater1Date.month}.${daysLater1Date.day} ~ ${daysLater7Date.year}.${daysLater7Date.month}.${daysLater7Date.day}`;
 
   // 데일리에 yyyy.mm.dd (hh:mm) 출력
-  const formattedDateTime = `${year}.${month}.${day} (${hours}:${minutes})`;
+  const formattedDateTime = `${currentDate.year}.${currentDate.month}.${currentDate.day} (${currentDate.hours}:${currentDate.minutes})`;
   document.getElementById("dailyinform").querySelector(".datetime").textContent = formattedDateTime;
 
   // 유입경로에 yyyy.mm 출력
-  const trafficDateTime = `${year}.${month}`;
+  const trafficDateTime = `${currentDate.year}.${currentDate.month}`;
   document.getElementById("trafficSource").querySelector(".datetime").textContent = trafficDateTime;
 
   // 콘텐츠 이용비율에 yyyy.mm 출력
