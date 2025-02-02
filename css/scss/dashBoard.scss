@@ -5,8 +5,10 @@
         // 이용현황 ###########################
         &#usage-Status {
           .content {
+            flex-direction: column;
             padding: 50px 30px;
             #usageStatus_nav {
+              // padding-bottom: 40px; 
               #period_Select {
                 width: fit-content;
                 display: flex;
@@ -40,9 +42,9 @@
                   overflow: hidden;
                   ul.timeFrame_list {
                     width: fit-content;
-                    margin-left: -145px;
+                    // margin-left: -290px;
                     position: absolute;
-                    left: 0;
+                    right: 0;
                     top: 0;
                     li {
                       width: 145px;
@@ -72,8 +74,20 @@
                 }
               }
             }
-            canvas {
+            .canvas_wrap{
+              flex:1;
+              position: relative;
               margin-top: 40px;
+              &::before{
+                content:"(총 방문자 수)";
+                display: block;
+                font-size: 10px;
+                color:var(--SubColor-Black77);
+  
+                position: absolute;
+                right:0px;
+                top:20px;
+              }
             }
           }
         }

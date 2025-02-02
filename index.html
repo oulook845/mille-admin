@@ -65,12 +65,13 @@
           <!-- 이용현황 -->
           <article id="usage-Status" class="dragger list-group-item" data-area="2" draggable="true">
             <h3>이용현황</h3>
-            <div class="content">
+            <div class="content flex">
               <div id="usageStatus_nav" class="flex-between">
                 <div id="period_Select">
                   <span role="button" class="period_Btn weekly active">주간</span>
                   <span role="button" class="period_Btn monthly">월간</span>
                 </div>
+
                 <div id="timeFrame_wrap" class="flex">
                   <span class="timeFrame_btn prevBtn" data-toggle="prev"></span>
                   <div class="timeFrame">
@@ -83,7 +84,9 @@
                   <span class="timeFrame_btn nextBtn" data-toggle="next"></span>
                 </div>
               </div>
-              <canvas></canvas>
+              <div class="canvas_wrap">
+                <canvas></canvas>
+              </div>
             </div>
             <!-- <span id="tooltip"></span> -->
           </article>

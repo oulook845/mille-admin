@@ -1,4 +1,6 @@
+@charset "UTF-8";
 #container section#dashBoard .column article.dragger#usage-Status .content {
+  flex-direction: column;
   padding: 50px 30px;
 }
 #container section#dashBoard .column article.dragger#usage-Status .content #usageStatus_nav #period_Select {
@@ -32,9 +34,8 @@
 }
 #container section#dashBoard .column article.dragger#usage-Status .content #usageStatus_nav #timeFrame_wrap div.timeFrame ul.timeFrame_list {
   width: fit-content;
-  margin-left: -145px;
   position: absolute;
-  left: 0;
+  right: 0;
   top: 0;
 }
 #container section#dashBoard .column article.dragger#usage-Status .content #usageStatus_nav #timeFrame_wrap div.timeFrame ul.timeFrame_list li {
@@ -61,8 +62,19 @@
 #container section#dashBoard .column article.dragger#usage-Status .content #usageStatus_nav #timeFrame_wrap .timeFrame_btn.nextBtn {
   background-image: url(../images/common/arrow_nextBtn.png);
 }
-#container section#dashBoard .column article.dragger#usage-Status .content canvas {
+#container section#dashBoard .column article.dragger#usage-Status .content .canvas_wrap {
+  flex: 1;
+  position: relative;
   margin-top: 40px;
+}
+#container section#dashBoard .column article.dragger#usage-Status .content .canvas_wrap::before {
+  content: "(총 방문자 수)";
+  display: block;
+  font-size: 10px;
+  color: var(--SubColor-Black77);
+  position: absolute;
+  right: 0px;
+  top: 20px;
 }
 #container section#dashBoard .column article.dragger#popular-Books .content {
   padding: 20px 30px;

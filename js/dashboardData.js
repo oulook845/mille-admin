@@ -2,11 +2,9 @@ import { updateDateTime } from './dashboard.js';
 // dashboard에 필요한 모든 데이터를 각 섹션마다 처리
 
 // 이용현황 그래프 데이터 ##################################
-let lastWeekDates = updateDateTime();
 export let usageStatus_Data = {
-    // labels : lastWeekDates,
-    labels : ["", "1.05", "1.06", "1.07", "1.08", "1.09", "1.10", "1.11", " "], // X축 값
-    datasets : [583034, 723850, 520185, 620600, 510038, 838856, 610940, 793250, 793250], // Y축 값
+    labels : updateDateTime(),
+    datasets : [723850, 520185, 620600, 510038, 838856, 610940, 793250], // Y축 값
 }// data
 
 // 유입경로 데이터 ##################################

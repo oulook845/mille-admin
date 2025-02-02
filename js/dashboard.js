@@ -1,6 +1,7 @@
 import { usageStatus_Data, trafficSource_Data, popularList_Array, inquiryData } from "./dashboardData.js";
 
 // 이용현황 ####################################################
+let usageStatus_chart;
 function usageStatus() {
   // 데이터 준비
   const data = {
@@ -27,19 +28,23 @@ function usageStatus() {
         mode: "index", // X축 인덱스를 기준으로 툴팁 표시
         intersect: false, // 교차하지 않아도 툴팁 표시
       },
-
       scales: {
         x: {
           offset: false, // 레이블을 축 끝에서 약간 떨어뜨림 true
-          beginAtZero: true,
+          beginAtZero: false,
           min: 0, // X축 최소값 설정
-          max: " ",
           ticks: {
             padding: 0, // 레이블과 축 사이의 간격 설정
             font: {
               size: 10,
             },
-            color: "#222",
+            color: function (context) {
+              if (context.index === 0 || context.index === 7) {
+                return "transparent";
+              } else {
+                return "#222";
+              }
+            },
           },
           grid: {
             display: true, // 격자선 표시 여부
@@ -53,8 +58,8 @@ function usageStatus() {
           },
         },
         y: {
-          offset: 0,
-          beginAtZero: true,
+          offset: false,
+          beginAtZero: false,
           min: 0,
           max: 1000000,
           ticks: {
@@ -78,6 +83,9 @@ function usageStatus() {
               }
               return "#999"; // 나머지 라벨 색상 유지
             },
+          },
+          border: {
+            display: false, // 전체차트의 border
           },
           afterDataLimits(scale) {
             scale.max = scale.max * 1.2; // Y축 최대값을 기존 데이터 최대값의 120%로 설정
@@ -147,42 +155,56 @@ function usageStatus() {
 
   // 그래프 그리기
   const usageStatus_ctx = document.getElementById("usage-Status").querySelector("canvas").getContext("2d");
-  const usageStatus_chart = new Chart(usageStatus_ctx, config);
+  usageStatus_chart = new Chart(usageStatus_ctx, config);
 
   // 주간 || 월간 토글버튼
   const periodSelect = document.getElementById("period_Select");
   const periodBtns = periodSelect.querySelectorAll(".period_Btn");
   periodBtns.forEach((periodBtn) => {
     periodBtn.addEventListener("click", function () {
-      for (btn of periodBtns) {
-        btn.classList.remove("active");
-      }
+      periodBtns.forEach((btnAll)=>{
+        btnAll.classList.remove("active");
+      })
       this.classList.add("active");
     });
   });
-  // 기간 선택 버튼
+  usageStatus_btn();
+}
+// 기간 선택 버튼
+function usageStatus_btn() {
   const timeFrame = document.getElementById("timeFrame_wrap");
   const timeFrame_btn = timeFrame.querySelectorAll(".timeFrame_btn");
   const timeFrame_list = timeFrame.querySelector(".timeFrame_list");
 
   const list_width = 145; // 리스트 하나의 너비 = 움직일 거리
-  const timeFrame_totalCount = timeFrame_list.querySelectorAll("li").length - 1;
+  const timeFrame_totalCount = timeFrame_list.querySelectorAll("li").length - 1; // 2출력
   let timeFrame_idx = 0; // 현재 보이는 리스트
 
   // 기간 선택 버튼 이벤트
   timeFrame_btn.forEach((btn) => {
     btn.addEventListener("click", function () {
       let toggle = this.getAttribute("data-toggle"); // 무슨 버튼 눌렀는지 data- 가져오기
-      if (toggle == "prev") {
-        if (timeFrame_idx >= 0) {
-          timeFrame_idx--; // 왼쪽으로 이동
-        }
-      } else if (toggle == "next") {
-        if (timeFrame_idx < timeFrame_totalCount - 1) {
-          timeFrame_idx++; // 오른쪽으로 이동
-        }
+      if (toggle == "prev" && timeFrame_idx < timeFrame_totalCount) {
+        timeFrame_idx++; // 왼쪽으로 이동
+      } else if (toggle == "next" && timeFrame_idx > 0) {
+        timeFrame_idx--; // 오른쪽으로 이동
       }
-      timeFrame_list.style.transform = `translateX(${-timeFrame_idx * list_width}px)`; // 실제 리스트 움직임
+      timeFrame_list.style.transform = `translateX(${timeFrame_idx * list_width}px)`; // 실제 리스트 움직임
+      switch (timeFrame_idx) {
+        case -1:
+          updateDateTime("WeekAgo_2");
+          break;
+        case 0:
+          updateDateTime("WeekAgo_1");
+          break;
+        case 1:
+          updateDateTime("thisWeek");
+          break;
+        default:
+          return;
+      }
+      // usageStatus_chart.data.labels = newLabels;
+      // usageStatus_chart.update();
     });
   });
 }
@@ -597,7 +619,7 @@ function inquiryBoard() {
 }
 
 // 현재 날짜 출력(데일리, 유입경로) ####################################################
-export function updateDateTime() {
+export function updateDateTime(currentView_Data) {
   const now = new Date();
   const formatDate = (date) => {
     return {
@@ -613,26 +635,26 @@ export function updateDateTime() {
   // 오늘 선택
   const currentDate = formatDate(now);
   // 이전기간 선택 (6일 전)
-  const daysAgo_Day7 = new Date(now.getTime() - 6 * 24 * 60 * 60 * 1000);
+  const daysAgo_Day7 = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
   const daysAgo7Date = formatDate(daysAgo_Day7);
 
   // 이전기간 선택 (7일 전)
-  const daysAgo_Week1_end = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-  const daysAgo1Week_end = formatDate(daysAgo_Week1_end);
-  // 이전기간 선택 (13일 전)
-  const daysAgo_Week1_start = new Date(now.getTime() - 13 * 24 * 60 * 60 * 1000);
-  const daysAgo1Week_start = formatDate(daysAgo_Week1_start);
+  // const daysAgo_Week1_end = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+  // const daysAgo1Week_end = formatDate(daysAgo_Week1_end);
+  // 이전기간 선택 (14일 전)
+  const daysAgo_Day14 = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
+  const daysAgo14Date = formatDate(daysAgo_Day14);
 
-  // 이전기간 선택 (1일 후)
-  const daysLater_Day1 = new Date(now.getTime() + 1 * 24 * 60 * 60 * 1000);
-  const daysLater1Date = formatDate(daysLater_Day1);
+  // 이전기간 선택 (21일 전)
+  const daysAgo_Day21 = new Date(now.getTime() - 21 * 24 * 60 * 60 * 1000);
+  const daysAgo21Date = formatDate(daysAgo_Day21);
   // 이후기간 선택 (7일 후)
-  const daysLater_Day7 = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
-  const daysLater7Date = formatDate(daysLater_Day7);
+  // const daysLater_Day7 = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+  // const daysLater7Date = formatDate(daysLater_Day7);
 
   function getLastWeekDates(select_Date) {
     const dates = [];
-    
+
     for (let i = 6; i >= 0; i--) {
       const date = new Date(select_Date);
       date.setDate(select_Date.getDate() - i);
@@ -640,19 +662,37 @@ export function updateDateTime() {
       const month = String(date.getMonth() + 1).padStart(2, "0");
       const day = String(date.getDate()).padStart(2, "0");
 
-      dates.push(`${month}-${day}`);
+      dates.push(`${month}.${day}`);
     }
     return dates;
   }
-  const lastWeekDates = getLastWeekDates(now);
+  // let lastWeekDates = getLastWeekDates(now);
+  let lastWeekDates;
+
+  switch (currentView_Data) {
+    case "thisWeek":
+      lastWeekDates = getLastWeekDates(now);
+      break;
+    case "WeekAgo_1":
+      lastWeekDates = getLastWeekDates(daysAgo_Day7);
+      break;
+    case "WeekAgo_2":
+      lastWeekDates = getLastWeekDates(daysAgo_Day14);
+      break;
+    default:
+      lastWeekDates = getLastWeekDates(now);
+  }
 
   //이용현황 기간 최신 업데이트 yyyy.mm.dd 출력
   const timeFrame_listItems = document.getElementById("timeFrame_wrap").querySelectorAll("li");
 
-  // 날짜선택 리스트 3개 (월간)
-  timeFrame_listItems[0].textContent = `${daysAgo1Week_start.year}.${daysAgo1Week_start.month}.${daysAgo1Week_start.day} ~ ${daysAgo1Week_end.year}.${daysAgo1Week_end.month}.${daysAgo1Week_end.day}`;
-  timeFrame_listItems[1].textContent = `${daysAgo7Date.year}.${daysAgo7Date.month}.${daysAgo7Date.day} ~ ${currentDate.year}.${currentDate.month}.${currentDate.day}`;
-  timeFrame_listItems[2].textContent = `${daysLater1Date.year}.${daysLater1Date.month}.${daysLater1Date.day} ~ ${daysLater7Date.year}.${daysLater7Date.month}.${daysLater7Date.day}`;
+  // 날짜선택 리스트 3개 (주간)
+  // 2주전
+  timeFrame_listItems[0].textContent = `${daysAgo21Date.year}.${daysAgo21Date.month}.${daysAgo21Date.day} ~ ${daysAgo14Date.year}.${daysAgo14Date.month}.${daysAgo14Date.day}`;
+  // 저번주
+  timeFrame_listItems[1].textContent = `${daysAgo14Date.year}.${daysAgo14Date.month}.${daysAgo14Date.day} ~ ${daysAgo7Date.year}.${daysAgo7Date.month}.${daysAgo7Date.day}`;
+  // 이번주
+  timeFrame_listItems[2].textContent = `${daysAgo7Date.year}.${daysAgo7Date.month}.${daysAgo7Date.day} ~ ${currentDate.year}.${currentDate.month}.${currentDate.day}`;
 
   // 데일리에 yyyy.mm.dd (hh:mm) 출력
   const formattedDateTime = `${currentDate.year}.${currentDate.month}.${currentDate.day} (${currentDate.hours}:${currentDate.minutes})`;
@@ -664,6 +704,7 @@ export function updateDateTime() {
 
   // 콘텐츠 이용비율에 yyyy.mm 출력
   document.getElementById("content-Status").querySelector(".datetime").textContent = trafficDateTime;
+  return lastWeekDates;
 }
 // setInterval(updateDateTime, 1000);
 updateDateTime();
