@@ -56,6 +56,11 @@
   background-size: auto;
   cursor: pointer;
 }
+#container section#dashBoard .column article.dragger#usage-Status .content #usageStatus_nav #timeFrame_wrap .timeFrame_btn.unable {
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+}
 #container section#dashBoard .column article.dragger#usage-Status .content #usageStatus_nav #timeFrame_wrap .timeFrame_btn.prevBtn {
   background-image: url(../images/common/arrow_prevBtn.png);
 }

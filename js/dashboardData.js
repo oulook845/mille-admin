@@ -1,9 +1,10 @@
-import { updateDateTime } from './dashboard.js';
+// import { updateDateTime } from './dashboard.js';
 // dashboard에 필요한 모든 데이터를 각 섹션마다 처리
 
 // 이용현황 그래프 데이터 ##################################
+// console.log(updateDateTime());
 export let usageStatus_Data = {
-    labels : updateDateTime(),
+    // labels : updateDateTime(),
     datasets : [723850, 520185, 620600, 510038, 838856, 610940, 793250], // Y축 값
 }// data
 

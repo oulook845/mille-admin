@@ -65,6 +65,11 @@
                   background-position: center;
                   background-size: auto;
                   cursor: pointer;
+                  &.unable{
+                    opacity: 0;
+                    user-select: none;
+                    pointer-events: none;
+                  }
                   &.prevBtn {
                     background-image: url(../images/common/arrow_prevBtn.png);
                   }

@@ -5,7 +5,8 @@ let usageStatus_chart;
 function usageStatus() {
   // 데이터 준비
   const data = {
-    labels: usageStatus_Data.labels, // X축 값 : 기간
+    // labels: usageStatus_Data.labels, // X축 값 : 기간
+    labels: updateDateTime(), // X축 값 : 기간
     datasets: [
       {
         label: "", //데이터 세트가 무엇을 의미하는지
@@ -40,7 +41,8 @@ function usageStatus() {
             },
             color: function (context) {
               if (context.index === 0 || context.index === 7) {
-                return "transparent";
+                return "#222";
+                // return "transparent";
               } else {
                 return "#222";
               }
@@ -162,9 +164,9 @@ function usageStatus() {
   const periodBtns = periodSelect.querySelectorAll(".period_Btn");
   periodBtns.forEach((periodBtn) => {
     periodBtn.addEventListener("click", function () {
-      periodBtns.forEach((btnAll)=>{
+      periodBtns.forEach((btnAll) => {
         btnAll.classList.remove("active");
-      })
+      });
       this.classList.add("active");
     });
   });
@@ -173,8 +175,8 @@ function usageStatus() {
 // 기간 선택 버튼
 function usageStatus_btn() {
   const timeFrame = document.getElementById("timeFrame_wrap");
-  const timeFrame_btn = timeFrame.querySelectorAll(".timeFrame_btn");
-  const timeFrame_list = timeFrame.querySelector(".timeFrame_list");
+  const timeFrame_btn = timeFrame.querySelectorAll(".timeFrame_btn"); // 버튼
+  const timeFrame_list = timeFrame.querySelector(".timeFrame_list"); // 움직이는 기간 리스트
 
   const list_width = 145; // 리스트 하나의 너비 = 움직일 거리
   const timeFrame_totalCount = timeFrame_list.querySelectorAll("li").length - 1; // 2출력
@@ -186,18 +188,30 @@ function usageStatus_btn() {
       let toggle = this.getAttribute("data-toggle"); // 무슨 버튼 눌렀는지 data- 가져오기
       if (toggle == "prev" && timeFrame_idx < timeFrame_totalCount) {
         timeFrame_idx++; // 왼쪽으로 이동
-      } else if (toggle == "next" && timeFrame_idx > 0) {
+        if (timeFrame_idx === timeFrame_totalCount) {
+          timeFrame_btn[0].classList.add("unable");
+        } else {
+          timeFrame_btn[1].classList.remove("unable");
+        }
+      } 
+      else if (toggle == "next" && timeFrame_idx > 0) {
         timeFrame_idx--; // 오른쪽으로 이동
+        if (timeFrame_idx === 0) {
+          timeFrame_btn[1].classList.add("unable");
+        } else {
+          timeFrame_btn[0].classList.remove("unable");
+        }
       }
       timeFrame_list.style.transform = `translateX(${timeFrame_idx * list_width}px)`; // 실제 리스트 움직임
+
       switch (timeFrame_idx) {
-        case -1:
+        case 2:
           updateDateTime("WeekAgo_2");
           break;
-        case 0:
+        case 1:
           updateDateTime("WeekAgo_1");
           break;
-        case 1:
+        case 0:
           updateDateTime("thisWeek");
           break;
         default:
@@ -278,11 +292,10 @@ function dailyInformation() {
   }
   dailyArea_DataPush(); // 초기 실행
 
+  // 새로고침시 데이터 증감
   function shuffleDailyInform() {
-    // 비교값을 업데이트 (+랜덤 양수)
     thanData_array = thanData_array.map((thanData, idx) => {
-      let plusData = parseInt(Math.random() * 10) * 5;
-      // console.log(plusData)
+      let plusData = parseInt(Math.random() * 10); // 비교값을 업데이트 (+랜덤 양수)
       let shuffleData = thanData + plusData;
 
       return shuffleData;
@@ -621,6 +634,7 @@ function inquiryBoard() {
 // 현재 날짜 출력(데일리, 유입경로) ####################################################
 export function updateDateTime(currentView_Data) {
   const now = new Date();
+  // 날짜를 객체로 가져오는 포맷 (재사용)
   const formatDate = (date) => {
     return {
       year: date.getFullYear(),
@@ -635,26 +649,27 @@ export function updateDateTime(currentView_Data) {
   // 오늘 선택
   const currentDate = formatDate(now);
   // 이전기간 선택 (6일 전)
-  const daysAgo_Day7 = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-  const daysAgo7Date = formatDate(daysAgo_Day7);
+  const daysAgo_Day6 = new Date(now.getTime() - 6 * 24 * 60 * 60 * 1000);
+  const daysAgo6Date = formatDate(daysAgo_Day6);
 
   // 이전기간 선택 (7일 전)
-  // const daysAgo_Week1_end = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-  // const daysAgo1Week_end = formatDate(daysAgo_Week1_end);
+  const daysAgo_Day7 = new Date(daysAgo_Day6.getTime() - 1 * 24 * 60 * 60 * 1000);
+  const daysAgo7Date = formatDate(daysAgo_Day7);
   // 이전기간 선택 (14일 전)
-  const daysAgo_Day14 = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
+  const daysAgo_Day14 = new Date(daysAgo_Day6.getTime() - 7 * 24 * 60 * 60 * 1000);
   const daysAgo14Date = formatDate(daysAgo_Day14);
 
+  // 이후기간 선택 (15일 전)
+  const daysAgo_Day15 = new Date(daysAgo_Day14.getTime() - 1 * 24 * 60 * 60 * 1000);
+  const daysAgo15Date = formatDate(daysAgo_Day15);
   // 이전기간 선택 (21일 전)
-  const daysAgo_Day21 = new Date(now.getTime() - 21 * 24 * 60 * 60 * 1000);
+  const daysAgo_Day21 = new Date(daysAgo_Day15.getTime() - 6 * 24 * 60 * 60 * 1000);
   const daysAgo21Date = formatDate(daysAgo_Day21);
-  // 이후기간 선택 (7일 후)
-  // const daysLater_Day7 = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
-  // const daysLater7Date = formatDate(daysLater_Day7);
 
+  // 배열에 데이터를 담아 차트하단에 기간표시
   function getLastWeekDates(select_Date) {
     const dates = [];
-
+    
     for (let i = 6; i >= 0; i--) {
       const date = new Date(select_Date);
       date.setDate(select_Date.getDate() - i);
@@ -664,11 +679,12 @@ export function updateDateTime(currentView_Data) {
 
       dates.push(`${month}.${day}`);
     }
+    
     return dates;
   }
-  // let lastWeekDates = getLastWeekDates(now);
+  
+  // 현재보는 기간선택
   let lastWeekDates;
-
   switch (currentView_Data) {
     case "thisWeek":
       lastWeekDates = getLastWeekDates(now);
@@ -677,32 +693,35 @@ export function updateDateTime(currentView_Data) {
       lastWeekDates = getLastWeekDates(daysAgo_Day7);
       break;
     case "WeekAgo_2":
-      lastWeekDates = getLastWeekDates(daysAgo_Day14);
+      lastWeekDates = getLastWeekDates(daysAgo_Day15);
       break;
     default:
       lastWeekDates = getLastWeekDates(now);
   }
 
-  //이용현황 기간 최신 업데이트 yyyy.mm.dd 출력
-  const timeFrame_listItems = document.getElementById("timeFrame_wrap").querySelectorAll("li");
+  // #이용현황 각 li에 각기다른 기간 설정 yyyy.mm.dd 출력 #############
+  function liElem_setTime() {
+    const timeFrame_listItems = document.getElementById("timeFrame_wrap").querySelectorAll("li");
 
-  // 날짜선택 리스트 3개 (주간)
-  // 2주전
-  timeFrame_listItems[0].textContent = `${daysAgo21Date.year}.${daysAgo21Date.month}.${daysAgo21Date.day} ~ ${daysAgo14Date.year}.${daysAgo14Date.month}.${daysAgo14Date.day}`;
-  // 저번주
-  timeFrame_listItems[1].textContent = `${daysAgo14Date.year}.${daysAgo14Date.month}.${daysAgo14Date.day} ~ ${daysAgo7Date.year}.${daysAgo7Date.month}.${daysAgo7Date.day}`;
-  // 이번주
-  timeFrame_listItems[2].textContent = `${daysAgo7Date.year}.${daysAgo7Date.month}.${daysAgo7Date.day} ~ ${currentDate.year}.${currentDate.month}.${currentDate.day}`;
+    // 날짜선택 리스트 3개 (주간)
+    // 2주전
+    timeFrame_listItems[0].textContent = `${daysAgo21Date.year}.${daysAgo21Date.month}.${daysAgo21Date.day} ~ ${daysAgo15Date.year}.${daysAgo15Date.month}.${daysAgo15Date.day}`;
+    // 저번주
+    timeFrame_listItems[1].textContent = `${daysAgo14Date.year}.${daysAgo14Date.month}.${daysAgo14Date.day} ~ ${daysAgo7Date.year}.${daysAgo7Date.month}.${daysAgo7Date.day}`;
+    // 이번주
+    timeFrame_listItems[2].textContent = `${daysAgo6Date.year}.${daysAgo6Date.month}.${daysAgo6Date.day} ~ ${currentDate.year}.${currentDate.month}.${currentDate.day}`;
+  }
+  liElem_setTime();
 
-  // 데일리에 yyyy.mm.dd (hh:mm) 출력
+  // #데일리에 yyyy.mm.dd (hh:mm) 출력 #############
   const formattedDateTime = `${currentDate.year}.${currentDate.month}.${currentDate.day} (${currentDate.hours}:${currentDate.minutes})`;
   document.getElementById("dailyinform").querySelector(".datetime").textContent = formattedDateTime;
 
-  // 유입경로에 yyyy.mm 출력
+  // #유입경로에 yyyy.mm 출력 #############
   const trafficDateTime = `${currentDate.year}.${currentDate.month}`;
   document.getElementById("trafficSource").querySelector(".datetime").textContent = trafficDateTime;
 
-  // 콘텐츠 이용비율에 yyyy.mm 출력
+  // #콘텐츠 이용비율에 yyyy.mm 출력 #############
   document.getElementById("content-Status").querySelector(".datetime").textContent = trafficDateTime;
   return lastWeekDates;
 }
