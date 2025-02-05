@@ -4,75 +4,79 @@
 // 이용현황 그래프 데이터 ##################################
 // console.log(updateDateTime());
 export let usageStatus_Data = {
-    // labels : updateDateTime(),
-    datasets : [723850, 520185, 620600, 510038, 838856, 610940, 793250], // Y축 값
-}// data
+  // labels : updateDateTime(),
+  datasets: [
+    [723850, 520185, 620600, 510038, 838856, 610940, 793250],
+    [650393, 829490, 902048, 819403, 838856, 610940, 793250],
+    [753984, 647203, 894930, 739320, 703249, 610940, 729407],
+  ], // Y축 값
+}; // data
 
 // 유입경로 데이터 ##################################
 export let trafficSource_Data = {
-  browserType :{
-    naver : 863,
-    google : 571,
-    daum : 292,
+  browserType: {
+    naver: 863,
+    google: 571,
+    daum: 292,
   },
-  socialType : {
-    instagram : 734,
-    twitter : 639,
-    facebook : 172,
+  socialType: {
+    instagram: 734,
+    twitter: 639,
+    facebook: 172,
   },
-}
+};
 
 // 인기도서 데이터 ##################################
 export let popularList_Array = [
-    {
-      id: 0,
-      bookName: "무의식은 어떻게 나를 설계하는가",
-      nowRank: "3",
-      transRank: "rank-Up",
-    },
-    {
-      id: 1,
-      bookName: "하루 한 장, 작지만 큰 변화의 힘",
-      nowRank: "1",
-      transRank: "rank-Down",
-    },
-    {
-      id: 2,
-      bookName: "고전이 답했다 마땅히 살아야 할 삶에 대하여",
-      nowRank: "3",
-      transRank: "rank-Up",
-    },
-    {
-      id: 3,
-      bookName: "트렌드 코리아 2025",
-      nowRank: "3",
-      transRank: "rank-Up",
-    },
-    {
-      id: 4,
-      bookName: "어른의 행복은 조용하다",
-      nowRank: "2",
-      transRank: "rank-Down",
-    },
-    {
-      id: 5,
-      bookName: "이처럼 사소한 것들",
-      nowRank: "6",
-      transRank: "rank-Up",
-    },
-    {
-      id: 6,
-      bookName: "돌이킬 수 있는",
-      nowRank: "New",
-      transRank: "New-rank",
-    },
-    {
-      id: 7,
-      bookName: "B주류 경제학",
-      nowRank: "1",
-      transRank: "rank-Hold",
-    },
-  ];
+  {
+    id: 0,
+    bookName: "무의식은 어떻게 나를 설계하는가",
+    nowRank: "3",
+    transRank: "rank-Up",
+  },
+  {
+    id: 1,
+    bookName: "하루 한 장, 작지만 큰 변화의 힘",
+    nowRank: "1",
+    transRank: "rank-Down",
+  },
+  {
+    id: 2,
+    bookName: "고전이 답했다 마땅히 살아야 할 삶에 대하여",
+    nowRank: "3",
+    transRank: "rank-Up",
+  },
+  {
+    id: 3,
+    bookName: "트렌드 코리아 2025",
+    nowRank: "3",
+    transRank: "rank-Up",
+  },
+  {
+    id: 4,
+    bookName: "어른의 행복은 조용하다",
+    nowRank: "2",
+    transRank: "rank-Down",
+  },
+  {
+    id: 5,
+    bookName: "이처럼 사소한 것들",
+    nowRank: "6",
+    transRank: "rank-Up",
+  },
+  {
+    id: 6,
+    bookName: "돌이킬 수 있는",
+    nowRank: "New",
+    transRank: "New-rank",
+  },
+  {
+    id: 7,
+    bookName: "B주류 경제학",
+    nowRank: "1",
+    transRank: "rank-Hold",
+  },
+];
 
 // 문의 유저(아이디, 내용, 신규유무) 데이터 ##################################
 export let inquiryData = [
@@ -119,5 +123,3 @@ export let inquiryData = [
     badgeBollean: "false",
   },
 ];
-
-

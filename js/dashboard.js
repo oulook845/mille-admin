@@ -10,7 +10,7 @@ function usageStatus() {
     datasets: [
       {
         label: "", //데이터 세트가 무엇을 의미하는지
-        data: usageStatus_Data.datasets, // Y축 값 : 이용자
+        data: usageStatus_Data.datasets[0], // Y축 값 : 이용자
         borderWidth: 1,
         borderColor: "#a451f7", // 선 색상
         backgroundColor: "transparent",
@@ -217,9 +217,10 @@ function usageStatus_btn() {
         default:
           return;
       }
-      // usageStatus_chart.data.labels = newLabels;
-      // usageStatus_chart.update();
-    });
+      usageStatus_chart.data.labels = lastWeekDates;
+      usageStatus_chart.data.datasets[0].data = usageStatus_Data.datasets[timeFrame_idx];
+      usageStatus_chart.update();
+    }); 
   });
 }
 
@@ -632,6 +633,7 @@ function inquiryBoard() {
 }
 
 // 현재 날짜 출력(데일리, 유입경로) ####################################################
+let lastWeekDates;
 export function updateDateTime(currentView_Data) {
   const now = new Date();
   // 날짜를 객체로 가져오는 포맷 (재사용)
@@ -684,7 +686,6 @@ export function updateDateTime(currentView_Data) {
   }
   
   // 현재보는 기간선택
-  let lastWeekDates;
   switch (currentView_Data) {
     case "thisWeek":
       lastWeekDates = getLastWeekDates(now);
