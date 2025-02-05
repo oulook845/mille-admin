@@ -129,7 +129,11 @@
   border-bottom: 1px solid var(--SubColor-Black99);
 }
 #container section#dashBoard .column article.dragger#popular-Books .content ol#popular-Books-list li span.book_name {
+  width: calc(100% - 50px);
   display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transform: translateY(10px);
   opacity: 0;
   transition: 0.75s;

@@ -8,7 +8,7 @@
             flex-direction: column;
             padding: 50px 30px;
             #usageStatus_nav {
-              // padding-bottom: 40px; 
+              // padding-bottom: 40px;
               #period_Select {
                 width: fit-content;
                 display: flex;
@@ -65,7 +65,7 @@
                   background-position: center;
                   background-size: auto;
                   cursor: pointer;
-                  &.unable{
+                  &.unable {
                     opacity: 0;
                     user-select: none;
                     pointer-events: none;
@@ -79,19 +79,19 @@
                 }
               }
             }
-            .canvas_wrap{
-              flex:1;
+            .canvas_wrap {
+              flex: 1;
               position: relative;
               margin-top: 40px;
-              &::before{
-                content:"(총 방문자 수)";
+              &::before {
+                content: "(총 방문자 수)";
                 display: block;
                 font-size: 10px;
-                color:var(--SubColor-Black77);
-  
+                color: var(--SubColor-Black77);
+
                 position: absolute;
-                right:0px;
-                top:20px;
+                right: 0px;
+                top: 20px;
               }
             }
           }
@@ -148,7 +148,11 @@
                 }
 
                 span.book_name {
+                  width: calc(100% - 50px);
                   display: inline-block;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
                   transform: translateY(10px);
                   opacity: 0;
                   transition: 0.75s;
@@ -310,7 +314,7 @@
                     }
                   }
                 }
-                #traffic_tiptool{
+                #traffic_tiptool {
                   min-width: 50px;
                   min-height: 20px;
                   display: block;
@@ -325,7 +329,7 @@
 
                   position: fixed;
                   left: 0;
-                  top:50%;
+                  top: 50%;
                   transform: translate(-50%, -100%);
                 }
               }
