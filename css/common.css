@@ -142,7 +142,6 @@ header#header .inner .utils a#now_alarm::after {
   padding: var(--container-padding);
 }
 #container section#dashBoard {
-  display: flex;
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -215,6 +214,12 @@ header#header .inner .utils a#now_alarm::after {
 #container section div.column article.dragger .content canvas {
   width: 100% !important;
   overflow: auto;
+}
+#container section.contentList {
+  display: none;
+}
+#container section.contentList.currentViewSection {
+  display: flex;
 }
 
 footer#footer {

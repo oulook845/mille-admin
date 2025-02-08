@@ -160,15 +160,13 @@ header#header {
 
   // section 공통 스타일일
   section {
-    // width: 100%;
-    // height: 100%;
     width: calc(100% - 258px);
     height: fit-content;
     margin-left: 258px;
     padding: var(--container-padding);
-
+    
     &#dashBoard {
-      display: flex;
+      // display: flex;
       gap: 20px;
       flex-wrap: wrap;
     }
@@ -254,6 +252,12 @@ header#header {
           }
         }
       }
+    }
+  }
+  section.contentList{
+    display: none;
+    &.currentViewSection{
+      display: flex;
     }
   }
 }

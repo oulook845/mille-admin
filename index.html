@@ -34,10 +34,10 @@
       <aside id="main_gnb">
         <nav id="gnb">
           <ul>
-            <li id="gnb_home" class="list-active">
+            <li id="gnb_home" class="">
               <a href="#" class="block-anchor">대시보드</a>
             </li>
-            <li id="gnb_visit">
+            <li id="gnb_visit" class="list-active">
               <a href="#" class="block-anchor">방문</a>
             </li>
             <li id="gnb_users">
@@ -60,7 +60,7 @@
       </aside>
 
       <!-- section ---------------------------->
-      <section id="dashBoard">
+      <section id="dashBoard" class="contentList">
         <div class="column col60 row60">
           <!-- 이용현황 -->
           <article id="usage-Status" class="dragger list-group-item" data-area="2" draggable="true">
@@ -224,16 +224,20 @@
         </div>
       </section>
 
-      <section id="visit">
-        <article>일일 활성 사용자 수 (DAU)</article>
-        <article>월간 활성 사용자 수 (MAU)</article>
-        <article>재방문률</article>
-        <article>방문대 시간대 분석</article>
-        <article>사용자 인구 통계</article>
-        <article>유입경로로</article>
+      <section id="visit" class="contentList currentViewSection">
+        <div class="column">
+          <article id="" class="dragger list-group-item" draggable="true">일일 활성 사용자 수 (DAU)</article>
+          <article id="" class="dragger list-group-item" draggable="true">월간 활성 사용자 수 (MAU)</article>
+          <article id="" class="dragger list-group-item" draggable="true">재방문률</article>
+          <article id="" class="dragger list-group-item" draggable="true">방문대 시간대 분석</article>
+        </div>
+        <div class="column">
+          <article id="" class="dragger list-group-item" draggable="true">사용자 인구 통계</article>
+          <article id="" class="dragger list-group-item" draggable="true">유입경로로</article>
+        </div>
       </section>
 
-      <section id="users">
+      <section id="users" class="contentList">
         <article>평균 이용 시간 (평균 체류 시간)</article>
         <article>신규 가입 & 이탈률</article>
         <article>전자책, 오디오 사용 비율</article>
@@ -241,7 +245,7 @@
         <article>완독 지지수</article>
       </section>
 
-      <section id="books">
+      <section id="books" class="contentList">
         <article>인기 도서 순위 (일간/주간/월간 Top10)</article>
         <article>인기 도서 키워드</article>
         <article>장르별 이용현황</article>
@@ -250,12 +254,14 @@
         <article>대여 가능 책 재고 관리리</article>
       </section>
 
-      <section id="noticeBoard">
+      <section id="noticeBoard" class="contentList">
         <article>피드관리</article>
         <article>책 리뷰</article>
         <article>공지사항</article>
         <article>문의</article>
       </section>
+
+      <section id="settings" class="contentList"></section>
     </main>
 
     <!-- footer -->
