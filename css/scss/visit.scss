@@ -1,16 +1,44 @@
-#container{
-    section#visit{
-        .column{
-            article.dragger{
-             &#users-statistics{
-                h3{
-                    
-                }
-             }
-             &#users-visitTime{}
-             &#users-demographics{}
-             &#users-traffic{}
+#container {
+  section#visit {
+    .column {
+      article.dragger {
+        &#users-statistics {
+          .statList {
+            &#users-day {
+
             }
+            &#users-month {
+
+            }
+            &#users-return {
+
+            }
+            .content {
+              .txtBox {
+                text-align: center;
+                color: var(--MainColor-Black);
+                font-size: 12px;
+                &::after{
+                    content:"";
+                    display: inline-block;
+                    // width: ;
+                    // height: ;
+                    background: url();
+                }
+              }
+              .canvas_wrap {
+                border: 1px solid #000;
+              }
+            }
+          }
         }
+        &#users-visitTime {
+        }
+        &#users-demographics {
+        }
+        &#users-traffic {
+        }
+      }
     }
+  }
 }

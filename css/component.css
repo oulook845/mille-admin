@@ -3,6 +3,10 @@ a.block-anchor {
   display: block;
 }
 
+.fColor_purple {
+  color: var(--MainColor-Purple);
+}
+
 .bg-image {
   width: 100%;
   height: 100%;
@@ -12,9 +16,15 @@ a.block-anchor {
 }
 
 .text-hidden {
-  text-indent: -9999px;
-  color: transparent;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .flex {

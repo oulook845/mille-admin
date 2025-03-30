@@ -43,3 +43,24 @@ export function common() {
   //     }
   // }
 }
+
+function todayData(){
+  let nowArray = {};
+  const today = new Date();
+  const formatDate = (date) => {
+    return {
+      year: date.getFullYear(),
+      month: String(date.getMonth() + 1).padStart(2, "0"),
+      day: String(date.getDate()).padStart(2, "0"),
+      hours: String(date.getHours()).padStart(2, "0"),
+      minutes: String(date.getMinutes()).padStart(2, "0"),
+      seconds: String(date.getSeconds()).padStart(2, "0"),
+    };
+  };
+  
+  nowArray = formatDate(today)
+
+  return nowArray;
+}
+
+export let nowData = todayData(); // 현재 날짜,시간 객체화

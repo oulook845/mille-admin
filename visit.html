@@ -62,17 +62,45 @@
       <section id="visit" class="contentList">
         <div class="column col40 row50">
           <article id="users-statistics" class="dragger list-group-item" draggable="true">
-            <div>
+            <div id="users-day" class="statList">
               <h3 class="title_bgNon">일일 활성 사용자 수 (DAU)</h3>
-              <div class="content"></div>
+              <div class="content flex">
+                <p class="txtBox">
+                  <span class="txt-day"></span>
+                  <br />
+                  <span class="thanData">어제보다<span class="fColor_purple">+15,568명 (1.96%)</span></span>
+                </p>
+
+                <div class="canvas_wrap">
+                  <canvas></canvas>
+                </div>
+              </div>
             </div>
-            <div>
+            <div id="users-month" class="statList">
               <h3 class="title_bgNon">월간 활성 사용자 수 (MAU)</h3>
-              <div class="content"></div>
+              <div class="content flex">
+                <p class="txtBox">
+                  <span class="txt-day"></span>
+                  <br />
+                  <span class="thanData">지난달보다<span class="fColor_purple">+98,935명 (1.53%)</span></span>
+                </p>
+                <div class="canvas_wrap">
+                  <canvas></canvas>
+                </div>
+              </div>
             </div>
-            <div>
+            <div id="users-return" class="statList">
               <h3 class="title_bgNon">재방문률</h3>
-              <div class="content"></div>
+              <div class="content flex">
+                <p class="txtBox">
+                  <span class="txt-day"></span>
+                  <br />
+                  <span class="thanData"><span class="fColor_purple"></span></span>
+                </p>
+                <div class="canvas_wrap">
+                  <canvas></canvas>
+                </div>
+              </div>
             </div>
           </article>
         </div>
@@ -109,6 +137,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- <script src="./js/sortable2.js"></script> -->
     <script type="module" src="./js/import.js"></script>
-    <script type="module" src="./js/usersVisit.js"></script>
+    <script type="module" src="./js/visit.js"></script>
   </body>
 </html>

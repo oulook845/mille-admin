@@ -1,0 +1,13 @@
+#container section#visit .column article.dragger#users-statistics .statList .content .txtBox {
+  text-align: center;
+  color: var(--MainColor-Black);
+  font-size: 12px;
+}
+#container section#visit .column article.dragger#users-statistics .statList .content .txtBox::after {
+  content: "";
+  display: inline-block;
+  background: url();
+}
+#container section#visit .column article.dragger#users-statistics .statList .content .canvas_wrap {
+  border: 1px solid #000;
+}

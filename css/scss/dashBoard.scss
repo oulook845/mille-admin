@@ -180,7 +180,7 @@
                   &[data-transRank="rank-Up"] {
                     color: var(--RankUpBadge-Green);
                     &::before {
-                      background-image: url(../images/dashboard/rankUp_arrow.png);
+                      background-image: url(../images/common/rankUp_arrow.png);
                     }
                   }
                   &[data-transRank="rank-Hold"] {
@@ -194,7 +194,7 @@
                   &[data-transRank="rank-Down"] {
                     color: var(--RankDownBadge-Red);
                     &::before {
-                      background-image: url(../images/dashboard/rankDown_arrow.png);
+                      background-image: url(../images/common/rankDown_arrow.png);
                     }
                   }
                   &[data-transRank="New-rank"] {
@@ -256,10 +256,10 @@
                       background-position: center;
                     }
                     &[data-than="up"]::after {
-                      background-image: url(../images/dashboard/trend_up.png);
+                      background-image: url(../images/common/trend_up.png);
                     }
                     &[data-than="down"]::after {
-                      background-image: url(../images/dashboard/trend_down.png);
+                      background-image: url(../images/common/trend_down.png);
                     }
                   }
                 }

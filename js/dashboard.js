@@ -530,19 +530,19 @@ function popularList() {
 // 콘텐츠 이용 비율 ####################################################
 function contentStatus() {
   const contentStatus_data = {
-    labels: ["전자책", "오디오북", "챗북"], // X축 값
+    labels: ["전자책", "오디오북", "챗북", "그 외"], // X축 값
     datasets: [
       {
         label: false, // 데이터 세트가 무엇을 의미하는지
-        data: [52, 38, 10], // Y축 값
+        data: [52, 28, 10, 10], // Y축 값
         borderColor: "transparent", // 선 색상
-        backgroundColor: ["#E0C1FF", "#FFF298", "#EDEDED"],
+        backgroundColor: ["#E0C1FF", "#FFF298", "#CECECE","#EDEDED"],
         cutout: "55%", // 도넛 중심 크기 조절
         radius: 100, // 기본적으로 모든 세그먼트는 80 (%로 하면 반응형)
         // hoverOffset: 12, // 호버시 크기 변화
         hoverBorderWidth: 7, // 호버시 보더 두께
         hoverBorderRadius: 1,
-        hoverBorderColor: ["#CB97FF", "#FFEC6F", "#D5D5D5"], // 호버시 보더 색상 변화
+        hoverBorderColor: ["#CB97FF", "#FFEC6F", "#B9B9B9", "#D5D5D5"], // 호버시 보더 색상 변화
       },
     ], // datasets
   };

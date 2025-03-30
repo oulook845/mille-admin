@@ -165,7 +165,7 @@
   color: var(--RankUpBadge-Green);
 }
 #container section#dashBoard .column article.dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=rank-Up]::before {
-  background-image: url(../images/dashboard/rankUp_arrow.png);
+  background-image: url(../images/common/rankUp_arrow.png);
 }
 #container section#dashBoard .column article.dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=rank-Hold] {
   color: var(--SubColor-Black77);
@@ -179,7 +179,7 @@
   color: var(--RankDownBadge-Red);
 }
 #container section#dashBoard .column article.dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=rank-Down]::before {
-  background-image: url(../images/dashboard/rankDown_arrow.png);
+  background-image: url(../images/common/rankDown_arrow.png);
 }
 #container section#dashBoard .column article.dragger#popular-Books .content ol#popular-Books-list li span.books_nowRank[data-transRank=New-rank] {
   color: var(--RankNewBadge-gold);
@@ -237,10 +237,10 @@
   background-position: center;
 }
 #container section#dashBoard .column article.dragger#dailyinform .content #informData .dataWrap p.thanWrap span.thanData[data-than=up]::after {
-  background-image: url(../images/dashboard/trend_up.png);
+  background-image: url(../images/common/trend_up.png);
 }
 #container section#dashBoard .column article.dragger#dailyinform .content #informData .dataWrap p.thanWrap span.thanData[data-than=down]::after {
-  background-image: url(../images/dashboard/trend_down.png);
+  background-image: url(../images/common/trend_down.png);
 }
 #container section#dashBoard .column article.dragger#trafficSource .content {
   padding: 15px 18px;
