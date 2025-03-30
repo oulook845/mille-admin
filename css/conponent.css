@@ -1,3 +1,4 @@
+@charset "UTF-8";
 a.block-anchor {
   display: block;
 }
@@ -32,4 +33,49 @@ a.block-anchor {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+}
+
+h3.title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 37px;
+  line-height: 37px;
+  padding: 0 var(--items-gap);
+  border-bottom: 1px solid var(--SubColor-Black48);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: var(--MainColor-Yellow);
+}
+
+h3.title_bgNon {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 37px;
+  line-height: 37px;
+  padding: 0 var(--items-gap);
+  border-bottom: 1px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: transparent;
+}
+
+.data-refresh {
+  content: "";
+  cursor: pointer;
+  display: block;
+  padding: 12px;
+  background-image: url(../images/dashboard/data-refresh.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+}
+
+.data-more {
+  content: "더보기";
+  cursor: pointer;
+  display: block;
 }

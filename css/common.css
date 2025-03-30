@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   font-family: "Pretendard-R";
 }
@@ -140,8 +139,7 @@ header#header .inner .utils a#now_alarm::after {
   height: fit-content;
   margin-left: 258px;
   padding: var(--container-padding);
-}
-#container section#dashBoard {
+  display: flex;
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -169,6 +167,7 @@ header#header .inner .utils a#now_alarm::after {
   height: 406px;
 }
 #container section div.column article.dragger {
+  width: 100%;
   height: 100%;
   font-size: 20px;
   overflow: hidden;
@@ -180,46 +179,12 @@ header#header .inner .utils a#now_alarm::after {
 #container section div.column article.dragger.blue-background-class {
   opacity: 0.3;
 }
-#container section div.column article.dragger h3 {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 37px;
-  line-height: 37px;
-  padding: 0 var(--items-gap);
-  border-bottom: 1px solid var(--SubColor-Black48);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background-color: var(--MainColor-Yellow);
-}
-#container section div.column article.dragger h3 .data-refresh {
-  content: "";
-  cursor: pointer;
-  display: block;
-  padding: 12px;
-  background-image: url(../images/dashboard/data-refresh.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto;
-}
-#container section div.column article.dragger h3 .data-more {
-  content: "더보기";
-  cursor: pointer;
-  display: block;
-}
 #container section div.column article.dragger .content {
   height: calc(100% - 40px) !important;
 }
 #container section div.column article.dragger .content canvas {
   width: 100% !important;
   overflow: auto;
-}
-#container section.contentList {
-  display: none;
-}
-#container section.contentList.currentViewSection {
-  display: flex;
 }
 
 footer#footer {

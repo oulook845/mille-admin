@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Millie</title>
+    <link rel="stylesheet" href="./css/import.css" />
+    <link rel="stylesheet" href="./css/visit.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <header id="header">
+      <div class="inner flex-between">
+        <h1 id="logo">
+          <a href="#" class="block-anchor text-hidden bg-image">밀리의서재 로고</a>
+        </h1>
+
+        <div class="utils flex-between">
+          <a href="#" id="profile" class="flex-center">
+            <img src="./images/common/admin_profile.png" alt="프로필" />
+            admin
+          </a>
+
+          <a href="#" id="now_alarm" class="block-anchor">
+            <img src="./images/common/bell_ringing.png" alt="" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- main#container -->
+    <main id="container" class="flex">
+      <!-- aside#aside_gnb ----------------->
+      <aside id="main_gnb">
+        <nav id="gnb">
+          <ul>
+            <li id="gnb_home" class="">
+              <a href="./index.html" class="block-anchor">대시보드</a>
+            </li>
+            <li id="gnb_visit" class="list-active">
+              <a href="./visit.html" class="block-anchor">방문</a>
+            </li>
+            <li id="gnb_users">
+              <a href="#" class="block-anchor">사용자</a>
+            </li>
+            <li id="gnb_books">
+              <a href="#" class="block-anchor">도서</a>
+            </li>
+            <li id="gnb_notice">
+              <a href="#" class="block-anchor">게시판</a>
+            </li>
+            <li id="gnb_settings">
+              <a href="#" class="block-anchor">설정</a>
+            </li>
+          </ul>
+          <div id="dark-mode" role="button">
+            <a href="#" class="block-anchor">다크모드</a>
+          </div>
+        </nav>
+      </aside>
+
+      <section id="visit" class="contentList">
+        <div class="column col40 row50">
+          <article id="users-statistics" class="dragger list-group-item" draggable="true">
+            <div>
+              <h3 class="title_bgNon">일일 활성 사용자 수 (DAU)</h3>
+              <div class="content"></div>
+            </div>
+            <div>
+              <h3 class="title_bgNon">월간 활성 사용자 수 (MAU)</h3>
+              <div class="content"></div>
+            </div>
+            <div>
+              <h3 class="title_bgNon">재방문률</h3>
+              <div class="content"></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="column col60 row50">
+          <article id="users-visitTime" class="dragger list-group-item" draggable="true">
+            <h3 class="title">방문대 시간대 분석</h3>
+            <div class="content"></div>
+          </article>
+        </div>
+
+        <div class="column col100 row50">
+          <article id="users-demographics" class="dragger list-group-item" draggable="true">
+            <h3 class="title">사용자 인구 통계</h3>
+            <div class="content"></div>
+          </article>
+
+          <article id="users-traffic" class="dragger list-group-item" draggable="true">
+            <h3 class="title">유입경로</h3>
+            <div class="content"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer id="footer">
+      <div class="inner"></div>
+    </footer>
+
+    <!-- sortable.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="./js/sortable2.js"></script> -->
+    <script type="module" src="./js/import.js"></script>
+    <script type="module" src="./js/usersVisit.js"></script>
+  </body>
+</html>
