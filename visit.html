@@ -65,40 +65,46 @@
             <div id="users-day" class="statList">
               <h3 class="title_bgNon">일일 활성 사용자 수 (DAU)</h3>
               <div class="content flex">
-                <p class="txtBox">
-                  <span class="txt-day"></span>
-                  <br />
-                  <span class="thanData">어제보다<span class="fColor_purple">+15,568명 (1.96%)</span></span>
-                </p>
+                <div class="txtBox txtAlign-center">
+                  <p class="txt-day"></p>
+                  <p class="thanData">어제보다<span class="fColor_purple">+15,568명 (1.96%)</span></p>
+                </div>
+                <div class="canvas_wrap">
+                  <canvas></canvas>
+                </div>
+              </div>
+            </div>
 
-                <div class="canvas_wrap">
-                  <canvas></canvas>
-                </div>
-              </div>
-            </div>
             <div id="users-month" class="statList">
-              <h3 class="title_bgNon">월간 활성 사용자 수 (MAU)</h3>
+              <h3 class="title_bgNon">
+                월간 활성 사용자 수 (MAU) <span class="fcolor_gray">지난 1년 펑균 MAU 13,147,902명</span>
+              </h3>
               <div class="content flex">
-                <p class="txtBox">
-                  <span class="txt-day"></span>
-                  <br />
-                  <span class="thanData">지난달보다<span class="fColor_purple">+98,935명 (1.53%)</span></span>
-                </p>
+                <div class="txtBox txtAlign-center">
+                  <p class="txt-day"></p>
+                  <p class="thanData">지난달보다<span class="fColor_purple">+98,935명 (1.53%)</span></p>
+                </div>
                 <div class="canvas_wrap">
                   <canvas></canvas>
                 </div>
               </div>
             </div>
+
             <div id="users-return" class="statList">
               <h3 class="title_bgNon">재방문률</h3>
-              <div class="content flex">
-                <p class="txtBox">
-                  <span class="txt-day"></span>
-                  <br />
-                  <span class="thanData"><span class="fColor_purple"></span></span>
-                </p>
+              <div class="content flex flex-reverse_R">
+                <div class="txtBox txtAlign-left">
+                  <div class="txt-day">
+                    <p>회원가입 이후 방문률 (최근 30일)</p>
+                    <p class="circle_01">전체 방문자 수 13,958,733명</p>
+                    <p class="circle_02">재방문자 수 9,479,931명</p>
+                  </div>
+                  <p class="thanData">지난 30일보다 <span class="fColor_purple">+308,872명 (3.36%)</span></p>
+                </div>
+
                 <div class="canvas_wrap">
-                  <canvas></canvas>
+                  <canvas class="totalChart"></canvas>
+                  <canvas class="currentChart"></canvas>
                 </div>
               </div>
             </div>
@@ -108,7 +114,11 @@
         <div class="column col60 row50">
           <article id="users-visitTime" class="dragger list-group-item" draggable="true">
             <h3 class="title">방문대 시간대 분석</h3>
-            <div class="content"></div>
+            <div class="content">
+              <div class="canvas_wrap">
+                <canvas></canvas>
+              </div>
+            </div>
           </article>
         </div>
 

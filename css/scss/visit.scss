@@ -1,38 +1,123 @@
 #container {
   section#visit {
     .column {
+      height: auto;
       article.dragger {
         &#users-statistics {
-          .statList {
-            &#users-day {
-
-            }
-            &#users-month {
-
-            }
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          border: none;
+          box-shadow: none;
+          padding-bottom: 3px;
+          div.statList {
+            height: 153px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 1px 1px;
             &#users-return {
-
+              .canvas_wrap {
+                &::before {
+                  background-color: #ededed;
+                }
+              }
+            }
+            h3 {
+              height: fit-content;
+              padding-top: 10px;
+              line-height: normal;
+              flex-direction: column;
+              position: absolute;
+              left: 0;
+              top: 0;
+              span.fcolor_gray {
+                display: inline-block;
+                font-size: 10px;
+                color: var(--SubColor-Black77);
+              }
             }
             .content {
+              height: 100%;
+              margin: 0 auto;
+              justify-content: center;
+              align-items: center;
+              gap: 30px;
               .txtBox {
-                text-align: center;
                 color: var(--MainColor-Black);
                 font-size: 12px;
-                &::after{
-                    content:"";
+                p:not(:first-child) {
+                  margin-top: 5px;
+                }
+                .circle_01::before {
+                  content: "";
+                  display: inline-block;
+                  width: 8px;
+                  height: 8px;
+                  border-radius: 50%;
+                  margin-right: 3px;
+                  background-color: var(--SubColor-Purple1);
+                }
+                .circle_02::before {
+                  content: "";
+                  display: inline-block;
+                  width: 8px;
+                  height: 8px;
+                  border-radius: 50%;
+                  margin-right: 3px;
+                  background-color: var(--MainColor-Purple);
+                }
+                .thanData {
+                  &::after {
+                    content: "";
                     display: inline-block;
-                    // width: ;
-                    // height: ;
-                    background: url();
+                    width: 16px;
+                    height: 16px;
+                    background: url(../images/common/trend_up.png) no-repeat center;
+                    vertical-align: middle;
+                  }
                 }
               }
               .canvas_wrap {
-                border: 1px solid #000;
+                width: 110px;
+                height: 110px;
+                position: relative;
+                &::before {
+                  content: "";
+                  display: block;
+                  width: 100%;
+                  height: 100%;
+                  background-color: #e7ccff;
+                  clip-path: circle(50% at center);
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                }
+                &::after {
+                  content: "";
+                  display: block;
+                  width: 100%;
+                  height: 100%;
+                  background-color: #fff;
+                  clip-path: circle(42.5% at center);
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                }
+                canvas {
+                  position: absolute;
+                  z-index: 1;
+                }
               }
             }
           }
         }
         &#users-visitTime {
+          .content{
+            .canvas_wrap{
+              padding: 20px 60px 50px;
+            }
+          }
         }
         &#users-demographics {
         }

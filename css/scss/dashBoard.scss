@@ -79,6 +79,7 @@
               flex: 1;
               position: relative;
               margin-top: 40px;
+              height: calc(100% - 40px);
               &::before {
                 content: "(총 방문자 수)";
                 display: block;

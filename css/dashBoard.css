@@ -71,6 +71,7 @@
   flex: 1;
   position: relative;
   margin-top: 40px;
+  height: calc(100% - 40px);
 }
 #container section#dashBoard .column article.dragger#usage-Status .content .canvas_wrap::before {
   content: "(총 방문자 수)";
