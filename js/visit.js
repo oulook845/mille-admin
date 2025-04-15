@@ -234,44 +234,92 @@ function usersVisitTime() {
     datasets: [
       {
         data: [
-          9479931, 9479931, 9479931, 9479931, 9479931, 9479931, 9479931, 9479931, 9479931, 9479931, 9479931, 9479931,
+          17300, 15600, 13500, 12800, 9000, 11500, 18800, 23700, 26200, 23700, 17400, 20800, 22500, 21800, 18500, 21300,
+          22300, 23500, 24720, 26200, 28350, 29200, 28100, 26800, 22500,
         ],
       },
     ],
     labels: [
       "00:00",
+      "01:00",
       "02:00",
+      "03:00",
       "04:00",
+      "05:00",
       "06:00",
+      "07:00",
       "08:00",
+      "09:00",
       "10:00",
+      "11:00",
       "12:00",
+      "13:00",
       "14:00",
+      "15:00",
       "16:00",
+      "17:00",
       "18:00",
+      "19:00",
       "20:00",
+      "21:00",
       "22:00",
+      "23:00",
       "24:00",
     ],
   };
 
   const options = {
     responsive: false, // 크기를 고정으로
-    scales:{
-        y:{
-            min:0,
-            max:30000,
-            ticks:{
-                stepSize:5000,
-            }
-        }
+    borderWidth: 0.5,
+    borderColor: "#222",
+    fill: false,
+    elements: {
+      point: {
+        pointBackgroundColor: data.labels.map((label, idx, arr) => {
+          const hour = parseInt(label.split(":")[0], 10);
+          const isOddHour = hour % 2 !== 0;
+          const isFirstOrLast = idx === 0 || idx === arr.length - 1;
+
+          return isOddHour || isFirstOrLast ? "transparent" : "#A451F7";
+        }),
+        pointBorderColor: "transparent",
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          callback: function (value, idx, values) {
+            // 시간 값에서 숫자 부분 추출 (예: "02:00" → 2)
+            const hour = parseInt(this.getLabelForValue(value).split(":")[0], 10);
+            // 짝수 시간 또는 24:00인 경우만 표시
+            return hour % 2 === 0 || hour === 24 ? this.getLabelForValue(value) : "";
+          },
+          autoSkip: true, // 자동 줄바꿈 활성화
+          maxRotation: 0, // 회전 각도 0도 설정
+          minRotation: 0, // 최소 회전 각도 강제 적용
+          font: { size: 10 },
+        },
+      },
+      y: {
+        min: 5000,
+        max: 30000,
+        ticks: {
+          stepSize: 5000,
+          font: { size: 10 },
+        },
+        afterDataLimits(scale) {
+          scale.max = scale.max * 1.15; // Y축 최대값을 기존 데이터 최대값의 120%로 설정
+        },
+      },
+    },
+    layout: {
+      padding: {
+        top: 40,
+      },
     },
     plugins: {
       legend: {
         display: false, // 범례 숨기기
-      },
-      tooltip: {
-        enabled: false, // 툴팁 숨기기
       },
     },
     animation: 1000,

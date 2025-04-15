@@ -9,9 +9,8 @@
           gap: 20px;
           border: none;
           box-shadow: none;
-          padding-bottom: 3px;
           div.statList {
-            height: 153px;
+            height: calc((100% - 40px)/3);
             border: 1px solid #000;
             border-radius: 10px;
             position: relative;
@@ -114,8 +113,18 @@
         }
         &#users-visitTime {
           .content{
+            padding: 20px 60px 50px;
+            &::after{
+              content: "";
+              display: block;
+              clear:both;
+            }
+            .currentTime{
+              font-size: 10px;
+              float: right;
+            }
             .canvas_wrap{
-              padding: 20px 60px 50px;
+              height: 100%;
             }
           }
         }

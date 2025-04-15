@@ -7,10 +7,9 @@
   gap: 20px;
   border: none;
   box-shadow: none;
-  padding-bottom: 3px;
 }
 #container section#visit .column article.dragger#users-statistics div.statList {
-  height: 153px;
+  height: calc((100% - 40px) / 3);
   border: 1px solid #000;
   border-radius: 10px;
   position: relative;
@@ -104,6 +103,18 @@
   position: absolute;
   z-index: 1;
 }
-#container section#visit .column article.dragger#users-visitTime .content .canvas_wrap {
+#container section#visit .column article.dragger#users-visitTime .content {
   padding: 20px 60px 50px;
+}
+#container section#visit .column article.dragger#users-visitTime .content::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+#container section#visit .column article.dragger#users-visitTime .content .currentTime {
+  font-size: 10px;
+  float: right;
+}
+#container section#visit .column article.dragger#users-visitTime .content .canvas_wrap {
+  height: 100%;
 }
