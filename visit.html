@@ -62,6 +62,7 @@
       <section id="visit" class="contentList">
         <div class="column col40 row50">
           <article id="users-statistics" class="dragger list-group-item" draggable="true">
+            <!-- 일일 활성 사용자 수 -->
             <div id="users-day" class="statList">
               <h3 class="title_bgNon">일일 활성 사용자 수 (DAU)</h3>
               <div class="content flex">
@@ -75,6 +76,7 @@
               </div>
             </div>
 
+            <!-- 월간 활성 사용자 수 -->
             <div id="users-month" class="statList">
               <h3 class="title_bgNon">
                 월간 활성 사용자 수 (MAU) <span class="fcolor_gray">지난 1년 펑균 MAU 13,147,902명</span>
@@ -90,6 +92,7 @@
               </div>
             </div>
 
+            <!-- 재방문률 -->
             <div id="users-return" class="statList">
               <h3 class="title_bgNon">재방문률</h3>
               <div class="content flex flex-reverse_R">
@@ -112,11 +115,16 @@
         </div>
 
         <div class="column col60 row50">
+          <!-- 방문시간 별 사용자 수 -->
           <article id="users-visitTime" class="dragger list-group-item" draggable="true">
-            <h3 class="title">방문대 시간대 분석</h3>
+            <h3 class="title">방문 시간 별 사용자 수</h3>
             <div class="content">
               <p class="currentTime">2025.01.11(18:00)</p>
               <div class="canvas_wrap">
+                <div class="chart_legend">
+                  <span class="member">회원</span>
+                  <span class="guest">비회원</span>
+                </div>
                 <canvas></canvas>
               </div>
             </div>
@@ -124,13 +132,24 @@
         </div>
 
         <div class="column col100 row50">
+          <!-- 사용자 인구 통계 -->
           <article id="users-demographics" class="dragger list-group-item" draggable="true">
             <h3 class="title">사용자 인구 통계</h3>
-            <div class="content"></div>
+            <div class="content">
+              <p class="currentTime"></p>
+              <div class="canvas_wrap">
+                <div class="chart_legend">
+                  <span class="male">남성</span>
+                  <span class="female">여성</span>
+                </div>
+                <canvas></canvas>
+              </div>
+            </div>
           </article>
 
+          <!-- 유입경로 -->
           <article id="users-traffic" class="dragger list-group-item" draggable="true">
-            <h3 class="title">유입경로</h3>
+            <h3 class="title">유입 경로</h3>
             <div class="content"></div>
           </article>
         </div>

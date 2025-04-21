@@ -26,7 +26,7 @@ button::-moz-focus-inner, input::-moz-focus-inner { border:0; padding:0; }
 
 textarea { overflow:auto; vertical-align:top; }
 
-html,body{height:100%;}
+/* html,body{height:100%;} */
 
 /* 제목요소 */
 h1, h2, h3, h4, h5, h6, i { font-size:1rem;   /* 100% = 브라우저 기본 크기 = 16px */ font-weight:normal; font-style: normal; }

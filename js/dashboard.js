@@ -193,8 +193,7 @@ function usageStatus_btn() {
         } else {
           timeFrame_btn[1].classList.remove("unable");
         }
-      } 
-      else if (toggle == "next" && timeFrame_idx > 0) {
+      } else if (toggle == "next" && timeFrame_idx > 0) {
         timeFrame_idx--; // 오른쪽으로 이동
         if (timeFrame_idx === 0) {
           timeFrame_btn[1].classList.add("unable");
@@ -220,7 +219,7 @@ function usageStatus_btn() {
       usageStatus_chart.data.labels = lastWeekDates;
       usageStatus_chart.data.datasets[0].data = usageStatus_Data.datasets[timeFrame_idx];
       usageStatus_chart.update();
-    }); 
+    });
   });
 }
 
@@ -536,7 +535,7 @@ function contentStatus() {
         label: false, // 데이터 세트가 무엇을 의미하는지
         data: [52, 28, 10, 10], // Y축 값
         borderColor: "transparent", // 선 색상
-        backgroundColor: ["#E0C1FF", "#FFF298", "#CECECE","#EDEDED"],
+        backgroundColor: ["#E0C1FF", "#FFF298", "#CECECE", "#EDEDED"],
         cutout: "55%", // 도넛 중심 크기 조절
         radius: 100, // 기본적으로 모든 세그먼트는 80 (%로 하면 반응형)
         // hoverOffset: 12, // 호버시 크기 변화
@@ -671,7 +670,7 @@ export function updateDateTime(currentView_Data) {
   // 배열에 데이터를 담아 차트하단에 기간표시
   function getLastWeekDates(select_Date) {
     const dates = [];
-    
+
     for (let i = 6; i >= 0; i--) {
       const date = new Date(select_Date);
       date.setDate(select_Date.getDate() - i);
@@ -681,10 +680,10 @@ export function updateDateTime(currentView_Data) {
 
       dates.push(`${month}.${day}`);
     }
-    
+
     return dates;
   }
-  
+
   // 현재보는 기간선택
   switch (currentView_Data) {
     case "thisWeek":

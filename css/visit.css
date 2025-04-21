@@ -104,17 +104,96 @@
   z-index: 1;
 }
 #container section#visit .column article.dragger#users-visitTime .content {
-  padding: 20px 60px 50px;
+  padding: 1.042vw 3.125vw 1.823vw; /* 20px 60px 35px; */
 }
 #container section#visit .column article.dragger#users-visitTime .content::after {
   content: "";
   display: block;
   clear: both;
 }
-#container section#visit .column article.dragger#users-visitTime .content .currentTime {
+#container section#visit .column article.dragger#users-visitTime .content p.currentTime {
   font-size: 10px;
   float: right;
+  margin-right: -30px;
 }
 #container section#visit .column article.dragger#users-visitTime .content .canvas_wrap {
   height: 100%;
+  margin-top: 40px;
+}
+#container section#visit .column article.dragger#users-visitTime .content .canvas_wrap div.chart_legend {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 5px;
+}
+#container section#visit .column article.dragger#users-visitTime .content .canvas_wrap div.chart_legend span {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+#container section#visit .column article.dragger#users-visitTime .content .canvas_wrap div.chart_legend span::before {
+  content: "";
+  display: inline-block;
+  padding: 3.5px;
+  border: 0.5px solid #222;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+#container section#visit .column article.dragger#users-visitTime .content .canvas_wrap div.chart_legend span.member::before {
+  background-color: var(--MainColor-Purple);
+}
+#container section#visit .column article.dragger#users-visitTime .content .canvas_wrap div.chart_legend span.guest::before {
+  background-color: var(--MainColor-Yellow);
+}
+#container section#visit .column article.dragger#users-demographics {
+  flex: 1;
+}
+#container section#visit .column article.dragger#users-demographics .content {
+  padding: 1.042vw 3.125vw 1.823vw; /* 20px 60px 35px; */
+}
+#container section#visit .column article.dragger#users-demographics .content::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+#container section#visit .column article.dragger#users-demographics .content p.currentTime {
+  font-size: 10px;
+  float: right;
+  margin-right: -30px;
+}
+#container section#visit .column article.dragger#users-demographics .content .canvas_wrap {
+  margin-top: 30px;
+  position: relative;
+}
+#container section#visit .column article.dragger#users-demographics .content .canvas_wrap div.chart_legend {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: absolute;
+  right: 0;
+  top: 30px;
+}
+#container section#visit .column article.dragger#users-demographics .content .canvas_wrap div.chart_legend span {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  font-size: 8px;
+}
+#container section#visit .column article.dragger#users-demographics .content .canvas_wrap div.chart_legend span::before {
+  content: "";
+  display: inline-block;
+  padding: 3.5px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+#container section#visit .column article.dragger#users-demographics .content .canvas_wrap div.chart_legend span.male::before {
+  background-color: var(--MainColor-Purple);
+}
+#container section#visit .column article.dragger#users-demographics .content .canvas_wrap div.chart_legend span.female::before {
+  background-color: var(--MainColor-Yellow);
+}
+#container section#visit .column article.dragger#users-traffic {
+  flex: 1;
 }

@@ -5,7 +5,6 @@ a.block-anchor {
 
 .fColor_purple {
   color: var(--MainColor-Purple);
-  vertical-align: middle;
 }
 
 .bg-image {
@@ -28,17 +27,6 @@ a.block-anchor {
   border: 0;
 }
 
-.txtAlign-left{
-  text-align: left;
-}
-.txtAlign-center{
-  text-align: center;
-}
-.txtAlign-right{
-  text-align: right;
-}
-
-/* flex 관련 클래스 */
 .flex {
   display: flex;
 }
@@ -57,11 +45,6 @@ a.block-anchor {
   flex-wrap: wrap;
 }
 
-.flex-reverse_R{
-  flex-direction: row-reverse;
-}
-
-/* h3 제목 관련 클래스 */
 h3.title {
   display: flex;
   justify-content: space-between;
@@ -90,7 +73,6 @@ h3.title_bgNon {
   background-color: transparent;
 }
 
-/* 데이터 버튼 클래스 */
 .data-refresh {
   content: "";
   cursor: pointer;
