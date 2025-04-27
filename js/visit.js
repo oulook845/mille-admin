@@ -27,6 +27,12 @@ function Statistics() {
 
   userDay_date.textContent = `${nowData.year}년 ${nowData.month}월 ${nowData.day}일`;
   userMonth_date.textContent = `${nowData.year}년 ${nowData.month}월`;
+
+  // text 콘텐츠 애니메이션
+  const txtBoxs = userStatistics.querySelectorAll(".txtBox");
+  txtBoxs.forEach((text) => {
+    text.style.opacity = 1;
+  });
 }
 Statistics();
 
@@ -587,28 +593,34 @@ function usersDemographics_currentTime() {
 usersDemographics_currentTime();
 
 // 유입 경로 ####################################################
-function usersTraffic() {
+function usersTraffic_chart() {
   const ctx = document.getElementById("users-traffic").querySelector("canvas").getContext("2d");
 
+  const usersTraffic = document.getElementById("users-traffic");
+  const trfContent_labels = usersTraffic.querySelectorAll(".labels");
+
   const labels = ["책소개 카드뉴스", "SNS 이벤트", "광고"];
-  const datas = [8, 52, 39];
+  const datas = [];
   const bgColor = ["#EDEDED", "#E0C1FF", "#FFF298"];
+
+  trfContent_labels.forEach((label, idx) => {
+    let label_data = label.getAttribute("data-trfContent");
+    datas.push(label_data);
+  });
 
   const options = {
     responsive: false,
-    radius: 90,
+    radius: 70,
     borderWidth: 0,
     fill: false,
     backgroundColor: bgColor,
-    elements: {},
-    scales: {},
     interaction: {
       mode: "nearest",
       intersect: false,
     },
     plugins: {
       legend: {
-        display: false, 
+        display: false,
       },
     },
     animation: {
@@ -622,7 +634,7 @@ function usersTraffic() {
     data: {
       datasets: [
         {
-          label: labels,
+          label: false,
           type: "pie",
           data: datas,
         },
@@ -633,20 +645,30 @@ function usersTraffic() {
 
   new Chart(ctx, config);
 }
-usersTraffic();
+usersTraffic_chart();
 
 // "유입 경로" 퍼센트 표시
 function usersTraffic_percent() {
   const perBarDatas = document.querySelectorAll(".perBar_wrap");
   const perBars = document.querySelectorAll(".perBar");
   const perNums = document.querySelectorAll(".per_num");
+  const labels = document.querySelectorAll(".labels");
+  const label_perNums = document.querySelectorAll(".label_perNum");
 
   perBarDatas.forEach((data, idx) => {
     let perData = data.getAttribute("data-trafficPer");
 
     perBars[idx].style.width = `${perData}%`;
     perNums[idx].style.left = `${perData}%`;
+    perNums[idx].style.opacity = 1;
     perNums[idx].textContent = `${perData}%`;
+  });
+
+  labels.forEach((label, idx) => {
+    let label_data = label.getAttribute("data-trfContent");
+
+    labels[idx].style.opacity = 1;
+    label_perNums[idx].textContent = `${label_data}%`;
   });
 }
 usersTraffic_percent();
