@@ -150,7 +150,66 @@
           <!-- 유입경로 -->
           <article id="users-traffic" class="dragger list-group-item" draggable="true">
             <h3 class="title">유입 경로</h3>
-            <div class="content"></div>
+            <div class="content">
+              <p class="currentTime"></p>
+              <div class="canvas_wrap">
+                <div class="traffic_wrap">
+                  <div class="traffic_list">
+                    <h4>Search</h4>
+                    <ul id="trf_search" class="trfList">
+                      <li>
+                        <p class="trf_value">NAVER</p>
+                        <div class="perBar_wrap" data-trafficPer="53">
+                          <div class="perBar"></div>
+                          <span class="per_num"></span>
+                        </div>
+                      </li>
+                      <li>
+                        <p class="trf_value">Google</p>
+                        <div class="perBar_wrap" data-trafficPer="32">
+                          <div class="perBar"></div>
+                          <span class="per_num"></span>
+                        </div>
+                      </li>
+                      <li>
+                        <p class="trf_value">Daum</p>
+                        <div class="perBar_wrap" data-trafficPer="15">
+                          <div class="perBar"></div>
+                          <span class="per_num"></span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="traffic_list">
+                    <h4>SNS</h4>
+                    <ul id="trf_sns" class="trfList">
+                      <li>
+                        <p class="trf_value">Instagram</p>
+                        <div class="perBar_wrap" data-trafficPer="48">
+                          <div class="perBar"></div>
+                          <span class="per_num"></span>
+                        </div>
+                      </li>
+                      <li>
+                        <p class="trf_value">X(twitter)</p>
+                        <div class="perBar_wrap" data-trafficPer="43">
+                          <div class="perBar"></div>
+                          <span class="per_num"></span>
+                        </div>
+                      </li>
+                      <li>
+                        <p class="trf_value">Facebook</p>
+                        <div class="perBar_wrap" data-trafficPer="9">
+                          <div class="perBar"></div>
+                          <span class="per_num"></span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <canvas style="height:100%;"></canvas>
+              </div>
+            </div>
           </article>
         </div>
       </section>

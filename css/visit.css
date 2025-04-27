@@ -151,7 +151,7 @@
   flex: 1;
 }
 #container section#visit .column article.dragger#users-demographics .content {
-  padding: 1.042vw 3.125vw 1.823vw; /* 20px 60px 35px; */
+  padding: 1.042vw 1.823vw 1.823vw; /* 20px 35px 35px; */
 }
 #container section#visit .column article.dragger#users-demographics .content::after {
   content: "";
@@ -161,7 +161,7 @@
 #container section#visit .column article.dragger#users-demographics .content p.currentTime {
   font-size: 10px;
   float: right;
-  margin-right: -30px;
+  margin-right: -10px;
 }
 #container section#visit .column article.dragger#users-demographics .content .canvas_wrap {
   margin-top: 30px;
@@ -196,4 +196,56 @@
 }
 #container section#visit .column article.dragger#users-traffic {
   flex: 1;
+}
+#container section#visit .column article.dragger#users-traffic .content {
+  padding: 1.042vw 1.823vw 1.823vw; /* 20px 35px 35px; */
+}
+#container section#visit .column article.dragger#users-traffic .content p.currentTime {
+  font-size: 10px;
+  float: right;
+  margin-right: -10px;
+}
+#container section#visit .column article.dragger#users-traffic .content .canvas_wrap {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 42px 10px;
+  align-items: center;
+}
+#container section#visit .column article.dragger#users-traffic .content .canvas_wrap .traffic_wrap .traffic_list:not(:first-child) {
+  margin-top: 30px;
+}
+#container section#visit .column article.dragger#users-traffic .content .canvas_wrap .traffic_wrap .traffic_list h4 {
+  font-weight: 600;
+  font-size: 12px;
+}
+#container section#visit .column article.dragger#users-traffic .content .canvas_wrap .traffic_wrap .traffic_list ul.trfList {
+  display: flex;
+  gap: 30px;
+  margin-top: 15px;
+}
+#container section#visit .column article.dragger#users-traffic .content .canvas_wrap .traffic_wrap .traffic_list ul.trfList p.trf_value {
+  font-size: 10px;
+}
+#container section#visit .column article.dragger#users-traffic .content .canvas_wrap .traffic_wrap .traffic_list ul.trfList .perBar_wrap {
+  width: 100px;
+  height: 7px;
+  margin-top: 5px;
+  background-color: #d9d9d9;
+  border-radius: 999px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+#container section#visit .column article.dragger#users-traffic .content .canvas_wrap .traffic_wrap .traffic_list ul.trfList .perBar_wrap .perBar {
+  width: 50%;
+  height: 100%;
+  border-radius: 999px;
+  background-color: var(--MainColor-Purple);
+}
+#container section#visit .column article.dragger#users-traffic .content .canvas_wrap .traffic_wrap .traffic_list ul.trfList .perBar_wrap span.per_num {
+  font-size: 8px;
+  position: absolute;
+  left: 0;
+  top: 12px;
+  transform: translateX(-50%);
 }

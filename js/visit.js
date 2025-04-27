@@ -585,3 +585,77 @@ function usersDemographics_currentTime() {
   currentTime.textContent = `${nowData.year}.${nowData.month} 기준`;
 }
 usersDemographics_currentTime();
+
+// 유입 경로 ####################################################
+function usersTraffic() {
+  const ctx = document.getElementById("users-traffic").querySelector("canvas").getContext("2d");
+
+  const labels = ["책소개 카드뉴스", "SNS 이벤트", "광고"];
+  const datas = [8, 52, 39];
+  const bgColor = ["#EDEDED", "#E0C1FF", "#FFF298"];
+
+  const options = {
+    responsive: false,
+    radius: 90,
+    borderWidth: 0,
+    fill: false,
+    backgroundColor: bgColor,
+    elements: {},
+    scales: {},
+    interaction: {
+      mode: "nearest",
+      intersect: false,
+    },
+    plugins: {
+      legend: {
+        display: false, 
+      },
+    },
+    animation: {
+      animateRotate: true, // 처음에 회전하면서 생성
+      animateScale: true, // 처음에 커지면서 생성
+      duration: 1000, // 애니메이션 지속 시간
+    },
+  };
+
+  const config = {
+    data: {
+      datasets: [
+        {
+          label: labels,
+          type: "pie",
+          data: datas,
+        },
+      ],
+    },
+    options: options,
+  };
+
+  new Chart(ctx, config);
+}
+usersTraffic();
+
+// "유입 경로" 퍼센트 표시
+function usersTraffic_percent() {
+  const perBarDatas = document.querySelectorAll(".perBar_wrap");
+  const perBars = document.querySelectorAll(".perBar");
+  const perNums = document.querySelectorAll(".per_num");
+
+  perBarDatas.forEach((data, idx) => {
+    let perData = data.getAttribute("data-trafficPer");
+
+    perBars[idx].style.width = `${perData}%`;
+    perNums[idx].style.left = `${perData}%`;
+    perNums[idx].textContent = `${perData}%`;
+  });
+}
+usersTraffic_percent();
+
+// "유입 경로" 영역에 현재 날짜/시간 표시
+function usersTraffic_currentTime() {
+  const usersTraffic = document.getElementById("users-traffic");
+  const currentTime = usersTraffic.querySelector(".currentTime");
+
+  currentTime.textContent = `${nowData.year}.${nowData.month} 기준`;
+}
+usersTraffic_currentTime();
