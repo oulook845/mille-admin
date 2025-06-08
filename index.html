@@ -42,7 +42,7 @@
               <a href="./visit.html" class="block-anchor">방문</a>
             </li>
             <li id="gnb_users">
-              <a href="#" class="block-anchor">사용자</a>
+              <a href="./users.html" class="block-anchor">사용자</a>
             </li>
             <li id="gnb_books">
               <a href="#" class="block-anchor">도서</a>
@@ -211,6 +211,13 @@
               <div class="time"><span class="datetime"></span>&#160;기준</div>
               <div class="graphWrap">
                 <canvas></canvas>
+                <div class="tooltip" id="chartjs-tooltip">
+                  <p class="value"></p>
+                  <p class="than_lastM">
+                    <span class="lastM_txt">지난달 대비</span>
+                    <span class="lastM_per"></span>
+                  </p>
+                </div>
               </div>
             </div>
           </article>
@@ -224,14 +231,6 @@
           </article>
         </div>
       </section>
-
-      <!-- <section id="users" class="contentList">
-        <article>평균 이용 시간 (평균 체류 시간)</article>
-        <article>신규 가입 & 이탈률</article>
-        <article>전자책, 오디오 사용 비율</article>
-        <article>1인 평균 독서 시간</article>
-        <article>완독 지지수</article>
-      </section> -->
 
       <!-- <section id="books" class="contentList">
         <article>인기 도서 순위 (일간/주간/월간 Top10)</article>

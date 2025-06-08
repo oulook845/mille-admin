@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Millie</title>
+
+    <link rel="stylesheet" href="./css/import.css" />
+    <link rel="stylesheet" href="./css/users.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <header id="header">
+      <div class="inner flex-between">
+        <h1 id="logo">
+          <a href="#" class="block-anchor text-hidden bg-image">밀리의서재 로고</a>
+        </h1>
+
+        <div class="utils flex-between">
+          <a href="#" id="profile" class="flex-center">
+            <img src="./images/common/admin_profile.png" alt="프로필" />
+            admin
+          </a>
+
+          <a href="#" id="now_alarm" class="block-anchor">
+            <img src="./images/common/bell_ringing.png" alt="" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- main -->
+    <main id="container" class="flex">
+      <!-- aside#aside_gnb ----------------->
+      <aside id="main_gnb">
+        <nav id="gnb">
+          <ul>
+            <li id="gnb_home">
+              <a href="./index.html" class="block-anchor">대시보드</a>
+            </li>
+            <li id="gnb_visit">
+              <a href="./visit.html" class="block-anchor">방문</a>
+            </li>
+            <li id="gnb_users" class="list-active">
+              <a href="./users.html" class="block-anchor">사용자</a>
+            </li>
+            <li id="gnb_books">
+              <a href="#" class="block-anchor">도서</a>
+            </li>
+            <li id="gnb_notice">
+              <a href="#" class="block-anchor">게시판</a>
+            </li>
+            <li id="gnb_settings">
+              <a href="#" class="block-anchor">설정</a>
+            </li>
+          </ul>
+          <div id="dark-mode" role="button">
+            <a href="#" class="block-anchor">다크모드</a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- section ---------------------------->
+      <section id="users">
+        <div class="top_area column col100 row50">
+          <article id="totalUsageTime" class="dragger list-group-item" data-area="1" draggable="true">
+            <h3 class="title">이용 시간<span class="data-refresh"></span></h3>
+            <div class="content">
+              <div class="infoArea">
+                <p class="timeText">최근 7일 기준</p>
+                <div id="avgDay" class="infoTxt">
+                  <p>일일 평균 이용 시간</p>
+                  <b>2h 28</b>
+                </div>
+                <div id="mostDay" class="infoTxt">
+                  <p>최다 이용 요일</p>
+                  <b>월요일</b>
+                </div>
+              </div>
+              <div class="canvas_wrap">
+                <canvas></canvas>
+              </div>
+            </div>
+          </article>
+
+          <article id="userSignups" class="dragger list-group-item" data-area="1" draggable="true">
+            <h3 class="title">가입 & 이탈</h3>
+            <div class="content">
+              <p class="timeText">2025.03.16 기준</p>
+              <div id="newAccession" class="conList">
+                <h4>신규 가입 증감률</h4>
+                <ul class="chartList">
+                  <li id="signup_yesterDay">
+                    <div class="txtBox">
+                      <p>전날 대비</p>
+                      <p class="fColor_purple">
+                        <span>+424명 (16.9%) <i class="contrast_icon up"></i></span>
+                      </p>
+                    </div>
+                    <div class="canvas_wrap">
+                      <div class="before_chart chart">
+                        <div class="bar"></div>
+                        <p>2,490명</p>
+                      </div>
+                      <div class="after_chart chart up">
+                        <div class="bar"></div>
+                        <p>2,913명</p>
+                      </div>
+                      <i class="trending_icon up"></i>
+                    </div>
+                  </li>
+
+                  <li id="signup_lastWeek">
+                    <div class="txtBox">
+                      <p>지난주 대비</p>
+                      <p class="fColor_purple">
+                        <span>-790명 (5.32%) <i class="contrast_icon down"></i></span>
+                      </p>
+                    </div>
+                    <div class="canvas_wrap">
+                      <div class="before_chart chart up">
+                        <div class="bar"></div>
+                        <p>14,852명</p>
+                      </div>
+                      <div class="after_chart chart">
+                        <div class="bar"></div>
+                        <p>14,026명</p>
+                      </div>
+                      <i class="trending_icon down"></i>
+                    </div>
+                  </li>
+
+                  <li id="signup_lastMonth">
+                    <div class="txtBox">
+                      <p>지난날 대비</p>
+                      <p class="fColor_purple">
+                        <span>+8,020명 (13.41%) <i class="contrast_icon up"></i></span>
+                      </p>
+                    </div>
+                    <div class="canvas_wrap">
+                      <div class="before_chart chart">
+                        <div class="bar"></div>
+                        <p>59,810명</p>
+                      </div>
+                      <div class="after_chart chart up">
+                        <div class="bar"></div>
+                        <p>67,830명</p>
+                      </div>
+                      <i class="trending_icon up"></i>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="con_bottom">
+                <div id="churnRate" class="conList">
+                  <h4>앱 탈퇴 & 휴먼계정 증감률</h4>
+                  <div class="canvas_wrap">
+                    <p class="timeText">2025년 기준</p>
+                    <canvas></canvas>
+                    <ul class="legnd">
+                      <li class="beforeUsers line"><span class="line"></span>기존 탈퇴</li>
+                      <li class="beforeUsers dashed"><span class="line"></span>기존 휴먼계정</li>
+                      <li class="newUsers line"><span class="line"></span>신규 탈퇴</li>
+                      <li class="newUsers dashed"><span class="line"></span>신규 휴먼계정</li>
+                    </ul>
+                  </div>
+                  <p class="desc">*휴면계정 기준 : 6개월간 서비스를 이용하지 않은 고객</p>
+                </div>
+                <div id="reasonLeave" class="conList">
+                  <h4>이탈 사유</h4>
+                  <div class="canvas_wrap">
+                    <canvas></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="bottom_area column row50">
+          <article id="topReaders" class="dragger list-group-item" draggable="true">
+            <h3 class="title">상위 독자 순위<span class="data-refresh"></span></h3>
+            <div class="content">
+              <div class="infoArea">
+                <p class="timeText"></p>
+                <div class="infoTxt">
+                  <p class="title">유저 평균 완독 권 수</p>
+                  <p class="book_length"><span>2</span>권</p>
+                </div>
+              </div>
+              <div class="canvas_wrap">
+                <div class="table_head fColor_purple">
+                  <span class="rank">순위</span>
+                  <span class="name">닉네임</span>
+                  <span class="runtimeDay">완독 권수(월)</span>
+                  <span class="runtimeHour">완독 러닝타임(시간)</span>
+                </div>
+                <ul class="bookList">
+                  <li>
+                    <span class="rank">1</span>
+                    <span class="name">책벌레킹</span>
+                    <span class="runtimeDay">15</span>
+                    <span class="runtimeHour">75</span>
+                  </li>
+                  <li>
+                    <span class="rank">2</span>
+                    <span class="name">독서마니아</span>
+                    <span class="runtimeDay">13</span>
+                    <span class="runtimeHour">68</span>
+                  </li>
+                  <li>
+                    <span class="rank">3</span>
+                    <span class="name">지식의황제</span>
+                    <span class="runtimeDay">12</span>
+                    <span class="runtimeHour">62</span>
+                  </li>
+                  <li>
+                    <span class="rank">4</span>
+                    <span class="name">밤샘독서</span>
+                    <span class="runtimeDay">11</span>
+                    <span class="runtimeHour">59</span>
+                  </li>
+                  <li>
+                    <span class="rank">5</span>
+                    <span class="name">문학소녀</span>
+                    <span class="runtimeDay">10</span>
+                    <span class="runtimeHour">55</span>
+                  </li>
+                  <li>
+                    <span class="rank">6</span>
+                    <span class="name">책읽는CEO</span>
+                    <span class="runtimeDay">9</span>
+                    <span class="runtimeHour">50</span>
+                  </li>
+                  <li>
+                    <span class="rank">7</span>
+                    <span class="name">독서의신</span>
+                    <span class="runtimeDay">8</span>
+                    <span class="runtimeHour">46</span>
+                  </li>
+                  <li>
+                    <span class="rank">8</span>
+                    <span class="name">지식충전소</span>
+                    <span class="runtimeDay">8</span>
+                    <span class="runtimeHour">43</span>
+                  </li>
+                  <li>
+                    <span class="rank">9</span>
+                    <span class="name">책덕후</span>
+                    <span class="runtimeDay">7</span>
+                    <span class="runtimeHour">40</span>
+                  </li>
+                  <li>
+                    <span class="rank">10</span>
+                    <span class="name">독서여행자</span>
+                    <span class="runtimeDay">7</span>
+                    <span class="runtimeHour">38</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article id="avgReadTime" class="dragger list-group-item" draggable="true">
+            <h3 class="title">평균 독서 시간<span class="data-refresh"></span></h3>
+            <div class="content">
+              <div class="infoArea">
+                <p class="timeText"></p>
+                <div class="infoTxt">
+                  <p class="title">평균 독서 시간</p>
+                  <p class="read_time"><span>124</span>분</p>
+                </div>
+              </div>
+              <div class="canvas_wrap">
+                <p class="title">장르별 평균 독서 시간</p>
+                <canvas></canvas>
+              </div>
+            </div>
+          </article>
+
+          <article id="completedReaders" class="dragger list-group-item" draggable="true">
+            <h3 class="title">완독지수</h3>
+            <div class="content">
+              <div class="canvas_wrap">
+                <canvas></canvas>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer id="footer">
+      <div class="inner"></div>
+    </footer>
+
+    <!-- sortable.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+
+    <!-- path cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/pathseg@1.2.1/pathseg.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/poly-decomp@0.3.0/build/decomp.min.js"></script>
+    <!-- matter.js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
+
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script type="module" src="./js/import.js"></script>
+    <script type="module" src="./js/users.js"></script>
+  </body>
+</html>

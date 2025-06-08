@@ -504,6 +504,18 @@ usersVisit_currentTime();
 function usersDemographics() {
   const ctx = document.getElementById("users-demographics").querySelector("canvas").getContext("2d");
 
+  // tooltip 위치 조절
+  Chart.Tooltip.positioners.top = function (items) {
+    const pos = Chart.Tooltip.positioners.average(items);
+    if (pos === false) {
+      return false;
+    }
+    return {
+      x: pos.x,
+      y: pos.y - 50, // 데이터 상단에서 20px 위로
+    };
+  };
+
   const label = ["10대", "20대", "30대", "40대", "50대"];
   const maleData = [18, 24, 32, 21, 12];
   const femaleData = [22, 25, 36, 18, 5];
@@ -547,17 +559,59 @@ function usersDemographics() {
       legend: {
         display: false, // false 범례 숨기기
       },
+      tooltip: {
+        position: "top",
+        displayColors: true, // false 네모 색상박스 제거
+        usePointStyle: true, // pointStyle 적용
+        yAlign: "none", // 툴팁 제거
+        mode: "index", // index 위치기준으로 데이터 한번에 표시
+        intersect: false,
+
+        titleFont: {
+          size: 0,
+          lineHeight: 0,
+        },
+        backgroundColor: "#fff",
+        borderColor: "#484848",
+        borderWidth: 1,
+        bodyColor: "#222", // 제목 색상
+        bodyFont: {
+          lineHeight: 1.5,
+        },
+        padding: {
+          top: 10,
+          left: 20,
+          bottom: 10,
+          right: 20,
+        },
+
+        callbacks: {
+          label: function (context) {
+            // datasetIndex로 데이터셋 순서를 구분
+            let gender = "";
+            if (context.datasetIndex === 0) {
+              gender = "남성";
+            } else if (context.datasetIndex === 1) {
+              gender = "여성";
+            } else {
+              gender = context.dataset.label; // 혹시 다른 데이터셋이 있으면 label 사용
+            }
+            return gender + " " + context.formattedValue + "%";
+          },
+        },
+      },
     },
-    interaction: {
-      mode: "nearest", // hover 시 가까운 데이터 요소에 반응
-      intersect: false,
-    },
+    // interaction: {
+    //   mode: "nearest", // hover 시 가까운 데이터 요소에 반응
+    //   intersect: false,
+    // },
     animation: 1000,
   };
 
   const config = {
     data: {
       labels: label,
+      pointStyle: "circle",
       datasets: [
         {
           type: "bar",

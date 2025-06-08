@@ -528,6 +528,15 @@ function popularList() {
 
 // 콘텐츠 이용 비율 ####################################################
 function contentStatus() {
+  const contentStatus_elem = document.getElementById("content-Status");
+  const status_tooltip = contentStatus_elem.querySelector(".tooltip");
+  const tooltip_value = status_tooltip.querySelector(".value");
+  const tooltip_per = status_tooltip.querySelector(".lastM_per");
+
+  contentStatus_elem.querySelector("canvas").addEventListener("mouseleave",function(){
+    status_tooltip.style.opacity = 0;
+  })
+
   const contentStatus_data = {
     labels: ["전자책", "오디오북", "챗북", "그 외"], // X축 값
     datasets: [
@@ -559,6 +568,16 @@ function contentStatus() {
         animateScale: true, // 처음에 커지면서 생성
         duration: 1000, // 애니메이션 지속 시간
       },
+      onHover: (event, elements) => {
+        if (elements.length > 0) {
+          status_tooltip.style.opacity = 1;
+          const idx = elements[0].index;
+          tooltip_value.textContent = `${contentStatus_data.labels[idx]} ${contentStatus_data.datasets[0].data[idx]}%`;
+          tooltip_per.textContent = `${contentStatus_data.datasets[0].data[idx]}%`;
+        } else {
+          status_tooltip.style.opacity = 0;
+        }
+      },
       plugins: {
         legend: {
           display: true,
@@ -575,15 +594,24 @@ function contentStatus() {
           },
         },
         tooltip: {
-          callbacks: {
-            label: function (tooltipItem) {
-              const index = tooltipItem.dataIndex;
-              const value = tooltipItem.raw;
-              return `${value}%`; // 툴팁에 라벨과 값을 표시
-              // return `${contentStatus_data.labels[index]}: ${value}%`;
-            },
+          enabled: false, // 기본 툴팁 비활성화
+          external: function (context) {
           },
         },
+        //     tooltip: {
+        //   enabled: false,
+        //   external: customTooltip  // 외부 툴팁 핸들러 지정[3][6]
+        // }
+        // tooltip: {
+        //   callbacks: {
+        //     label: function (tooltipItem) {
+        //       const index = tooltipItem.dataIndex;
+        //       const value = tooltipItem.raw;
+        //       return `${value}%`; // 툴팁에 라벨과 값을 표시
+        //       // return `${contentStatus_data.labels[index]}: ${value}%`;
+        //     },
+        //   },
+        // },
         // tooltip: false,
       },
 

@@ -1,0 +1,312 @@
+main#container section div.column {
+  height: auto;
+}
+main#container section#users .bottom_area {
+  flex-wrap: nowrap;
+}
+main#container section#users article#totalUsageTime .content {
+  padding: 50px 55px 70px;
+}
+main#container section#users article#totalUsageTime .content .infoArea {
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+main#container section#users article#totalUsageTime .content .infoArea .timeText {
+  font-size: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+main#container section#users article#totalUsageTime .content .infoArea .infoTxt p {
+  font-size: 12px;
+}
+main#container section#users article#totalUsageTime .content .infoArea .infoTxt b {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+main#container section#users article#totalUsageTime .content .canvas_wrap {
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+}
+main#container section#users article#userSignups .content {
+  padding: 2.778vh 2.865vw; /* 30px 55px */
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+main#container section#users article#userSignups .content .timeText {
+  font-size: 10px;
+  position: absolute;
+  right: 55px;
+  top: 30px;
+}
+main#container section#users article#userSignups .content .con_bottom {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+main#container section#users article#userSignups .content .conList {
+  width: 100%;
+}
+main#container section#users article#userSignups .content .conList h4 {
+  font-size: 12px;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList {
+  width: 100%;
+  display: flex;
+  gap: 25px;
+  margin-top: 15px;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li {
+  flex: 1;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--Stroke-Gray);
+  border-radius: 5px;
+  padding: 15px;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .txtBox p {
+  font-size: 10px;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .txtBox p.fColor_purple {
+  margin-top: 3px;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .txtBox p i.contrast_icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .txtBox p i.contrast_icon.up {
+  background: url(../images/common/trend_up.png) no-repeat center/contain;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .txtBox p i.contrast_icon.down {
+  background: url(../images/common/trend_down.png) no-repeat center/contain;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap {
+  flex: 1;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.5px;
+  background-color: var(--Stroke-Gray);
+  position: absolute;
+  left: 0;
+  bottom: 12px;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap .chart {
+  width: 20px;
+  height: 100%;
+  position: relative;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap .chart .bar {
+  width: 100%;
+  height: 55%;
+  position: absolute;
+  left: 0;
+  bottom: 12px;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap .chart.before_chart .bar {
+  background-color: var(--SubColor-Yellow3);
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap .chart.after_chart .bar {
+  background-color: var(--MainColor-Yellow);
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap .chart.up .bar {
+  height: 70%;
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap .chart p {
+  font-size: 8px;
+  color: var(--Font-Gray);
+  text-wrap: nowrap;
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transform: translateX(-50%);
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap i.trending_icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap i.trending_icon.up {
+  background: url(../../images/common/trending_up.png);
+}
+main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap i.trending_icon.down {
+  background: url(../../images/common/trending_down.png);
+}
+main#container section#users article#userSignups .content .conList#churnRate {
+  display: flex;
+  flex-direction: column;
+}
+main#container section#users article#userSignups .content .conList#churnRate .canvas_wrap {
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+  padding-right: 60px;
+  position: relative;
+}
+main#container section#users article#userSignups .content .conList#churnRate .canvas_wrap p.timeText {
+  font-size: 8px;
+  font-weight: 400;
+  right: 60px;
+  top: 0;
+}
+main#container section#users article#userSignups .content .conList#churnRate .canvas_wrap ul.legnd {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+main#container section#users article#userSignups .content .conList#churnRate .canvas_wrap ul.legnd li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 7px;
+}
+main#container section#users article#userSignups .content .conList#churnRate .canvas_wrap ul.legnd li:not(:first-child) {
+  margin-top: 3px;
+}
+main#container section#users article#userSignups .content .conList#churnRate .canvas_wrap ul.legnd li.beforeUsers span {
+  border-color: var(--MainColor-Purple);
+}
+main#container section#users article#userSignups .content .conList#churnRate .canvas_wrap ul.legnd li.newUsers span {
+  border-color: var(--RankNewBadge-gold);
+}
+main#container section#users article#userSignups .content .conList#churnRate .canvas_wrap ul.legnd li.line span {
+  border-style: solid;
+}
+main#container section#users article#userSignups .content .conList#churnRate .canvas_wrap ul.legnd li.dashed span {
+  border-style: dashed;
+}
+main#container section#users article#userSignups .content .conList#churnRate .canvas_wrap ul.legnd li span.line {
+  display: inline-block;
+  width: 10px;
+  border-top-width: 1px;
+}
+main#container section#users article#userSignups .content .conList#churnRate p.desc {
+  text-align: right;
+  color: var(--Font-Gray);
+  font-size: 7px;
+  padding-right: 60px;
+}
+main#container section#users article#userSignups .content .conList#reasonLeave {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+main#container section#users article#userSignups .content .conList#reasonLeave .canvas_wrap {
+  flex: 1;
+}
+main#container section#users article#topReaders .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 45px 20px 45px;
+}
+main#container section#users article#topReaders .content .infoArea {
+  position: relative;
+}
+main#container section#users article#topReaders .content .infoArea p.timeText {
+  font-size: 8px;
+  font-weight: 400;
+  position: absolute;
+  right: 0px;
+  top: 0;
+}
+main#container section#users article#topReaders .content .infoArea .infoTxt .title {
+  font-size: 12px;
+}
+main#container section#users article#topReaders .content .infoArea .infoTxt .book_length {
+  font-size: 30px;
+  font-weight: bold;
+}
+main#container section#users article#topReaders .content .canvas_wrap .table_head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  border-top: 1px solid var(--MainColor-Black);
+  border-bottom: 1px solid var(--MainColor-Black);
+  padding: 4px 10px;
+}
+main#container section#users article#topReaders .content .canvas_wrap ul.bookList li {
+  display: flex;
+  font-size: 10px;
+  padding: 4px 10px;
+  position: relative;
+  overflow: hidden;
+}
+main#container section#users article#topReaders .content .canvas_wrap ul.bookList li::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.5px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #999;
+}
+main#container section#users article#topReaders .content .canvas_wrap ul.bookList li span {
+  opacity: 0;
+  transform: translateY(150%);
+  transition: 0.5s;
+}
+main#container section#users article#topReaders .content .canvas_wrap span {
+  display: block;
+  text-align: center;
+  flex: 2.5;
+}
+main#container section#users article#topReaders .content .canvas_wrap span.rank {
+  flex: 1;
+}
+main#container section#users article#avgReadTime .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 45px;
+}
+main#container section#users article#avgReadTime .content .infoArea {
+  position: relative;
+}
+main#container section#users article#avgReadTime .content .infoArea p.timeText {
+  font-size: 8px;
+  font-weight: 400;
+  position: absolute;
+  right: 0px;
+  top: 0;
+}
+main#container section#users article#avgReadTime .content .infoArea .infoTxt .title {
+  font-size: 12px;
+}
+main#container section#users article#avgReadTime .content .infoArea .infoTxt .read_time {
+  font-size: 30px;
+  font-weight: bold;
+}
+main#container section#users article#avgReadTime .content .canvas_wrap {
+  height: calc(100% - 70px);
+}
+main#container section#users article#avgReadTime .content .canvas_wrap .title {
+  font-size: 12px;
+  color: var(--MainColor-Black);
+}
+main#container section#users article#avgReadTime .content .canvas_wrap canvas {
+  margin-top: 15px;
+}
