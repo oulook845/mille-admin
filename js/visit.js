@@ -735,3 +735,4 @@ function usersTraffic_currentTime() {
   currentTime.textContent = `${nowData.year}.${nowData.month} 기준`;
 }
 usersTraffic_currentTime();
+

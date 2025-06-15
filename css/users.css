@@ -148,10 +148,10 @@ main#container section#users article#userSignups .content .conList#newAccession 
   transform: translateX(-50%);
 }
 main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap i.trending_icon.up {
-  background: url(../../images/common/trending_up.png);
+  background: url(../images/common/trending_up.png);
 }
 main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap i.trending_icon.down {
-  background: url(../../images/common/trending_down.png);
+  background: url(../images/common/trending_down.png);
 }
 main#container section#users article#userSignups .content .conList#churnRate {
   display: flex;
@@ -239,6 +239,9 @@ main#container section#users article#topReaders .content .infoArea .infoTxt .boo
   font-size: 30px;
   font-weight: bold;
 }
+main#container section#users article#topReaders .content .canvas_wrap {
+  height: calc(100% - 70px);
+}
 main#container section#users article#topReaders .content .canvas_wrap .table_head {
   display: flex;
   justify-content: space-between;
@@ -309,4 +312,102 @@ main#container section#users article#avgReadTime .content .canvas_wrap .title {
 }
 main#container section#users article#avgReadTime .content .canvas_wrap canvas {
   margin-top: 15px;
+}
+main#container section#users article#completedReaders .content {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 45px 20px 45px;
+}
+main#container section#users article#completedReaders .content .infoArea {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+main#container section#users article#completedReaders .content .infoArea .summary {
+  font-size: 8px;
+  font-weight: 400;
+  position: absolute;
+  right: 0px;
+  top: 0;
+}
+main#container section#users article#completedReaders .content .infoArea .infoTxt .title {
+  font-size: 12px;
+}
+main#container section#users article#completedReaders .content .infoArea .infoTxt .read_time {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+main#container section#users article#completedReaders .content .data_wrap {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+main#container section#users article#completedReaders .content .data_wrap .canvas_wrap {
+  width: 60%;
+}
+main#container section#users article#completedReaders .content .data_wrap .canvas_wrap .title {
+  font-size: 12px;
+  color: var(--MainColor-Black);
+}
+main#container section#users article#completedReaders .content .data_wrap .canvas_wrap canvas {
+  margin-top: 10px;
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo {
+  width: 40%;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList {
+  border: 0.5px solid var(--MainColor-Black);
+  border-radius: 5px;
+  padding: 12px 8px;
+  font-size: 8px;
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.currentBook_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.currentBook_wrap p.title {
+  color: var(--MainColor-Black);
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.currentBook_wrap p.completPer, main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.currentBook_wrap p.completTime {
+  color: var(--Font-Gray);
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.currentBook_wrap p.completPer::after, main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.currentBook_wrap p.completTime::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: url(../images/common/rankUp_arrow.png) no-repeat center/contain;
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.currentBook_wrap p.completPer .dataTitle, main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.currentBook_wrap p.completTime .dataTitle {
+  font-weight: 600;
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.currentBook_wrap p.up::after {
+  background-image: url(../images/common/rankUp_arrow.png);
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.currentBook_wrap p.down::after {
+  background-image: url(../images/common/rankDown_arrow.png);
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.bookList_wrap ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.bookList_wrap ul li {
+  display: flex;
+  gap: 5px;
+}
+main#container section#users article#completedReaders .content .data_wrap .bookInfo .conList.bookList_wrap ul li p.desc {
+  color: var(--Font-Gray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

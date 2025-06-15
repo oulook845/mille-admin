@@ -282,8 +282,66 @@
           <article id="completedReaders" class="dragger list-group-item" draggable="true">
             <h3 class="title">완독지수</h3>
             <div class="content">
-              <div class="canvas_wrap">
-                <canvas></canvas>
+              <div class="infoArea">
+                <p class="summary">매트릭스 별 TOP5 선정</p>
+                <div class="infoTxt">
+                  <p class="title">평균 완독률</p>
+                  <p class="read_time"><span>56</span>%</p>
+                </div>
+                <div class="infoTxt">
+                  <p class="title">평균 완독 시간</p>
+                  <p class="read_time"><span>130</span>분</p>
+                </div>
+              </div>
+
+              <div class="data_wrap">
+                <div class="canvas_wrap">
+                  <p class="title">밀리 완독지수 매트릭스</p>
+                  <canvas style="height:100%; max-height: 200px;"></canvas>
+                  <!-- <div id="chartjs-tooltip"></div> -->
+                </div>
+                <div class="bookInfo">
+                  <div class="currentBook_wrap conList">
+                    <p class="fColor_purple">
+                      <span class="division">홀릭</span>
+                    </p>
+                    <p class="title">
+                      <span class="bookName">PLAN B 플랜 B</span>
+                      &nbsp;│&nbsp;
+                      <span class="bookCategory">경제경영 분야</span>
+                    </p>
+                    <p class="completPer up">
+                      <span class="dataTitle">완독할 확률&nbsp;<span class="data">65</span>%</span>
+                      &nbsp;│&nbsp;
+                      <span class="thanAverage">평균&nbsp;<span class="data">56</span>%&nbsp;대비</span>
+                    </p>
+                    <p class="completTime down">
+                      <span class="dataTitle">완독 예상 시간&nbsp;<span class="data">95</span>분</span>
+                      &nbsp;│&nbsp;
+                      <span class="thanAverage">평균&nbsp;<span class="data">130</span>분&nbsp;대비</span>
+                    </p>
+                  </div>
+                  <div class="bookList_wrap conList">
+                    <ul>
+                      <li>
+                        <p class="title fColor_purple">홀릭</p>
+                        <p class="desc">부담없이 술술 읽다보면 빠져드는 책</p>
+                      </li>
+                      <li>
+                        <p class="title fColor_purple">밀리 픽</p>
+                        <p class="desc">밀리 회원들이 검증한 후회없는 책</p>
+                      </li>
+                      <li>
+                        <p class="title fColor_purple">히든</p>
+                        <p class="desc">밀리 회원들이 검증한 후회없는 책</p>
+                      </li>
+                      <li>
+                        <p class="title fColor_purple">마니아</p>
+                        <p class="desc">푹 빠진 읽을수록 보람 있는 책</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </article>

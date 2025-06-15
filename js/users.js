@@ -1,4 +1,5 @@
 import { nowData } from "./common.js";
+import { division } from "./usersData.js";
 
 /*
 nowData ={
@@ -8,6 +9,15 @@ nowData ={
     hours
     minutes
     seconds
+}
+*/
+
+/*
+division ={
+    holric
+    milliePic
+    hidden
+    mania
 }
 */
 
@@ -364,6 +374,7 @@ topReader();
 function avgReading() {
   const avgReadTime = document.getElementById("avgReadTime");
   const timeText = avgReadTime.querySelector("p.timeText");
+  const refreshBtn = avgReadTime.querySelector(".data-refresh");
 
   timeText.textContent = `1인 / ${nowData.year}.${nowData.month}.${nowData.day} (${nowData.hours}:${nowData.minutes}) 기준`;
 }
@@ -493,3 +504,272 @@ function avgRead_chart() {
   new Chart(ctx, config);
 }
 avgRead_chart();
+
+// 완독지수 ####################################################
+function completedReaders_chart() {
+  const ctx = document.getElementById("completedReaders").querySelector("canvas").getContext("2d");
+
+  let hoveredArea = null;
+  const data = [
+    // 1사분면 (왼쪽 위)
+    { x: -13, y: 8 },
+    { x: -15, y: 10 },
+    { x: -10, y: 5 },
+    { x: -17, y: 5 },
+    { x: -8, y: 15 },
+    // 2사분면 (오른쪽 위)
+    { x: 3, y: 5 },
+    { x: 5, y: 10 },
+    { x: 7, y: 7 },
+    { x: 10, y: 3 },
+    { x: 15, y: 8 },
+    // 3사분면 (왼쪽 아래)
+    { x: -5, y: -5 },
+    { x: -17, y: -9 },
+    { x: -14, y: -12 },
+    { x: -11, y: -15 },
+    { x: -10, y: -11 },
+    // 4사분면 (오른쪽 아래)
+    { x: 5, y: -5 },
+    { x: 7, y: -17 },
+    { x: 10, y: -7 },
+    { x: 16, y: -13 },
+    { x: 17, y: -4 },
+  ];
+  const options = {
+    responsive: false,
+    // maintainAspectRatio: true, //(기본): 비율 유지
+    backgroundColor: "transparent",
+    elements: {
+      point: {
+        radius: 2, // 기본 점 크기
+        hoverRadius: 2, // 호버 시 점 크기
+        hoverBackgroundColor: "#A451F7",
+      },
+    },
+    borderWidth: 1,
+    borderColor: "#A451F7",
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "완독 예상 시간(분)",
+          color: "#777",
+          font: {
+            size: 8,
+          },
+        },
+        grid: {
+          display: false,
+        },
+        min: -20,
+        max: 20,
+        border: {
+          display: false, // false y축 제거
+        },
+        ticks: {
+          callback: function (value) {
+            if (value == -20) return "낮음";
+            if (value == 20) return "높음";
+            return "";
+          },
+          font: { size: 8 },
+          color: "#777",
+          padding: -5,
+          align: "end", // 'start', 'center', 'end' 중 선택
+          crossAlign: "near", // 'near', 'center', 'far' 중 선택
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "완독할 확률(%)",
+          color: "#777",
+          font: {
+            size: 8,
+          },
+        },
+        grid: { display: false },
+        min: -20,
+        max: 20,
+        border: {
+          display: false, // false y축 제거
+        },
+        ticks: {
+          callback: function (value) {
+            return value == 20 ? "높음" : "";
+          },
+          font: { size: 8 },
+          padding: -10,
+          color: "#777",
+          align: "start", // 'start', 'center', 'end' 중 선택
+          crossAlign: "far", // 'near', 'center', 'far' 중 선택
+        },
+      },
+    },
+    onHover: (event, elements, chart) => {
+      if (elements.length > 0) {
+        // hover된 포인트의 데이터값(x, y) 가져오기
+        const datasetIndex = elements[0].datasetIndex;
+        const index = elements[0].index;
+        const point = chart.data.datasets[datasetIndex].data[index];
+        // 사분면 판별 (여기서는 x, y=0 기준)
+        if (point.x < 0 && point.y > 0) hoveredArea = 1;
+        else if (point.x >= 0 && point.y > 0) hoveredArea = 2;
+        else if (point.x < 0 && point.y <= 0) hoveredArea = 3;
+        else hoveredArea = 4;
+      } else {
+        hoveredArea = null;
+      }
+      chart.draw(); // 차트 다시 그리기
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        enabled: false, // 기본 툴팁 비활성화
+        external: function (context) {
+          // 1. 툴팁 엘리먼트 준비
+          let tooltipEl = document.getElementById("chartjs-tooltip");
+
+          if (!tooltipEl) {
+            tooltipEl = document.createElement("div");
+            tooltipEl.id = "chartjs-tooltip";
+            tooltipEl.style.position = "absolute";
+            tooltipEl.style.pointerEvents = "none";
+            document.body.appendChild(tooltipEl);
+          }
+
+          // 2. 툴팁 숨김 처리
+          const tooltipModel = context.tooltip;
+          if (tooltipModel.opacity === 0) {
+            tooltipEl.style.opacity = 0;
+            return;
+          }
+
+          // 3. 데이터 추출
+          const dataIndex = tooltipModel.dataPoints?.[0]?.dataIndex;
+          let areaName = ""; // 예: 'holric'
+
+          switch (hoveredArea) {
+            case 1:
+              areaName = "holric";
+              break;
+            case 2:
+              areaName = "milliePic";
+              break;
+            case 3:
+              areaName = "hidden";
+              break;
+            case 4:
+              areaName = "mania";
+              break;
+          }
+          const obj = division[areaName][dataIndex % 5];
+          const imgUrl = `./images/users/bookList/${obj.bookCover_url}.png`;
+
+          // 4. HTML 생성
+          tooltipEl.innerHTML = `
+          <div style="background:#fff; border:0.5px solid #484848; border-radius:3px; padding:10px 12px;">
+            <img src="${imgUrl}" style="width:30px; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);">
+          </div>
+        `;
+
+          // 5. 위치 조정
+          const position = context.chart.canvas.getBoundingClientRect();
+          tooltipEl.style.opacity = 1;
+          tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + "px";
+          tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + "px";
+          tooltipEl.style.transform = "translate(-50%, -105%)";
+
+          // 6. 책정보 표시
+          const completedReadElem = document.getElementById("completedReaders"),
+            bookNameElem = completedReadElem.querySelector(".bookName"),
+            bookCateElem = completedReadElem.querySelector(".bookCategory"),
+            completPer = completedReadElem.querySelector(".completPer"),
+            completTime = completedReadElem.querySelector(".completTime");
+          bookNameElem.textContent = `${obj.bookName}`;
+          bookCateElem.textContent = `${obj.category}`;
+          ["up", "down"].forEach((clss) => {
+            completPer.classList.remove(clss);
+            completTime.classList.remove(clss);
+          });
+          completPer.classList.add(obj.completPer_than);
+          completTime.classList.add(obj.completTime_than);
+          completPer.querySelector(".dataTitle .data").textContent = `${obj.completPer}`;
+          completTime.querySelector(".dataTitle .data").textContent = `${obj.completTime}`;
+          completPer.querySelector(".thanAverage .data").textContent = `${obj.completPer_Avg}`;
+          completTime.querySelector(".thanAverage .data").textContent = `${obj.completTime_Avg}`;
+        },
+      },
+    },
+    interaction: {
+      mode: "nearest", // hover 시 가까운 데이터 요소에 반응
+      intersect: false,
+    },
+    animation: {
+      duration: 1000, // 애니메이션 지속 시간 설정
+    },
+  };
+  // 차트 사등분 하기
+  const onHoverBackground = {
+    id: "bgColorArea", // 플러그인 고유 id
+    beforeDraw(chart) {
+      // 차트가 그려지기 전에 실행
+      const {
+        ctx, // canvas 2D
+        chartArea: { left, top, width, height }, // 차트 영역 선택
+      } = chart;
+      ctx.save(); // 현재 캔버스 상태 저장
+
+      const halfWidth = width / 2;
+      const halfHeight = height / 2;
+
+      // 각 사분면별로 hover 상태에 따라 배경색 결정
+      const areaColors = [
+        hoveredArea === 1 ? "#F9F3FF" : "#fff", // 1사분면 (왼쪽 위)
+        hoveredArea === 2 ? "#F9F3FF" : "#fff", // 2사분면 (오른쪽 위)
+        hoveredArea === 3 ? "#F9F3FF" : "#fff", // 3사분면 (왼쪽 아래)
+        hoveredArea === 4 ? "#F9F3FF" : "#fff", // 4사분면 (오른쪽 아래)
+      ];
+
+      // 1사분면 (왼쪽 위)
+      ctx.fillStyle = areaColors[0];
+      ctx.fillRect(left, top, halfWidth, halfHeight);
+      ctx.strokeStyle = "#222"; // 원하는 border 색상
+      ctx.lineWidth = 0.5; // 원하는 border 두께
+      ctx.strokeRect(left, top, halfWidth, halfHeight);
+      // 2사분면 (오른쪽 위)
+      ctx.fillStyle = areaColors[1];
+      ctx.fillRect(left + halfWidth, top, halfWidth, halfHeight);
+      ctx.strokeRect(left + halfWidth, top, halfWidth, halfHeight);
+      // 3사분면 (왼쪽 아래)
+      ctx.fillStyle = areaColors[2];
+      ctx.fillRect(left, top + halfHeight, halfWidth, halfHeight);
+      ctx.strokeRect(left, top + halfHeight, halfWidth, halfHeight);
+      // 4사분면 (오른쪽 아래)
+      ctx.fillStyle = areaColors[3];
+      ctx.fillRect(left + halfWidth, top + halfHeight, halfWidth, halfHeight);
+      ctx.strokeRect(left + halfWidth, top + halfHeight, halfWidth, halfHeight);
+
+      ctx.restore(); // 이전 캔버스 상태로 복원 (다른 그리기 작업에 영향 방지)
+    },
+  };
+
+  const config = {
+    type: "scatter",
+    data: {
+      datasets: [
+        {
+          data: data,
+        },
+      ],
+    },
+    options: options,
+    plugins: [onHoverBackground],
+  };
+
+  new Chart(ctx, config);
+}
+completedReaders_chart();
