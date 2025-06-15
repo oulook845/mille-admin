@@ -733,6 +733,12 @@ function completedReaders_chart() {
         hoveredArea === 3 ? "#F9F3FF" : "#fff", // 3사분면 (왼쪽 아래)
         hoveredArea === 4 ? "#F9F3FF" : "#fff", // 4사분면 (오른쪽 아래)
       ];
+      const textColors = [
+        hoveredArea === 1 ? "#D2AEFF" : "#C9C9C9", // 1사분면 (왼쪽 위)
+        hoveredArea === 2 ? "#D2AEFF" : "#C9C9C9", // 2사분면 (오른쪽 위)
+        hoveredArea === 3 ? "#D2AEFF" : "#C9C9C9", // 3사분면 (왼쪽 아래)
+        hoveredArea === 4 ? "#D2AEFF" : "#C9C9C9", // 4사분면 (오른쪽 아래)
+      ];
 
       // 1사분면 (왼쪽 위)
       ctx.fillStyle = areaColors[0];
@@ -740,18 +746,52 @@ function completedReaders_chart() {
       ctx.strokeStyle = "#222"; // 원하는 border 색상
       ctx.lineWidth = 0.5; // 원하는 border 두께
       ctx.strokeRect(left, top, halfWidth, halfHeight);
+      // 글자 스타일 설정
+      ctx.font = "800 20px Pretendard-R"; // 폰트 크기와 종류
+      ctx.fillStyle = textColors[0]; // 글자 색상
+      ctx.textAlign = "start"; // 가운데 정렬
+      ctx.textBaseline = "middle"; // 세로 중앙 정렬
+      // 사각형 중앙 좌표 계산
+      let centerX = left + 15;
+      let centerY = top + 20;
+      // 글자 출력
+      ctx.fillText("홀릭", centerX, centerY);
+
       // 2사분면 (오른쪽 위)
       ctx.fillStyle = areaColors[1];
       ctx.fillRect(left + halfWidth, top, halfWidth, halfHeight);
       ctx.strokeRect(left + halfWidth, top, halfWidth, halfHeight);
+      ctx.font = "800 20px Pretendard-R"; // 폰트 크기와 종류
+      ctx.fillStyle = textColors[1]; // 글자 색상
+      ctx.textAlign = "end"; // 가운데 정렬
+      ctx.textBaseline = "middle"; // 세로 중앙 정렬
+      centerX = left + halfWidth * 2 - 15;
+      centerY = top + 20;
+      ctx.fillText("밀리 픽", centerX, centerY);
+
       // 3사분면 (왼쪽 아래)
       ctx.fillStyle = areaColors[2];
       ctx.fillRect(left, top + halfHeight, halfWidth, halfHeight);
       ctx.strokeRect(left, top + halfHeight, halfWidth, halfHeight);
+      ctx.font = "800 20px Pretendard-R"; // 폰트 크기와 종류
+      ctx.fillStyle = textColors[2]; // 글자 색상
+      ctx.textAlign = "start"; // 가운데 정렬
+      ctx.textBaseline = "middle"; // 세로 중앙 정렬
+      centerX = left + 15;
+      centerY = top + halfWidth + 40;
+      ctx.fillText("히든", centerX, centerY);
+
       // 4사분면 (오른쪽 아래)
       ctx.fillStyle = areaColors[3];
       ctx.fillRect(left + halfWidth, top + halfHeight, halfWidth, halfHeight);
       ctx.strokeRect(left + halfWidth, top + halfHeight, halfWidth, halfHeight);
+      ctx.font = "800 20px Pretendard-R"; // 폰트 크기와 종류
+      ctx.fillStyle = textColors[3]; // 글자 색상
+      ctx.textAlign = "end"; // 가운데 정렬
+      ctx.textBaseline = "middle"; // 세로 중앙 정렬
+      centerX = left + halfWidth * 2 - 15;
+      centerY = top + halfWidth + 40;
+      ctx.fillText("마니아", centerX, centerY);
 
       ctx.restore(); // 이전 캔버스 상태로 복원 (다른 그리기 작업에 영향 방지)
     },
