@@ -1,0 +1,199 @@
+#container section#books {
+  flex-wrap: nowrap;
+}
+#container section#books .column.left_area {
+  width: 35%;
+}
+#container section#books .column.left_area article.dragger {
+  width: 100%;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content {
+  padding: 1.042vw 2.604vw;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .bookCategory ul {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 5px;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .bookCategory ul li {
+  width: calc((100% - 40px) / 5);
+  padding: 5px;
+  text-align: center;
+  font-size: 10px;
+  color: var(--MainColor-Black);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .bookCategory ul li.on {
+  color: var(--MainColor-Purple);
+  border: 1px solid var(--SubColor-Purple2);
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .bookCategory .selectWrap {
+  width: 50px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 10px;
+  margin-left: auto;
+  position: relative;
+  z-index: 9;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .bookCategory .selectWrap.on .selectBox {
+  height: auto;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .bookCategory .selectWrap button.title {
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .bookCategory .selectWrap button.title span.arrow {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url(../images/common/Chevron_down.png) no-repeat center;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .bookCategory .selectWrap .selectBox {
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  overflow: hidden;
+  transition: 0.5s;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .bookCategory .selectWrap .selectBox span {
+  display: inline-block;
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  color: var(--Stroke-Gray);
+  background-color: #fff;
+  cursor: pointer;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .bookCategory .selectWrap .selectBox span:hover {
+  background-color: #f6ecff;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap {
+  margin-top: 10px;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--Stroke-Gray);
+  opacity: 0;
+  transform: translateY(-20px);
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li:not(:first-child) {
+  margin-top: 10px;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li img {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure {
+  display: flex;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure .rank {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  padding: 0 25px;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure .rank span {
+  display: block;
+  font-size: 6px;
+  color: var(--Font-Gray);
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure .rank span.keep::before {
+  content: "";
+  width: 4px;
+  height: 2px;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure .rank span.up {
+  color: var(--RankUpBadge-Green);
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure .rank span.up::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: url(../images/common/rankUp_arrow.png) no-repeat center/contain;
+  margin-right: 2px;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure .rank span.down {
+  color: var(--RankDownBadge-Red);
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure .rank span.down::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: url(../images/common/rankDown_arrow.png) no-repeat center/contain;
+  margin-right: 2px;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure figcaption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure figcaption h3.bookName {
+  font-size: 10px;
+  font-weight: 600;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure figcaption .bookWriter {
+  margin-top: 5px;
+  font-size: 8px;
+  color: var(--Font-Gray);
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure figcaption .bookPoint {
+  margin-top: 20px;
+  font-size: 8px;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure figcaption .bookPoint .point {
+  font-weight: 600;
+}
+#container section#books .column.left_area article.dragger#popularBooks .content .booksWrap ul.bookList li figure figcaption .bookPoint .txt {
+  margin-left: 5px;
+}
+#container section#books .column.left_area article.dragger#popularKeyword .content {
+  padding: 20px 25px;
+}
+#container section#books .column.left_area article.dragger#popularKeyword .content p.timeText {
+  font-size: 10px;
+  text-align: right;
+}
+#container section#books .column.left_area article.dragger#popularKeyword .content .keywordList {
+  margin-top: 40px;
+}
+#container section#books .column.left_area article.dragger#popularKeyword .content .keywordList ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 12px;
+  row-gap: 20px;
+}
+#container section#books .column.left_area article.dragger#popularKeyword .content .keywordList ul li {
+  font-size: 12px;
+  border: 1px solid #e0c1ff;
+  border-radius: 999px;
+  padding: 5px 10px;
+}
+#container section#books .column.left_area article.dragger#popularKeyword .content .keywordList ul li::before {
+  content: "#";
+  display: inline-block;
+}
+#container section#books .column.right_area {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+#container section#books .column.right_area article.dragger {
+  width: calc((100% - 20px) / 2);
+  height: calc((100% - 20px) / 2);
+}

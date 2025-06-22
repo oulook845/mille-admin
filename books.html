@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Millie</title>
+    <link rel="stylesheet" href="./css/import.css" />
+    <link rel="stylesheet" href="./css/books.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <header id="header">
+      <div class="inner flex-between">
+        <h1 id="logo">
+          <a href="#" class="block-anchor text-hidden bg-image">밀리의서재 로고</a>
+        </h1>
+
+        <div class="utils flex-between">
+          <a href="#" id="profile" class="flex-center">
+            <img src="./images/common/admin_profile.png" alt="프로필" />
+            admin
+          </a>
+
+          <a href="#" id="now_alarm" class="block-anchor">
+            <img src="./images/common/bell_ringing.png" alt="" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- main -->
+    <main id="container" class="flex">
+      <!-- aside#aside_gnb ----------------->
+      <aside id="main_gnb">
+        <nav id="gnb">
+          <ul>
+            <li id="gnb_home">
+              <a href="./index.html" class="block-anchor">대시보드</a>
+            </li>
+            <li id="gnb_visit">
+              <a href="./visit.html" class="block-anchor">방문</a>
+            </li>
+            <li id="gnb_users">
+              <a href="./users.html" class="block-anchor">사용자</a>
+            </li>
+            <li id="gnb_books" class="list-active">
+              <a href="./books.html" class="block-anchor">도서</a>
+            </li>
+            <li id="gnb_notice">
+              <a href="#" class="block-anchor">게시판</a>
+            </li>
+            <li id="gnb_settings">
+              <a href="#" class="block-anchor">설정</a>
+            </li>
+          </ul>
+          <div id="dark-mode" role="button">
+            <a href="#" class="block-anchor">다크모드</a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- section ---------------------------->
+      <section id="books">
+        <div class="left_area column col100 row50">
+          <article id="popularBooks" class="dragger list-group-item" draggable="true">
+            <h3 class="title">인기 도서 순위<span class="data-refresh"></span></h3>
+            <div class="content">
+              <div class="bookCategory">
+                <ul>
+                  <li data-category="total" class="on">종합</li>
+                  <li data-category="novel">소설</li>
+                  <li data-category="economy">경제/경영</li>
+                  <li data-category="self">자기계발</li>
+                  <li data-category="poetry">시/에세이</li>
+                  <li data-category="liberal">인문/교양</li>
+                  <li data-category="hobby">취미/실용</li>
+                  <li data-category="child">어린이/청소년</li>
+                  <li data-category="magazine">매거진</li>
+                  <li data-category="fantasy">판타지/무협</li>
+                </ul>
+                <div class="selectWrap">
+                  <button class="title"><span class="txt">일간</span> <span class="arrow"></span></button>
+                  <div class="selectBox">
+                    <span data-period="일간">일간</span>
+                    <span data-period="주간">주간</span>
+                    <span data-period="월간">월간</span>
+                  </div>
+                </div>
+              </div>
+              <div class="booksWrap">
+                <ul class="bookList">
+                  <li>
+                    <figure>
+                      <img src="./images/books/bookrank01.png" />
+                      <div class="rank">
+                        <span class="num">1</span>
+                        <span class="keep">-</span>
+                      </div>
+                      <figcaption>
+                        <h3 class="bookName">단어가 품은 세계</h3>
+                        <p class="bookWriter">황선엽</p>
+                        <p class="bookPoint">
+                          <span class="point fColor_purple">Point</span><span class="txt">인문 카테고리 주간 1위</span>
+                        </p>
+                      </figcaption>
+                    </figure>
+                  </li>
+                  <li>
+                    <figure>
+                      <img src="./images/books/bookrank02.png" />
+                      <div class="rank">
+                        <span class="num">2</span>
+                        <span class="keep">-</span>
+                      </div>
+                      <figcaption>
+                        <h3 class="bookName">구해줘</h3>
+                        <p class="bookWriter">기욤 뮈소 지음 / 윤미연 옮김</p>
+                        <p class="bookPoint">
+                          <span class="point fColor_purple">Point</span><span class="txt">소설 카테고리 주간 1위</span>
+                        </p>
+                      </figcaption>
+                    </figure>
+                  </li>
+                  <li>
+                    <figure>
+                      <img src="./images/books/bookrank03.png" />
+                      <div class="rank">
+                        <span class="num">3</span>
+                        <span class="up">1</span>
+                      </div>
+                      <figcaption>
+                        <h3 class="bookName">애 같은 말투 10분 만에 바꿔 드립니다</h3>
+                        <p class="bookWriter">김채린</p>
+                        <p class="bookPoint">
+                          <span class="point fColor_purple">Point</span
+                          ><span class="txt">자기계발 카테고리 주간 1위</span>
+                        </p>
+                      </figcaption>
+                    </figure>
+                  </li>
+                  <li>
+                    <figure>
+                      <img src="./images/books/bookrank04.png" />
+                      <div class="rank">
+                        <span class="num">4</span>
+                        <span class="up">6</span>
+                      </div>
+                      <figcaption>
+                        <h3 class="bookName">싯다르타</h3>
+                        <p class="bookWriter">헤르만 헤세 지음 / 박병덕 옮김</p>
+                        <p class="bookPoint">
+                          <span class="point fColor_purple">Point</span><span class="txt">소설 카테고리 주간 2위</span>
+                        </p>
+                      </figcaption>
+                    </figure>
+                  </li>
+                  <li>
+                    <figure>
+                      <img src="./images/books/bookrank05.png" />
+                      <div class="rank">
+                        <span class="num">5</span>
+                        <span class="up">34</span>
+                      </div>
+                      <figcaption>
+                        <h3 class="bookName">지적 대화를 위한 넓고 얕는 지식 무한</h3>
+                        <p class="bookWriter">채사장</p>
+                        <p class="bookPoint">
+                          <span class="point fColor_purple">Point</span
+                          ><span class="txt">오디오북 카테고리 주간 1위</span>
+                        </p>
+                      </figcaption>
+                    </figure>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article id="popularKeyword" class="dragger list-group-item" draggable="true">
+            <h3 class="title">밀리 인기 키워드<span class="data-refresh"></span></h3>
+            <div class="content">
+              <p class="timeText"></p>
+              <div class="keywordList">
+                <ul>
+                  <li><span>경제상식</span></li>
+                  <li><span>김태리 오디오북</span></li>
+                  <li><span>주식</span></li>
+                  <li><span>민음사 세계문학전집</span></li>
+                  <li><span>부동산</span></li>
+
+                  <li><span>한국사</span></li>
+                  <li><span>히기시노 게이고</span></li>
+                  <li><span>장류진 신간</span></li>
+                  <li><span>영어</span></li>
+                  <li><span>한강</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="right_area column row50">
+          <article id="genreStats" class="dragger list-group-item" draggable="true">
+            <h3 class="title">장르별 이용 현황</h3>
+            <div class="content">
+              <div class="canvas_wrap">
+                <p>장르별 이용률</p>
+                <canvas></canvas>
+              </div>
+              <div class="infoArea">
+                <p>장르별 연령대 & 성비</p>
+                <div>
+                  <div class="selectBox category"></div>
+                  <div class="selectBox age"></div>
+                  <div class="selectBox gender"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article id="mediaContent" class="dragger list-group-item" draggable="true">
+            <h3 class="title">멀티 미디어 독서 컨텐츠</h3>
+            <div class="content">
+              <div class="infoArea">
+                <p class="timeText"></p>
+                <div class="infoTxt">
+                  <p class="title">평균 독서 시간</p>
+                  <p class="read_time"><span>124</span>분</p>
+                </div>
+              </div>
+              <div class="canvas_wrap">
+                <p class="title">장르별 평균 독서 시간</p>
+                <canvas></canvas>
+              </div>
+            </div>
+          </article>
+
+          <article id="milliContent" class="dragger list-group-item" draggable="true">
+            <h3 class="title">밀리 컨텐츠<span class="data-refresh"></span></h3>
+            <div class="content">
+              <div class="infoArea">
+                <p class="summary">매트릭스 별 TOP5 선정</p>
+                <div class="infoTxt">
+                  <p class="title">평균 완독률</p>
+                  <p class="read_time"><span>56</span>%</p>
+                </div>
+                <div class="infoTxt">
+                  <p class="title">평균 완독 시간</p>
+                  <p class="read_time"><span>130</span>분</p>
+                </div>
+              </div>
+
+              <div class="data_wrap">
+                <div class="canvas_wrap">
+                  <p class="title">밀리 완독지수 매트릭스</p>
+                  <canvas style="height: 100%; max-height: 200px"></canvas>
+                  <!-- <div id="chartjs-tooltip"></div> -->
+                </div>
+                <div class="bookInfo">
+                  <div class="currentBook_wrap conList">
+                    <p class="fColor_purple">
+                      <span class="division">홀릭</span>
+                    </p>
+                    <p class="title">
+                      <span class="bookName">PLAN B 플랜 B</span>
+                      &nbsp;│&nbsp;
+                      <span class="bookCategory">경제경영 분야</span>
+                    </p>
+                    <p class="completPer up">
+                      <span class="dataTitle">완독할 확률&nbsp;<span class="data">65</span>%</span>
+                      &nbsp;│&nbsp;
+                      <span class="thanAverage">평균&nbsp;<span class="data">56</span>%&nbsp;대비</span>
+                    </p>
+                    <p class="completTime down">
+                      <span class="dataTitle">완독 예상 시간&nbsp;<span class="data">95</span>분</span>
+                      &nbsp;│&nbsp;
+                      <span class="thanAverage">평균&nbsp;<span class="data">130</span>분&nbsp;대비</span>
+                    </p>
+                  </div>
+                  <div class="bookList_wrap conList">
+                    <ul>
+                      <li>
+                        <p class="title fColor_purple">홀릭</p>
+                        <p class="desc">부담없이 술술 읽다보면 빠져드는 책</p>
+                      </li>
+                      <li>
+                        <p class="title fColor_purple">밀리 픽</p>
+                        <p class="desc">밀리 회원들이 검증한 후회없는 책</p>
+                      </li>
+                      <li>
+                        <p class="title fColor_purple">히든</p>
+                        <p class="desc">밀리 회원들이 검증한 후회없는 책</p>
+                      </li>
+                      <li>
+                        <p class="title fColor_purple">마니아</p>
+                        <p class="desc">푹 빠진 읽을수록 보람 있는 책</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article id="bookInfoPanel" class="dragger list-group-item" draggable="true">
+            <h3 class="title">도서 정보</h3>
+            <div class="content">
+              <div class="infoArea">
+                <p class="summary">매트릭스 별 TOP5 선정</p>
+                <div class="infoTxt">
+                  <p class="title">평균 완독률</p>
+                  <p class="read_time"><span>56</span>%</p>
+                </div>
+                <div class="infoTxt">
+                  <p class="title">평균 완독 시간</p>
+                  <p class="read_time"><span>130</span>분</p>
+                </div>
+              </div>
+
+              <div class="data_wrap">
+                <div class="canvas_wrap">
+                  <p class="title">밀리 완독지수 매트릭스</p>
+                  <canvas style="height: 100%; max-height: 200px"></canvas>
+                  <!-- <div id="chartjs-tooltip"></div> -->
+                </div>
+                <div class="bookInfo">
+                  <div class="currentBook_wrap conList">
+                    <p class="fColor_purple">
+                      <span class="division">홀릭</span>
+                    </p>
+                    <p class="title">
+                      <span class="bookName">PLAN B 플랜 B</span>
+                      &nbsp;│&nbsp;
+                      <span class="bookCategory">경제경영 분야</span>
+                    </p>
+                    <p class="completPer up">
+                      <span class="dataTitle">완독할 확률&nbsp;<span class="data">65</span>%</span>
+                      &nbsp;│&nbsp;
+                      <span class="thanAverage">평균&nbsp;<span class="data">56</span>%&nbsp;대비</span>
+                    </p>
+                    <p class="completTime down">
+                      <span class="dataTitle">완독 예상 시간&nbsp;<span class="data">95</span>분</span>
+                      &nbsp;│&nbsp;
+                      <span class="thanAverage">평균&nbsp;<span class="data">130</span>분&nbsp;대비</span>
+                    </p>
+                  </div>
+                  <div class="bookList_wrap conList">
+                    <ul>
+                      <li>
+                        <p class="title fColor_purple">홀릭</p>
+                        <p class="desc">부담없이 술술 읽다보면 빠져드는 책</p>
+                      </li>
+                      <li>
+                        <p class="title fColor_purple">밀리 픽</p>
+                        <p class="desc">밀리 회원들이 검증한 후회없는 책</p>
+                      </li>
+                      <li>
+                        <p class="title fColor_purple">히든</p>
+                        <p class="desc">밀리 회원들이 검증한 후회없는 책</p>
+                      </li>
+                      <li>
+                        <p class="title fColor_purple">마니아</p>
+                        <p class="desc">푹 빠진 읽을수록 보람 있는 책</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer id="footer">
+      <div class="inner"></div>
+    </footer>
+
+    <!-- sortable.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+
+    <!-- path cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/pathseg@1.2.1/pathseg.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/poly-decomp@0.3.0/build/decomp.min.js"></script>
+    <!-- matter.js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
+
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script type="module" src="./js/import.js"></script>
+    <script type="module" src="./js/books.js"></script>
+  </body>
+</html>
