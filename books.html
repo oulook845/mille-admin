@@ -204,16 +204,66 @@
             <h3 class="title">장르별 이용 현황</h3>
             <div class="content">
               <div class="canvas_wrap">
-                <p>장르별 이용률</p>
-                <canvas></canvas>
+                <p class="timeText"></p>
+                <p class="canvas_title">장르별 이용률</p>
+                <div class="canvas_box">
+                  <canvas></canvas>
+                  <ul id="genreStats_list"></ul>
+                </div>
               </div>
               <div class="infoArea">
-                <p>장르별 연령대 & 성비</p>
-                <div>
-                  <div class="selectBox category"></div>
-                  <div class="selectBox age"></div>
-                  <div class="selectBox gender"></div>
+                <p class="info_title">장르별 연령대 & 성비</p>
+                <div class="infoWrap">
+                  <div class="selectBox category">
+                    <button class="selectBtn">
+                      <span>자기계발</span>
+                      <i class="down_arrow"></i>
+                    </button>
+                    <div class="select">
+                      <ul>
+                        <li>자기계발</li>
+                        <li>소설</li>
+                        <li>경제/경영</li>
+                        <li>시/에세이</li>
+                        <li>인문/교양</li>
+                        <li>어린이/청소년</li>
+                        <li>판타지/무협</li>
+                        <li>매거진</li>
+                        <li>취미/실용</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <span>분야의</span>
+                  <div class="selectBox age">
+                    <button class="selectBtn">
+                      <span>20대</span>
+                      <i class="down_arrow"></i>
+                    </button>
+                    <div class="select">
+                      <ul>
+                        <li>10대</li>
+                        <li>20대</li>
+                        <li>30대</li>
+                        <li>40대</li>
+                        <li>50대</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="selectBox gender">
+                    <button class="selectBtn">
+                      <span>여성</span>
+                      <i class="down_arrow"></i>
+                    </button>
+                    <div class="select">
+                      <ul>
+                        <li>남성</li>
+                        <li>여성</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <span>의 비율은</span>
                 </div>
+                <p class="summary"><span class="per fColor_purple">31%</span> 입니다.</p>
               </div>
             </div>
           </article>
@@ -221,16 +271,24 @@
           <article id="mediaContent" class="dragger list-group-item" draggable="true">
             <h3 class="title">멀티 미디어 독서 컨텐츠</h3>
             <div class="content">
-              <div class="infoArea">
-                <p class="timeText"></p>
-                <div class="infoTxt">
-                  <p class="title">평균 독서 시간</p>
-                  <p class="read_time"><span>124</span>분</p>
-                </div>
-              </div>
               <div class="canvas_wrap">
-                <p class="title">장르별 평균 독서 시간</p>
-                <canvas></canvas>
+                <p class="timeText"></p>
+                <p class="canvas_title">독서 컨텐츠 이용률</p>
+                <div id="ebook" class="chart">
+                  <canvas></canvas>
+                </div>
+                <div id="audiobook" class="chart">
+                  <canvas></canvas>
+                </div>
+                <div id="chatbook" class="chart">
+                  <canvas></canvas>
+                </div>
+                <div id="objectbook" class="chart">
+                  <canvas></canvas>
+                </div>
+                <div id="docentbook" class="chart">
+                  <canvas></canvas>
+                </div>
               </div>
             </div>
           </article>
@@ -376,6 +434,9 @@
     <footer id="footer">
       <div class="inner"></div>
     </footer>
+
+    <!-- jQuery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
 
     <!-- sortable.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>

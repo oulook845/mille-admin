@@ -1,6 +1,7 @@
 import { nowData } from "./common.js";
 import { bookList } from "./booksData.js";
 
+/* 인기 도서 순위 dom요소 */
 const popularBooksElem = document.getElementById("popularBooks"),
   bookCategoryElem = popularBooksElem.querySelector(".bookCategory"),
   categorylistElems = bookCategoryElem.querySelectorAll("li"),
@@ -9,7 +10,13 @@ const popularBooksElem = document.getElementById("popularBooks"),
   selectConElems = selectWrapElem.querySelectorAll(".selectBox span"),
   booksWrapElem = popularBooksElem.querySelector(".booksWrap"),
   booksListElems = booksWrapElem.querySelectorAll(".bookList li");
+/* 밀리 인기 키워드 dom요소 */
 const popularKeywordElem = document.getElementById("popularKeyword");
+/* 장르별 이용 현황 dom요소 */
+const genreStatsdElem = document.getElementById("genreStats"),
+  selectBtnElems = genreStatsdElem.querySelectorAll(".selectBtn"),
+  selectElems = genreStatsdElem.querySelectorAll(".select"),
+  infoPerElem = genreStatsdElem.querySelector(".summary span.per");
 
 /* 인기 도서 순위 ###################### */
 
@@ -132,3 +139,118 @@ function updateDateTime() {
   };
   return formatDate(now);
 }
+
+/* 장르별 이용 현황 ###################### */
+function genreStats() {
+  // 오늘 날짜 표시
+  $("#genreStats p.timeText").text(`${nowData.year}.${nowData.month} 기준`);
+
+  // 카테고리 버튼 열고 닫기
+  selectBtnElems.forEach((btn, idx) => {
+    const arrow = btn.querySelector(".down_arrow");
+    const selectElem = selectElems[idx];
+    // 현재 상태 확인
+    let isOpen = false;
+
+    btn.addEventListener("click", function () {
+      if (!isOpen) {
+        // 열기
+        $(".down_arrow").css({ transform: "rotate(0deg)" });
+        $("#genreStats .select").css({ display: "none" });
+        arrow.style.transform = "rotate(180deg)";
+        selectElem.style.display = "block";
+        isOpen = true;
+      } else {
+        // 닫기
+        arrow.style.transform = "rotate(0deg)";
+        selectElem.style.display = "none";
+        isOpen = false;
+      }
+    });
+
+    // 새로운 카테고리 선택시 %값 수정
+    const selectUlElem = selectElem.querySelector("ul"),
+      selectList = selectUlElem.querySelectorAll("li");
+
+    selectList.forEach((liElem) => {
+      liElem.addEventListener("click", function () {
+        const value = liElem.textContent;
+        $(".down_arrow").css({ transform: "rotate(0deg)" });
+        $("#genreStats .select").css({ display: "none" });
+        let per = Math.floor(Math.random() * (70 - 30 + 1)) + 30;
+        infoPerElem.textContent = `${per}%`;
+
+        $(this).closest(".selectBox").find(".selectBtn span").text(value);
+      });
+    });
+  });
+}
+genreStats();
+// 장르별 이용 현황 차트
+function genreStats_chart() {
+  const ctx = document.getElementById("genreStats").querySelector("canvas").getContext("2d");
+  const labelsElem = document.getElementById("genreStats_list");
+
+  const labels_array = [
+    "취미/실용",
+    "매거진",
+    "판타지/무협",
+    "어린이/청소년",
+    "인문/교양",
+    "시/에세이",
+    "경제/경영",
+    "소설",
+    "자기계발",
+  ];
+  const data = [3, 5, 7, 8, 9, 10, 13, 18, 27];
+  const bgColor = ["#431473", "#4F009F", "#6200C4", "#8B16FF", "#A143FF", "#B871FF", "#D3A7FF", "#E5CCFF", "#F3E6FF"];
+
+  labels_array.forEach((label, idx) => {
+    // console.log(label)
+    const label_list = document.createElement("li");
+    const label_badge = document.createElement("span");
+
+    label_list.textContent = label;
+    labelsElem.prepend(label_list);
+    label_list.prepend(label_badge);
+    label_badge.style.backgroundColor = bgColor[idx];
+  });
+
+  const options = {
+    responsive: true, // false 크기를 고정으로
+    maintainAspectRatio: true, // 기본값 true, 비율 유지
+    plugins: {
+      legend: {
+        display: false, // false 범례 숨기기
+      },
+    },
+    animation: 1000,
+  };
+  const config = {
+    type: "pie",
+    data: {
+      datasets: [
+        {
+          data: data,
+          borderWidth: 0,
+          backgroundColor: bgColor,
+        },
+      ],
+    },
+    options: options,
+  };
+
+  new Chart(ctx, config);
+}
+genreStats_chart();
+
+/* 멀티 미디어 독서 컨텐츠 ###################### */
+function mediaContent() {
+// 오늘 날짜 표시
+  $("#mediaContent p.timeText").text(`${nowData.year}.${nowData.month} 기준`);
+}
+mediaContent();
+
+// 멀티 미디어 독서 컨텐츠 차트
+function mediaContent_chart() {}
+mediaContent_chart();
