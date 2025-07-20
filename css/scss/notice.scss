@@ -1,0 +1,20 @@
+#container {
+  section#notice {
+    .column {
+      &.top_area {
+        article.dragger {
+          &#feedManage {
+          }
+          &#bookReview {
+          }
+        }
+      }
+      &.bottom_area {
+        article.dragger {
+          &#noticeArea {}
+          &#inquiryArea {}
+        }
+      }
+    }
+  }
+}

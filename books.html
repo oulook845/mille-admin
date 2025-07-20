@@ -47,7 +47,7 @@
               <a href="./books.html" class="block-anchor">도서</a>
             </li>
             <li id="gnb_notice">
-              <a href="#" class="block-anchor">게시판</a>
+              <a href="notice.html" class="block-anchor">게시판</a>
             </li>
             <li id="gnb_settings">
               <a href="#" class="block-anchor">설정</a>
@@ -62,6 +62,7 @@
       <!-- section ---------------------------->
       <section id="books">
         <div class="left_area column col100 row50">
+          <!-- 인기 도서 순위 -->
           <article id="popularBooks" class="dragger list-group-item" draggable="true">
             <h3 class="title">인기 도서 순위<span class="data-refresh"></span></h3>
             <div class="content">
@@ -176,6 +177,7 @@
             </div>
           </article>
 
+          <!-- 밀리 인기 키워드 -->
           <article id="popularKeyword" class="dragger list-group-item" draggable="true">
             <h3 class="title">밀리 인기 키워드<span class="data-refresh"></span></h3>
             <div class="content">
@@ -200,6 +202,7 @@
         </div>
 
         <div class="right_area column row50">
+          <!-- 장르별 이용 현황 -->
           <article id="genreStats" class="dragger list-group-item" draggable="true">
             <h3 class="title">장르별 이용 현황</h3>
             <div class="content">
@@ -268,159 +271,133 @@
             </div>
           </article>
 
+          <!-- 멀티 미디어 독서 컨텐츠 -->
           <article id="mediaContent" class="dragger list-group-item" draggable="true">
             <h3 class="title">멀티 미디어 독서 컨텐츠</h3>
             <div class="content">
               <div class="canvas_wrap">
                 <p class="timeText"></p>
                 <p class="canvas_title">독서 컨텐츠 이용률</p>
-                <div id="ebook" class="chart">
-                  <canvas></canvas>
-                </div>
-                <div id="audiobook" class="chart">
-                  <canvas></canvas>
-                </div>
-                <div id="chatbook" class="chart">
-                  <canvas></canvas>
-                </div>
-                <div id="objectbook" class="chart">
-                  <canvas></canvas>
-                </div>
-                <div id="docentbook" class="chart">
-                  <canvas></canvas>
+                <div class="chartWrap">
+                  <div id="ebook" class="chart">
+                    <canvas></canvas>
+                  </div>
+                  <div id="audiobook" class="chart">
+                    <canvas></canvas>
+                  </div>
+                  <div id="chatbook" class="chart">
+                    <canvas></canvas>
+                  </div>
+                  <div id="objectbook" class="chart">
+                    <canvas></canvas>
+                  </div>
+                  <div id="docentbook" class="chart">
+                    <canvas></canvas>
+                  </div>
                 </div>
               </div>
             </div>
           </article>
 
+          <!-- 밀리 컨텐츠 -->
           <article id="milliContent" class="dragger list-group-item" draggable="true">
             <h3 class="title">밀리 컨텐츠<span class="data-refresh"></span></h3>
             <div class="content">
-              <div class="infoArea">
-                <p class="summary">매트릭스 별 TOP5 선정</p>
-                <div class="infoTxt">
-                  <p class="title">평균 완독률</p>
-                  <p class="read_time"><span>56</span>%</p>
-                </div>
-                <div class="infoTxt">
-                  <p class="title">평균 완독 시간</p>
-                  <p class="read_time"><span>130</span>분</p>
-                </div>
-              </div>
+              <div class="con_wrap">
+                <p class="timeText">2025.03.20(18:00)</p>
 
-              <div class="data_wrap">
-                <div class="canvas_wrap">
-                  <p class="title">밀리 완독지수 매트릭스</p>
-                  <canvas style="height: 100%; max-height: 200px"></canvas>
-                  <!-- <div id="chartjs-tooltip"></div> -->
-                </div>
-                <div class="bookInfo">
-                  <div class="currentBook_wrap conList">
-                    <p class="fColor_purple">
-                      <span class="division">홀릭</span>
-                    </p>
-                    <p class="title">
-                      <span class="bookName">PLAN B 플랜 B</span>
-                      &nbsp;│&nbsp;
-                      <span class="bookCategory">경제경영 분야</span>
-                    </p>
-                    <p class="completPer up">
-                      <span class="dataTitle">완독할 확률&nbsp;<span class="data">65</span>%</span>
-                      &nbsp;│&nbsp;
-                      <span class="thanAverage">평균&nbsp;<span class="data">56</span>%&nbsp;대비</span>
-                    </p>
-                    <p class="completTime down">
-                      <span class="dataTitle">완독 예상 시간&nbsp;<span class="data">95</span>분</span>
-                      &nbsp;│&nbsp;
-                      <span class="thanAverage">평균&nbsp;<span class="data">130</span>분&nbsp;대비</span>
-                    </p>
+                <div class="popular_content">
+                  <p class="summary">인기 컨텐츠 카테고리 순위</p>
+                  <div class="listWrap">
+                    <div class="book_pick">
+                      <p class="cata">도서 추천 컨텐츠</p>
+                      <ol></ol>
+                    </div>
+                    <div class="millie_article">
+                      <p class="cata">아티클</p>
+                      <ol></ol>
+                    </div>
                   </div>
-                  <div class="bookList_wrap conList">
-                    <ul>
-                      <li>
-                        <p class="title fColor_purple">홀릭</p>
-                        <p class="desc">부담없이 술술 읽다보면 빠져드는 책</p>
-                      </li>
-                      <li>
-                        <p class="title fColor_purple">밀리 픽</p>
-                        <p class="desc">밀리 회원들이 검증한 후회없는 책</p>
-                      </li>
-                      <li>
-                        <p class="title fColor_purple">히든</p>
-                        <p class="desc">밀리 회원들이 검증한 후회없는 책</p>
-                      </li>
-                      <li>
-                        <p class="title fColor_purple">마니아</p>
-                        <p class="desc">푹 빠진 읽을수록 보람 있는 책</p>
-                      </li>
-                    </ul>
+                </div>
+
+                <div class="most_content">
+                  <p class="summary">카테고리 별 최다 이용 컨텐츠</p>
+                  <div class="listWrap">
+                    <div class="con pick">
+                      <p class="con_title">도서 추천 컨텐츠</p>
+                      <div class="book_info">
+                        <p class="name"></p>
+                        <div class="read">조회수 <span>32,089회</span></div>
+                        <div class="complet">컨텐츠 완독률 <span>88%</span></div>
+                      </div>
+                    </div>
+
+                    <div class="con article">
+                      <p class="con_title">아티클</p>
+                      <div class="book_info">
+                        <p class="name"></p>
+                        <div class="read">조회수 <span>47,301회</span></div>
+                        <div class="complet">컨텐츠 완독률 <span>85%</span></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </article>
 
+          <!-- 도서 정보 -->
           <article id="bookInfoPanel" class="dragger list-group-item" draggable="true">
             <h3 class="title">도서 정보</h3>
             <div class="content">
-              <div class="infoArea">
-                <p class="summary">매트릭스 별 TOP5 선정</p>
-                <div class="infoTxt">
-                  <p class="title">평균 완독률</p>
-                  <p class="read_time"><span>56</span>%</p>
-                </div>
-                <div class="infoTxt">
-                  <p class="title">평균 완독 시간</p>
-                  <p class="read_time"><span>130</span>분</p>
-                </div>
-              </div>
+              <div class="conWrap">
+                <label for="search_book"
+                  ><input type="text" id="search_book" placeholder="무의식은 어떻게 나를 설계하는가" /><i
+                    class="search_icon"
+                    ><span class="text-hidden">검색</span></i
+                  ></label
+                >
 
-              <div class="data_wrap">
-                <div class="canvas_wrap">
-                  <p class="title">밀리 완독지수 매트릭스</p>
-                  <canvas style="height: 100%; max-height: 200px"></canvas>
-                  <!-- <div id="chartjs-tooltip"></div> -->
+                <div class="bookInfo_main">
+                  <figure>
+                    <div class="img">
+                      <img src="./images/books/BookSearch01.png" alt="무의식은 어떻게 나를 설계하는가" />
+                    </div>
+                    <figcaption>
+                      <p class="name">무의식은 어떻게 나를 설계하는가</p>
+                      <p class="author">데이비드 이글먼 지음 / 김승옥 옮김</p>
+                      <ul class="info_list">
+                        <li>카테고리 /&nbsp;<span>과학</span></li>
+                        <li>페이지 /&nbsp;<span>348P</span></li>
+                        <li>용량 /&nbsp;<span>78.03MB</span></li>
+                        <li>출판사 /&nbsp;<span>알에이치코리아(RHK)</span></li>
+                        <li>종이책 출간일 /&nbsp;<span>2024.11.22</span></li>
+                        <li>전자책 출간일 /&nbsp;<span>2024.11.28</span></li>
+                        <li>ISBN /&nbsp;<span>9788925527734</span></li>
+                      </ul>
+                    </figcaption>
+                  </figure>
                 </div>
-                <div class="bookInfo">
-                  <div class="currentBook_wrap conList">
-                    <p class="fColor_purple">
-                      <span class="division">홀릭</span>
-                    </p>
-                    <p class="title">
-                      <span class="bookName">PLAN B 플랜 B</span>
-                      &nbsp;│&nbsp;
-                      <span class="bookCategory">경제경영 분야</span>
-                    </p>
-                    <p class="completPer up">
-                      <span class="dataTitle">완독할 확률&nbsp;<span class="data">65</span>%</span>
-                      &nbsp;│&nbsp;
-                      <span class="thanAverage">평균&nbsp;<span class="data">56</span>%&nbsp;대비</span>
-                    </p>
-                    <p class="completTime down">
-                      <span class="dataTitle">완독 예상 시간&nbsp;<span class="data">95</span>분</span>
-                      &nbsp;│&nbsp;
-                      <span class="thanAverage">평균&nbsp;<span class="data">130</span>분&nbsp;대비</span>
-                    </p>
+
+                <div class="bookInfo_list">
+                  <div class="list01">
+                    <div class="inner">
+                      <p>이 책을 서재에 가장 많이 담은 회원</p>
+                      <ol>
+                        <li><span class="rank">1위</span>40대 남성</li>
+                        <li><span class="rank">2위</span>30대 남성</li>
+                      </ol>
+                    </div>
                   </div>
-                  <div class="bookList_wrap conList">
-                    <ul>
-                      <li>
-                        <p class="title fColor_purple">홀릭</p>
-                        <p class="desc">부담없이 술술 읽다보면 빠져드는 책</p>
-                      </li>
-                      <li>
-                        <p class="title fColor_purple">밀리 픽</p>
-                        <p class="desc">밀리 회원들이 검증한 후회없는 책</p>
-                      </li>
-                      <li>
-                        <p class="title fColor_purple">히든</p>
-                        <p class="desc">밀리 회원들이 검증한 후회없는 책</p>
-                      </li>
-                      <li>
-                        <p class="title fColor_purple">마니아</p>
-                        <p class="desc">푹 빠진 읽을수록 보람 있는 책</p>
-                      </li>
-                    </ul>
+                  <div class="list02">
+                    <div class="inner">
+                      <p>밀리 완독지수</p>
+                      <ul>
+                        <li><span class="fColor_purple">마니아</span>과학 분야 평균 대비</li>
+                        <li><span>완독할 확률 43%</span>평균 53% 대비<i class="icon down"></i></li>
+                        <li><span>완독 예상 시간 330분</span>평균 91분 대비 <i class="icon up"></i></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -436,7 +413,7 @@
     </footer>
 
     <!-- jQuery cdn -->
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- sortable.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>

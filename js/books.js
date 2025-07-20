@@ -246,11 +246,423 @@ genreStats_chart();
 
 /* 멀티 미디어 독서 컨텐츠 ###################### */
 function mediaContent() {
-// 오늘 날짜 표시
+  // 오늘 날짜 표시
   $("#mediaContent p.timeText").text(`${nowData.year}.${nowData.month} 기준`);
 }
 mediaContent();
 
 // 멀티 미디어 독서 컨텐츠 차트
-function mediaContent_chart() {}
+function mediaContent_chart() {
+  const textArray = ["전자책", "오디오북", "챗북", "오브제북", "도슨트북"];
+
+  const options = {
+    responsive: false,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false, // 범례 숨기기
+      },
+      tooltip: {
+        enabled: false, // 툴팁 숨기기
+      },
+    },
+  };
+
+  // 전자책 차트
+  function ebook_chart() {
+    const ctx = document.getElementById("ebook").querySelector("canvas").getContext("2d");
+    let text = "전자책"; // 가운데에 표시할 텍스트
+    let per = 52;
+
+    let centerTextPlugin = {
+      id: "centerText",
+      beforeDraw(chart) {
+        const { width } = chart;
+        const { height } = chart;
+        const ctx = chart.ctx;
+        ctx.restore();
+
+        // 가운데 지점 위치
+        const x = width / 2;
+        const y = height / 2;
+
+        const fontSize = (height / 100).toFixed(2); // 폰트 크기 자동 조절
+        ctx.font = `600 ${fontSize * 12}px Pretendard-R`;
+        ctx.textBaseline = "middle";
+        ctx.textAlign = "center";
+
+        // 카테고리 텍스트
+        ctx.fillStyle = "#000"; // 텍스트 색상
+        ctx.fillText(text, x, y - fontSize * 8); //
+
+        // 퍼센트 텍스트
+        ctx.font = `400 ${fontSize * 10}px Pretendard-R`;
+        ctx.fillText(`${per}%`, x, y + fontSize * 8); // 아래쪽에 배치
+        ctx.save();
+      },
+    };
+
+    const config = {
+      type: "doughnut",
+      data: {
+        datasets: [
+          {
+            data: [per, 100 - per],
+            backgroundColor: ["#A258F7", "transparent"], // 채워진 부분, 비어있는 부분 색상
+            borderWidth: 0,
+            cutout: "85%", // 도넛 중앙 크기
+            borderRadius: 10,
+          },
+        ],
+      },
+      options: options,
+      plugins: [centerTextPlugin],
+    };
+
+    new Chart(ctx, config);
+  }
+  ebook_chart();
+
+  // 오디오북 차트
+  function audiobook_chart() {
+    const ctx = document.getElementById("audiobook").querySelector("canvas").getContext("2d");
+    let text = "오디오북"; // 가운데에 표시할 텍스트
+    let per = 28;
+
+    let centerTextPlugin = {
+      id: "centerText",
+      beforeDraw(chart) {
+        const { width } = chart;
+        const { height } = chart;
+        const ctx = chart.ctx;
+        ctx.restore();
+
+        // 가운데 지점 위치
+        const x = width / 2;
+        const y = height / 2;
+
+        const fontSize = (height / 100).toFixed(2); // 폰트 크기 자동 조절
+        ctx.font = `600 ${fontSize * 12}px Pretendard-R`;
+        ctx.textBaseline = "middle";
+        ctx.textAlign = "center";
+
+        // 카테고리 텍스트
+        ctx.fillStyle = "#000"; // 텍스트 색상
+        ctx.fillText(text, x, y - fontSize * 8); //
+
+        // 퍼센트 텍스트
+        ctx.font = `400 ${fontSize * 10}px Pretendard-R`;
+        ctx.fillText(`${per}%`, x, y + fontSize * 8); // 아래쪽에 배치
+        ctx.save();
+      },
+    };
+
+    const config = {
+      type: "doughnut",
+      data: {
+        datasets: [
+          {
+            data: [per, 100 - per],
+            backgroundColor: ["#A258F7", "transparent"], // 채워진 부분, 비어있는 부분 색상
+            borderWidth: 0,
+            cutout: "85%", // 도넛 중앙 크기
+            borderRadius: 10,
+          },
+        ],
+      },
+      options: options,
+      plugins: [centerTextPlugin],
+    };
+
+    new Chart(ctx, config);
+  }
+  audiobook_chart();
+
+  // 챗북 차트
+  function chatbook_chart() {
+    const ctx = document.getElementById("chatbook").querySelector("canvas").getContext("2d");
+
+    let text = "챗북"; // 가운데에 표시할 텍스트
+    let per = 10;
+
+    let centerTextPlugin = {
+      id: "centerText",
+      beforeDraw(chart) {
+        const { width } = chart;
+        const { height } = chart;
+        const ctx = chart.ctx;
+        ctx.restore();
+
+        // 가운데 지점 위치
+        const x = width / 2;
+        const y = height / 2;
+
+        const fontSize = (height / 100).toFixed(2); // 폰트 크기 자동 조절
+        ctx.font = `600 ${fontSize * 12}px Pretendard-R`;
+        ctx.textBaseline = "middle";
+        ctx.textAlign = "center";
+
+        // 카테고리 텍스트
+        ctx.fillStyle = "#000"; // 텍스트 색상
+        ctx.fillText(text, x, y - fontSize * 8); //
+
+        // 퍼센트 텍스트
+        ctx.font = `400 ${fontSize * 10}px Pretendard-R`;
+        ctx.fillText(`${per}%`, x, y + fontSize * 8); // 아래쪽에 배치
+        ctx.save();
+      },
+    };
+
+    const config = {
+      type: "doughnut",
+      data: {
+        datasets: [
+          {
+            data: [per, 100 - per],
+            backgroundColor: ["#A258F7", "transparent"], // 채워진 부분, 비어있는 부분 색상
+            borderWidth: 0,
+            cutout: "85%", // 도넛 중앙 크기
+            borderRadius: 10,
+          },
+        ],
+      },
+      options: options,
+      plugins: [centerTextPlugin],
+    };
+
+    new Chart(ctx, config);
+  }
+  chatbook_chart();
+
+  // 오브제북 차트
+  function objectbook_chart() {
+    const ctx = document.getElementById("objectbook").querySelector("canvas").getContext("2d");
+
+    let text = "오브제북"; // 가운데에 표시할 텍스트
+    let per = 3;
+
+    let centerTextPlugin = {
+      id: "centerText",
+      beforeDraw(chart) {
+        const { width } = chart;
+        const { height } = chart;
+        const ctx = chart.ctx;
+        ctx.restore();
+
+        // 가운데 지점 위치
+        const x = width / 2;
+        const y = height / 2;
+
+        const fontSize = (height / 100).toFixed(2); // 폰트 크기 자동 조절
+        ctx.font = `600 ${fontSize * 12}px Pretendard-R`;
+        ctx.textBaseline = "middle";
+        ctx.textAlign = "center";
+
+        // 카테고리 텍스트
+        ctx.fillStyle = "#000"; // 텍스트 색상
+        ctx.fillText(text, x, y - fontSize * 8); //
+
+        // 퍼센트 텍스트
+        ctx.font = `400 ${fontSize * 10}px Pretendard-R`;
+        ctx.fillText(`${per}%`, x, y + fontSize * 8); // 아래쪽에 배치
+        ctx.save();
+      },
+    };
+
+    const config = {
+      type: "doughnut",
+      data: {
+        datasets: [
+          {
+            data: [per, 100 - per],
+            backgroundColor: ["#A258F7", "transparent"], // 채워진 부분, 비어있는 부분 색상
+            borderWidth: 0,
+            cutout: "85%", // 도넛 중앙 크기
+            borderRadius: 10,
+          },
+        ],
+      },
+      options: options,
+      plugins: [centerTextPlugin],
+    };
+
+    new Chart(ctx, config);
+  }
+  objectbook_chart();
+
+  // 도슨트북 차트
+  function docentbook_chart() {
+    const ctx = document.getElementById("docentbook").querySelector("canvas").getContext("2d");
+
+    let text = "도슨트북"; // 가운데에 표시할 텍스트
+    let per = 7;
+
+    let centerTextPlugin = {
+      id: "centerText",
+      beforeDraw(chart) {
+        const { width } = chart;
+        const { height } = chart;
+        const ctx = chart.ctx;
+        ctx.restore();
+
+        // 가운데 지점 위치
+        const x = width / 2;
+        const y = height / 2;
+
+        const fontSize = (height / 100).toFixed(2); // 폰트 크기 자동 조절
+        ctx.font = `600 ${fontSize * 12}px Pretendard-R`;
+        ctx.textBaseline = "middle";
+        ctx.textAlign = "center";
+
+        // 카테고리 텍스트
+        ctx.fillStyle = "#000"; // 텍스트 색상
+        ctx.fillText(text, x, y - fontSize * 8); //
+
+        // 퍼센트 텍스트
+        ctx.font = `400 ${fontSize * 10}px Pretendard-R`;
+        ctx.fillText(`${per}%`, x, y + fontSize * 8); // 아래쪽에 배치
+        ctx.save();
+      },
+    };
+
+    const config = {
+      type: "doughnut",
+      data: {
+        datasets: [
+          {
+            data: [per, 100 - per],
+            backgroundColor: ["#A258F7", "transparent"], // 채워진 부분, 비어있는 부분 색상
+            borderWidth: 0,
+            cutout: "85%", // 도넛 중앙 크기
+            borderRadius: 10,
+          },
+        ],
+      },
+      options: options,
+      plugins: [centerTextPlugin],
+    };
+
+    new Chart(ctx, config);
+  }
+  docentbook_chart();
+}
 mediaContent_chart();
+
+/* 밀리 컨텐츠 ###################### */
+// 밀리 컨텐츠 순위
+function miileContent_day() {
+  // 오늘 날짜 표시
+  $("#milliContent p.timeText").text(
+    `${nowData.year}.${nowData.month}.${nowData.day}(${nowData.hours}:${nowData.seconds})`
+  );
+}
+miileContent_day();
+
+// 밀리 컨텐츠 순위 변경
+let content_array = [
+  "밀리로드, 지금 이 작가야",
+  "오늘 읽어야 할 단 한 권",
+  "올타임 레전드",
+  "밀리 시리즈",
+  "에디터의 선택",
+];
+let article_array = ["밀리 아티클", "밀리의 발견", "밀리로그", "우리동네 책방", "독서 트렌드"];
+
+/* 인기 컨텐츠 카테고리 순위 */
+function miile_popularContent() {
+  /* 도서 추천 이벤트 */
+  content_array.forEach((con, idx) => {
+    $("#milliContent .book_pick ol").append(`<li><span class='rank'>${idx + 1}</span>${content_array[idx]}</li>`);
+  });
+
+  /* 아티클 */
+  article_array.forEach((con, idx) => {
+    $("#milliContent .millie_article ol").append(`<li><span class='rank'>${idx + 1}</span>${article_array[idx]}</li>`);
+  });
+
+  popularContent_ani();
+}
+miile_popularContent();
+
+/* 인기 컨텐츠 카테고리 순위 애니메이션 */
+function popularContent_ani() {
+  // 기본 상태 (초기화)
+  $("#milliContent .popular_content ol li").css({
+    opacity: 0,
+    transform: "translateY(100%)",
+    transition: "0s",
+  });
+  $("#milliContent .millie_article ol li").css({
+    opacity: 0,
+    transform: "translateY(100%)",
+    transition: "0s",
+  });
+  $("#milliContent .most_content .name").css({
+    opacity: 0,
+    transform: "translateY(100%)",
+    transition: "0s",
+  })
+
+
+  // 올라오는 애니메이션
+  setTimeout(() => {
+    /* popular_content */
+    $("#milliContent .popular_content ol li").css({
+      opacity: 1,
+      transform: "translateY(0)",
+      transition: "0.5s",
+    });
+    content_array.forEach((liElem, idx) => {
+      $("#milliContent .popular_content ol li")
+        .eq(idx)
+        .css({
+          transitionDelay: `${0.1 * idx}s`,
+        });
+    });
+
+    /* millie_article */
+    $("#milliContent .millie_article ol li").css({
+      opacity: 1,
+      transform: "translateY(0)",
+      transition: "0.5s",
+    });
+    article_array.forEach((liElem, idx) => {
+      $("#milliContent .millie_article ol li")
+        .eq(idx)
+        .css({
+          transitionDelay: `${0.1 * idx}s`,
+        });
+    });
+
+    /* 카테고리 별 최다 이용 컨텐츠 : 책이름 */
+    $("#milliContent .most_content .name").css({
+      opacity: 1,
+      transform: "translateY(0)",
+      transition: "0.5s",
+    });
+  }, 100);
+}
+
+/* 카테고리 별 최다 이용 컨텐츠 */
+function miile_mostContent() {
+  $("#milliContent .most_content .con.pick").find(".name").text(content_array[0]);
+  $("#milliContent .most_content .con.article").find(".name").text(article_array[0]);
+}
+miile_mostContent();
+
+// 데이터 새로고침 버튼
+$("#milliContent")
+  .find(".data-refresh")
+  .on("click", function () {
+    content_array.sort(() => Math.random() - 0.5);
+    article_array.sort(() => Math.random() - 0.5);
+
+    // 기존 컨텐츠 지우고 다시 입력
+    $("#milliContent .book_pick ol").html("");
+    $("#milliContent .millie_article ol").html("");
+    miile_popularContent();
+    miile_mostContent();
+
+    // 애니메이션 재실행
+    popularContent_ani();
+  });

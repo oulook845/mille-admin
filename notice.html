@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Millie</title>
+    <link rel="stylesheet" href="./css/import.css" />
+    <link rel="stylesheet" href="./css/notice.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <header id="header">
+      <div class="inner flex-between">
+        <h1 id="logo">
+          <a href="#" class="block-anchor text-hidden bg-image">밀리의서재 로고</a>
+        </h1>
+
+        <div class="utils flex-between">
+          <a href="#" id="profile" class="flex-center">
+            <img src="./images/common/admin_profile.png" alt="프로필" />
+            admin
+          </a>
+
+          <a href="#" id="now_alarm" class="block-anchor">
+            <img src="./images/common/bell_ringing.png" alt="" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- main -->
+    <main id="container" class="flex">
+      <!-- aside#aside_gnb ----------------->
+      <aside id="main_gnb">
+        <nav id="gnb">
+          <ul>
+            <li id="gnb_home">
+              <a href="./index.html" class="block-anchor">대시보드</a>
+            </li>
+            <li id="gnb_visit">
+              <a href="./visit.html" class="block-anchor">방문</a>
+            </li>
+            <li id="gnb_users">
+              <a href="./users.html" class="block-anchor">사용자</a>
+            </li>
+            <li id="gnb_books" class="list-active">
+              <a href="./books.html" class="block-anchor">도서</a>
+            </li>
+            <li id="gnb_notice">
+              <a href="notice.html" class="block-anchor">게시판</a>
+            </li>
+            <li id="gnb_settings">
+              <a href="#" class="block-anchor">설정</a>
+            </li>
+          </ul>
+          <div id="dark-mode" role="button">
+            <a href="#" class="block-anchor">다크모드</a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- section ---------------------------->
+      <section id="notice">
+        <!-- .left_area -->
+        <div class="top_area column col100 row50">
+          <!-- feedManage -->
+          <article id="feedManage" class="dragger list-group-item" draggable="true">
+            <h3 class="title">피드 관리</h3>
+            <div class="content"></div>
+          </article>
+
+          <!-- bookReview -->
+          <article id="bookReview" class="dragger list-group-item" draggable="true">
+            <h3 class="title">도서 리뷰</h3>
+            <div class="content"></div>
+          </article>
+        </div>
+
+        <!-- .right_area -->
+        <div class="bottom_area column col100 row50">
+          <!-- noticeArea -->
+          <article id="noticeArea" class="dragger list-group-item" draggable="true">
+            <h3 class="title">공지사항</h3>
+            <div class="content"></div>
+          </article>
+
+          <!-- inquiryArea -->
+          <article id="inquiryArea" class="dragger list-group-item" draggable="true">
+            <h3 class="title">문의</h3>
+            <div class="content"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer id="footer">
+      <div class="inner"></div>
+    </footer>
+
+    <!-- jQuery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- sortable.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+
+    <!-- path cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/pathseg@1.2.1/pathseg.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/poly-decomp@0.3.0/build/decomp.min.js"></script>
+    <!-- matter.js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
+
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script type="module" src="./js/import.js"></script>
+    <script type="module" src="./js/notice.js"></script>
+  </body>
+</html>
