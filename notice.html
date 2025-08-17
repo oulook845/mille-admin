@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Millie</title>
-     <link rel="shortcut icon" href="./images/common/millie_favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="./images/common/millie_favicon.ico" type="image/x-icon" />
     <link rel="icon" href="./images/common/millie_favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/import.css" />
     <link rel="stylesheet" href="./css/notice.css" />
@@ -66,28 +66,186 @@
         <!-- .left_area -->
         <div class="top_area column col100 row50">
           <!-- feedManage -->
-          <article id="feedManage" class="dragger list-group-item" draggable="true">
+          <article id="feedManage" class="dragger list-group-item" data-area="1" draggable="true">
             <h3 class="title">피드 관리</h3>
-            <div class="content"></div>
+            <div class="content">
+              <button class="report-list-btn">신고목록</button>
+              <ul class="feedList_tap">
+                <li class="selected" data-bookCate="post" data-case="case1"><a href="#">포스트</a></li>
+                <li data-bookCate="review" data-case="case2"><a href="#">한 줄 리뷰</a></li>
+                <li data-bookCate="highlight" data-case="case3"><a href="#">하이라이트</a></li>
+                <li data-bookCate="lifeBook" data-case="case4"><a href="#">인생책</a></li>
+              </ul>
+              <div class="feedList_conWrap">
+                <ul id="feedList_con" class="case1" data-length="8">
+                  <li>
+                    <a href="#">
+                      <div class="profile">
+                        <div class="icon"></div>
+                        <div class="user_name">
+                          <span class="name"></span>
+                          <span class="post_time">포스트 <span class="time">1</span>시간전</span>
+                          <span class="recommond">님이 인생책을 공유했어요.</span>
+                        </div>
+                        <button class="moreBtn">
+                          <img src="./images/common/more_icon.svg" alt="" />
+                          <div class="deltBtn">삭제하기</div>
+                        </button>
+                      </div>
+
+                      <div class="book_info">
+                        <figure>
+                          <div class="img"><img src="./images/books/feedBook_post_01.png" alt="" /></div>
+                          <figcaption>
+                            <div class="book_name"></div>
+                            <div class="book_desc"></div>
+                          </figcaption>
+                        </figure>
+                      </div>
+                    </a>
+                    <div class="comment_area">
+                      <div class="post">
+                        <i class="icon"></i>
+                        댓글
+                        <span class="count">0</span>
+                      </div>
+                      <div class="addTo">
+                        <i class="icon"></i>
+                        담기
+                      </div>
+                      <div class="likes">
+                        <i class="icon"></i>
+                        좋아요
+                        <span class="count">0</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+                <div class="feedList_pagnation">
+                  <button class="prev_btn"><span class="text-hidden">이전</span></button>
+                  <div class="pagination_num">
+                    <span class="selected">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                  </div>
+                  <button class="next_btn"><span class="text-hidden">다음</span></button>
+                </div>
+              </div>
+            </div>
           </article>
 
           <!-- bookReview -->
-          <article id="bookReview" class="dragger list-group-item" draggable="true">
+          <article id="bookReview" class="dragger list-group-item" data-area="1" draggable="true">
             <h3 class="title">도서 리뷰</h3>
-            <div class="content"></div>
+            <div class="content">
+              <label for="book_search">
+                <input type="text" id="book_search" placeholder="스토너" />
+                <i class="search_icon"></i>
+              </label>
+              <div class="bookReview_wrap">
+                <div class="left_area">
+                  <figure>
+                    <div class="img">
+                      <img src="./images/books/reviewBook_post_04.png" alt="" />
+                    </div>
+                    <figcaption>
+                      <div class="book_name">스토너</div>
+                      <div class="book_author">존윌리엄스 지음, 김승욱 옮김</div>
+                      <div class="book_cate">알에이치코리아(RHK), 소설, 2020.06.30</div>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="right_area">
+                  <div class="avg_rating">
+                    <div class="avg">
+                      <div class="rate">
+                        <div class="num">4.5</div>
+                        <img src="./images/common/rating/avg_rate_4_half.png" alt="" />
+                      </div>
+                    </div>
+                    <div class="total">
+                      <ul>
+                        <li>
+                          <span class="num">5점</span>
+                          <div class="gaege"><span></span></div>
+                        </li>
+                        <li>
+                          <span class="num">4점</span>
+                          <div class="gaege"><span></span></div>
+                        </li>
+                        <li>
+                          <span class="num">3점</span>
+                          <div class="gaege"><span></span></div>
+                        </li>
+                        <li>
+                          <span class="num">2점</span>
+                          <div class="gaege"><span></span></div>
+                        </li>
+                        <li>
+                          <span class="num">1점</span>
+                          <div class="gaege"><span></span></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="review_area">
+                    <div class="title">
+                      <p class="tit">한 줄 리뷰</p>
+                      <div class="selectBox">
+                        <p class="seleted">
+                          <span class="cate_txt">최신순</span>
+                          <span class="arrow"><img src="./images/common/Chevron_down.png" alt="" /></span>
+                        </p>
+
+                        <ul class="options">
+                          <li>최신순</li>
+                          <li>좋아요순</li>
+                          <li>별점 높은순</li>
+                          <li>별점 낮은순</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="reviews_area">
+                      <ul>
+                        <li>
+                          <div class="user_name">부드러운 음유시인_171685</div>
+                          <div class="rate">
+                            <img src="./images/common/rating/avg_rate_5.png" alt="" />
+                            <span>2025.04.20</span>
+                          </div>
+                          <p class="txt">과정보다 결과에 집착하는 사람들에게 추천하는 책</p>
+                          <div class="more">
+                            <img src="./images/common/more_btn.png" alt="" />
+                            <div class="delt_btn">삭제하기</div>
+                          </div>
+                          <div class="favorite">
+                            <span class="heart"></span>좋아요
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </article>
         </div>
 
         <!-- .right_area -->
         <div class="bottom_area column col100 row50">
           <!-- noticeArea -->
-          <article id="noticeArea" class="dragger list-group-item" draggable="true">
+          <article id="noticeArea" class="dragger list-group-item" data-area="1" draggable="true">
             <h3 class="title">공지사항</h3>
             <div class="content"></div>
           </article>
 
           <!-- inquiryArea -->
-          <article id="inquiryArea" class="dragger list-group-item" draggable="true">
+          <article id="inquiryArea" class="dragger list-group-item" data-area="1" draggable="true">
             <h3 class="title">문의</h3>
             <div class="content"></div>
           </article>
@@ -115,7 +273,7 @@
     <!-- chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-    <script type="module" src="./js/import.js"></script>
     <script type="module" src="./js/notice.js"></script>
+    <script type="module" src="./js/import.js"></script>
   </body>
 </html>

@@ -15,8 +15,8 @@
   // 밀리의 서재 서브컬러
   --SubColor-Purple1: #e0c1ff; // 밀리 서브컬러 연보라색상
   --SubColor-Purple2: #9747ff; // 밀리 서브컬러 보라색상
-  --SubColor-Yellow1: #FFF298; // 밀리 서브컬러 노랑색상
-  --SubColor-Yellow2: #FFFAD6; // 밀리 서브컬러 연노랑색상
+  --SubColor-Yellow1: #fff298; // 밀리 서브컬러 노랑색상
+  --SubColor-Yellow2: #fffad6; // 밀리 서브컬러 연노랑색상
   --SubColor-Black33: #333; // 밀리 서브컬러 연보라색상
   --SubColor-Black48: #484848; // 밀리 서브컬러 연보라색상
   --SubColor-Black77: #777; // 밀리 서브컬러 연보라색상
@@ -26,13 +26,16 @@
   // --darkMode-black:#222;
 
   --Stroke-Gray: #484848; // 회색 선색상
+  --Stroke-Gray2: #d5d5d5;
+  --SubColor-GrayFB: #fbfbfb;
+  --SubColor-BlackED: #ededed;
 
   // Badge Active 색상
   --AlertBadge-Active: #fc3030; // 새로운 알림이 있을 때
   --RankUpBadge-Green: #77d677; // 순위가 올랐을 때 색상
   --RankDownBadge-Red: #ff5656; // 순위가 떨어졌을 때 색상
-  --RankNewBadge-gold: #FEC417; // 순위에 처음 들어왔을 때 색상
+  --RankNewBadge-gold: #fec417; // 순위에 처음 들어왔을 때 색상
 
   // font style
-  --Font-Gray : #777777;
+  --Font-Gray: #777777;
 }
