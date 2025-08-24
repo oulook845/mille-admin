@@ -354,10 +354,12 @@ function topReader() {
 
   // 데이터 새로고침
   refreshBtn.addEventListener("click", function () {
-    bookList_lists.forEach((list, idx) =>
-      list
-        .querySelectorAll("span")
-        .forEach((span) => ((span.style.transform = "translateY(150%)"), (span.style.opacity = 0)))
+    bookList_lists.forEach(
+      (list, idx) =>
+        list.querySelectorAll("span").forEach((span) => {
+          span.style.transform = "translateY(150%)";
+          span.style.opacity = 0;
+        })
     );
     setTimeout(() => {
       bookList_lists.forEach((list, idx) =>
