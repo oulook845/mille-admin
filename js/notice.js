@@ -1,4 +1,16 @@
+import { nowData } from "./common.js";
 import { feedManager_book } from "./noticeData.js";
+
+/*
+nowData ={
+    year
+    month
+    day
+    hours
+    minutes
+    seconds
+}
+*/
 
 // 피드 관리 ####################################################
 
@@ -100,7 +112,7 @@ function booksRreview() {
       }
     }
   }
-  
+
   // 도서 리뷰 로딩시 애니메이션
   $("#bookReview .total ul").addClass("on");
   $("#bookReview .total ul li").each(function (idx) {
@@ -121,18 +133,26 @@ function booksRreview() {
 }
 booksRreview();
 
-function noticeArea(){
-  $('#noticeArea .noticeList li').click(function(){
-    $('#noticeArea .noticeList li').find('.desc').stop().slideUp();
-    $(this).find('.desc').stop().slideToggle();
-  })
+// 공지사항 ####################################################
+function noticeArea() {
+  // 제목 클릭시 내용보기
+  $("#noticeArea .noticeList li").click(function () {
+    $("#noticeArea .noticeList li").find(".desc").stop().slideUp();
+    $(this).find(".desc").stop().slideToggle();
+  });
+
+  $("#noticeArea .noticeList li:first-child")
+    .find(".WrittenDate")
+    .text(`${nowData.year}.${nowData.month}.${nowData.day}`);
 }
 noticeArea();
 
-function inquiryArea(){
-  $('#inquiryArea .inquiryList li').click(function(){
-    $('#inquiryArea .inquiryList li').find('.desc').stop().slideUp();
-    $(this).find('.desc').stop().slideToggle();
-  })
+// 문의 ####################################################
+function inquiryArea() {
+  // 제목 클릭시 내용보기
+  $("#inquiryArea .inquiryList li").click(function () {
+    $("#inquiryArea .inquiryList li").find(".desc").stop().slideUp();
+    $(this).find(".desc").stop().slideToggle();
+  });
 }
 inquiryArea();
