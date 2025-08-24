@@ -3,6 +3,7 @@
     .column {
       &.top_area {
         article.dragger {
+          height: auto;
           &#feedManage {
             .content {
               padding: 20px 58px;
@@ -266,7 +267,7 @@
                   display: inline-block;
                   width: 16px;
                   height: 16px;
-                  background: url(../../images/common/Icon_search.png) no-repeat center;
+                  background: url(../images/common/Icon_search.png) no-repeat center;
                 }
               }
               .bookReview_wrap {
@@ -412,7 +413,7 @@
                       overflow-y: scroll;
                       li {
                         position: relative;
-                        &:not(:first-child){
+                        &:not(:first-child) {
                           margin-top: 20px;
                         }
                         .user_name {
@@ -456,9 +457,28 @@
                             right: 10px;
                             transform: translateY(-50%);
                             cursor: pointer;
-                            &:hover{
+                            &:hover {
                               background-color: #eee;
                             }
+                          }
+                        }
+                        .favorite {
+                          display: flex;
+                          align-items: center;
+                          width: fit-content;
+                          height: 15px;
+                          font-size: 8px;
+                          line-height: 10px;
+                          border-radius: 99px;
+                          margin-top: 11px;
+                          padding: 0 7px;
+                          background-color: var(--SubColor-BlackED);
+                          .heart {
+                            display: inline-block;
+                            width: 8px;
+                            height: 8px;
+                            margin-right: 3px;
+                            background: url(../images/common/heart_icon_8.svg) no-repeat center / cover;
                           }
                         }
                       }
@@ -473,8 +493,294 @@
       &.bottom_area {
         article.dragger {
           &#noticeArea {
+            .content {
+              padding: 15px 50px 28px;
+              .inner {
+                position: relative;
+                .noticeList {
+                  ul {
+                    min-height: 337px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    li {
+                      position: relative;
+                      &::after {
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 0.5px;
+                        background-color: var(--SubColor-Black99);
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                      }
+                      .li_title {
+                        display: flex;
+                        align-items: center;
+                        height: 43px;
+                        padding: 0 10px;
+                        font-size: 12px;
+                        &::before {
+                          content: "공지";
+                          display: inline-block;
+                          font-size: 10px;
+                          color: inherit;
+                          border: 1px solid var(--Stroke-Gray);
+                          border-radius: 99px;
+                          margin-right: 25px;
+                          padding: 4px 10px;
+                        }
+                        p {
+                          flex: 1;
+                          white-space: nowrap;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                        }
+                        .new {
+                          font-size: 8px;
+                          color: #fec417;
+                          margin-left: 10px;
+                        }
+                        .WrittenDate {
+                          display: block;
+                          font-size: 10px;
+                          color: var(--Font-Gray);
+                        }
+                      }
+                      .desc {
+                        display: none;
+                        max-height: 140px;
+                        padding-left: 74px;
+                        position: relative;
+                        overflow-y: scroll;
+                        scrollbar-width: none;
+                        &::before {
+                          content: "";
+                          display: block;
+                          width: 100%;
+                          height: 0.5px;
+                          background: url(../images/common/line_repeatBg.svg) repeat-x center;
+                          position: absolute;
+                          left: 0;
+                          top: 0;
+                          z-index: 1;
+                        }
+                        p {
+                          font-size: 10px;
+                          padding-top: 10px;
+                          padding-bottom: 28px;
+                        }
+                        .btnWrap {
+                          display: flex;
+                          gap: 7px;
+                          font-size: 10px;
+                          position: absolute;
+                          right: 15px;
+                          bottom: 10px;
+                          & > div {
+                            padding: 4px 6px;
+                            border-radius: 3px;
+                          }
+                          .editBtn {
+                            color: var(--Stroke-Gray);
+                            border: 1px solid var(--MainColor-Purple);
+                            background-color: #fff;
+                            cursor: pointer;
+                          }
+                          .deltBtn {
+                            color: #fff;
+                            border: 1px solid var(--MainColor-Purple);
+                            background-color: var(--MainColor-Purple);
+                            cursor: pointer;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                .noticeTab {
+                  display: flex;
+                  justify-content: center;
+                  margin-top: 26px;
+                  &::before {
+                    content: "";
+                    display: inline-block;
+                    width: 12px;
+                    height: 12px;
+                    margin-right: 10px;
+                    background: url(../images/common/arrow_prevBtn.svg) no-repeat center;
+                    cursor: pointer;
+                  }
+                  &::after {
+                    content: "";
+                    display: inline-block;
+                    width: 12px;
+                    height: 12px;
+                    margin-left: 10px;
+                    background: url(../images/common/arrow_nextBtn.svg) no-repeat center;
+                    cursor: pointer;
+                  }
+                  ol {
+                    display: flex;
+                    li {
+                      font-size: 10px;
+                      color: var(--SubColor-Black99);
+                      padding: 0 5px;
+                      cursor: pointer;
+                      &.on {
+                        color: var(--MainColor-Black);
+                      }
+                    }
+                  }
+                }
+                .addWrite {
+                  display: inline-block;
+                  color: #fff;
+                  font-size: 10px;
+                  border-radius: 3px;
+                  padding: 4px 10px;
+                  background-color: var(--MainColor-Purple);
+                  position: absolute;
+                  right: 0;
+                  bottom: 4px;
+                  cursor: pointer;
+                  &::before {
+                    content: "+";
+                    display: inline-block;
+                    color: inherit;
+                    margin-right: 3px;
+                  }
+                }
+              }
+            }
           }
           &#inquiryArea {
+            .content {
+              padding: 15px 50px 28px;
+              .inner {
+                position: relative;
+                .inquiryList {
+                  ul {
+                    min-height: 337px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    li {
+                      position: relative;
+                      &::after {
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 0.5px;
+                        background-color: var(--SubColor-Black99);
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                      }
+                      .li_title {
+                        display: flex;
+                        align-items: center;
+                        height: 43px;
+                        padding: 0 10px;
+                        font-size: 12px;
+                        .userId {
+                          width: 64px;
+                          color: var(--Font-Gray);
+                          white-space: nowrap;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                        }
+                        p {
+                          flex: 1;
+                          white-space: nowrap;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                        }
+                        .new {
+                          font-size: 8px;
+                          color: #fec417;
+                          margin-left: 10px;
+                        }
+                      }
+                      .desc {
+                         display: none;
+                        max-height: 140px;
+                        padding-left: 74px;
+                        position: relative;
+                        overflow-y: scroll;
+                        scrollbar-width: none;
+                        &::before {
+                          content: "";
+                          display: block;
+                          width: 100%;
+                          height: 0.5px;
+                          background: url(../images/common/line_repeatBg.svg) repeat-x center;
+                          position: absolute;
+                          left: 0;
+                          top: 0;
+                          z-index: 1;
+                        }
+                        p {
+                          font-size: 10px;
+                          padding-top: 10px;
+                          padding-bottom: 28px;
+                        }
+                        .btnWrap {
+                          font-size: 10px;
+                          position: absolute;
+                          right: 25px;
+                          bottom: 10px;
+                          .replyBtn {
+                            color: #fff;
+                            border: 1px solid var(--MainColor-Purple);
+                            padding: 4px 12px;
+                            border-radius: 3px;
+                            background-color: var(--MainColor-Purple);
+                            cursor: pointer;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                .inquiryTab {
+                  display: flex;
+                  justify-content: center;
+                  margin-top: 26px;
+                  &::before {
+                    content: "";
+                    display: inline-block;
+                    width: 12px;
+                    height: 12px;
+                    margin-right: 10px;
+                    background: url(../images/common/arrow_prevBtn.svg) no-repeat center;
+                    cursor: pointer;
+                  }
+                  &::after {
+                    content: "";
+                    display: inline-block;
+                    width: 12px;
+                    height: 12px;
+                    margin-left: 10px;
+                    background: url(../images/common/arrow_nextBtn.svg) no-repeat center;
+                    cursor: pointer;
+                  }
+                  ol {
+                    display: flex;
+                    li {
+                      font-size: 10px;
+                      color: var(--SubColor-Black99);
+                      padding: 0 5px;
+                      cursor: pointer;
+                      &.on {
+                        color: var(--MainColor-Black);
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

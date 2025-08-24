@@ -1,3 +1,7 @@
+@charset "UTF-8";
+#container section#notice .column.top_area article.dragger {
+  height: auto;
+}
 #container section#notice .column.top_area article.dragger#feedManage .content {
   padding: 20px 58px;
   position: relative;
@@ -248,7 +252,7 @@
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: url(../../images/common/Icon_search.png) no-repeat center;
+  background: url(../images/common/Icon_search.png) no-repeat center;
 }
 #container section#notice .column.top_area article.dragger#bookReview .content .bookReview_wrap {
   flex: 1;
@@ -438,4 +442,305 @@
 }
 #container section#notice .column.top_area article.dragger#bookReview .content .bookReview_wrap .right_area .review_area .reviews_area li .more .delt_btn:hover {
   background-color: #eee;
+}
+#container section#notice .column.top_area article.dragger#bookReview .content .bookReview_wrap .right_area .review_area .reviews_area li .favorite {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: 15px;
+  font-size: 8px;
+  line-height: 10px;
+  border-radius: 99px;
+  margin-top: 11px;
+  padding: 0 7px;
+  background-color: var(--SubColor-BlackED);
+}
+#container section#notice .column.top_area article.dragger#bookReview .content .bookReview_wrap .right_area .review_area .reviews_area li .favorite .heart {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 3px;
+  background: url(../images/common/heart_icon_8.svg) no-repeat center/cover;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content {
+  padding: 15px 50px 28px;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner {
+  position: relative;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul {
+  min-height: 337px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li {
+  position: relative;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.5px;
+  background-color: var(--SubColor-Black99);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .li_title {
+  display: flex;
+  align-items: center;
+  height: 43px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .li_title::before {
+  content: "공지";
+  display: inline-block;
+  font-size: 10px;
+  color: inherit;
+  border: 1px solid var(--Stroke-Gray);
+  border-radius: 99px;
+  margin-right: 25px;
+  padding: 4px 10px;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .li_title p {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .li_title .new {
+  font-size: 8px;
+  color: #fec417;
+  margin-left: 10px;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .li_title .WrittenDate {
+  display: block;
+  font-size: 10px;
+  color: var(--Font-Gray);
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .desc {
+  display: none;
+  max-height: 140px;
+  padding-left: 74px;
+  position: relative;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .desc::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.5px;
+  background: url(../images/common/line_repeatBg.svg) repeat-x center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .desc p {
+  font-size: 10px;
+  padding-top: 10px;
+  padding-bottom: 28px;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .desc .btnWrap {
+  display: flex;
+  gap: 7px;
+  font-size: 10px;
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .desc .btnWrap > div {
+  padding: 4px 6px;
+  border-radius: 3px;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .desc .btnWrap .editBtn {
+  color: var(--Stroke-Gray);
+  border: 1px solid var(--MainColor-Purple);
+  background-color: #fff;
+  cursor: pointer;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeList ul li .desc .btnWrap .deltBtn {
+  color: #fff;
+  border: 1px solid var(--MainColor-Purple);
+  background-color: var(--MainColor-Purple);
+  cursor: pointer;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeTab {
+  display: flex;
+  justify-content: center;
+  margin-top: 26px;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeTab::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 10px;
+  background: url(../images/common/arrow_prevBtn.svg) no-repeat center;
+  cursor: pointer;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeTab::after {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 10px;
+  background: url(../images/common/arrow_nextBtn.svg) no-repeat center;
+  cursor: pointer;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeTab ol {
+  display: flex;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeTab ol li {
+  font-size: 10px;
+  color: var(--SubColor-Black99);
+  padding: 0 5px;
+  cursor: pointer;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .noticeTab ol li.on {
+  color: var(--MainColor-Black);
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .addWrite {
+  display: inline-block;
+  color: #fff;
+  font-size: 10px;
+  border-radius: 3px;
+  padding: 4px 10px;
+  background-color: var(--MainColor-Purple);
+  position: absolute;
+  right: 0;
+  bottom: 4px;
+  cursor: pointer;
+}
+#container section#notice .column.bottom_area article.dragger#noticeArea .content .inner .addWrite::before {
+  content: "+";
+  display: inline-block;
+  color: inherit;
+  margin-right: 3px;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content {
+  padding: 15px 50px 28px;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner {
+  position: relative;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul {
+  min-height: 337px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul li {
+  position: relative;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul li::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.5px;
+  background-color: var(--SubColor-Black99);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul li .li_title {
+  display: flex;
+  align-items: center;
+  height: 43px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul li .li_title .userId {
+  width: 64px;
+  color: var(--Font-Gray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul li .li_title p {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul li .li_title .new {
+  font-size: 8px;
+  color: #fec417;
+  margin-left: 10px;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul li .desc {
+  display: none;
+  max-height: 140px;
+  padding-left: 74px;
+  position: relative;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul li .desc::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.5px;
+  background: url(../images/common/line_repeatBg.svg) repeat-x center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul li .desc p {
+  font-size: 10px;
+  padding-top: 10px;
+  padding-bottom: 28px;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul li .desc .btnWrap {
+  font-size: 10px;
+  position: absolute;
+  right: 25px;
+  bottom: 10px;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryList ul li .desc .btnWrap .replyBtn {
+  color: #fff;
+  border: 1px solid var(--MainColor-Purple);
+  padding: 4px 12px;
+  border-radius: 3px;
+  background-color: var(--MainColor-Purple);
+  cursor: pointer;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryTab {
+  display: flex;
+  justify-content: center;
+  margin-top: 26px;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryTab::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 10px;
+  background: url(../images/common/arrow_prevBtn.svg) no-repeat center;
+  cursor: pointer;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryTab::after {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 10px;
+  background: url(../images/common/arrow_nextBtn.svg) no-repeat center;
+  cursor: pointer;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryTab ol {
+  display: flex;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryTab ol li {
+  font-size: 10px;
+  color: var(--SubColor-Black99);
+  padding: 0 5px;
+  cursor: pointer;
+}
+#container section#notice .column.bottom_area article.dragger#inquiryArea .content .inner .inquiryTab ol li.on {
+  color: var(--MainColor-Black);
 }

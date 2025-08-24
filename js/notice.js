@@ -2,8 +2,9 @@ import { feedManager_book } from "./noticeData.js";
 
 // 피드 관리 ####################################################
 
+let default_cate = feedManager_book.post;
+
 function feedManage() {
-  let default_cate = feedManager_book.post;
   let liElem = $("#feedManage #feedList_con").html();
 
   let i = 0;
@@ -96,8 +97,6 @@ function booksRreview() {
         $("#bookReview .bookReview_wrap .img img").attr("src", `./images/books/reviewBook_${cate.imgSrc}.png`);
         $("#bookReview .bookReview_wrap .book_name").text(cate.book_name);
         break;
-      } else {
-        console.log("찾지 못함");
       }
     }
   }
@@ -121,3 +120,19 @@ function booksRreview() {
   });
 }
 booksRreview();
+
+function noticeArea(){
+  $('#noticeArea .noticeList li').click(function(){
+    $('#noticeArea .noticeList li').find('.desc').stop().slideUp();
+    $(this).find('.desc').stop().slideToggle();
+  })
+}
+noticeArea();
+
+function inquiryArea(){
+  $('#inquiryArea .inquiryList li').click(function(){
+    $('#inquiryArea .inquiryList li').find('.desc').stop().slideUp();
+    $(this).find('.desc').stop().slideToggle();
+  })
+}
+inquiryArea();
