@@ -265,7 +265,7 @@ main#container section#users article#topReaders .content .canvas_wrap ul.bookLis
   height: 0.5px;
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 0.5px;
   background: #999;
 }
 main#container section#users article#topReaders .content .canvas_wrap ul.bookList li span {
