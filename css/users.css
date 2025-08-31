@@ -107,6 +107,7 @@ main#container section#users article#userSignups .content .conList#newAccession 
   position: absolute;
   left: 0;
   bottom: 12px;
+  z-index: 99;
 }
 main#container section#users article#userSignups .content .conList#newAccession ul.chartList li .canvas_wrap .chart {
   width: 20px;

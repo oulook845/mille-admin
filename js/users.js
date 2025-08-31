@@ -146,7 +146,7 @@ function userSecession_chart() {
   const newOut_Data = [38, 77, 50, 60];
   const newRest_Data = [10, 63, 58, 80];
   const options = {
-    responsive: false,
+    responsive: true,
     maintainAspectRatio: false,
     layout: {
       padding: {
