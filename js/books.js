@@ -282,6 +282,7 @@ function genreStats_chart() {
 
         bodyColor: "#9747FF",
         bodyFont: {
+          weight: "bold",
           size: 8,
         },
 
