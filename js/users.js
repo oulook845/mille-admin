@@ -128,6 +128,18 @@ newAccession();
 function userSecession_chart() {
   const ctx = document.getElementById("churnRate").querySelector("canvas").getContext("2d");
 
+  // tooltip 위치 조절
+  Chart.Tooltip.positioners.nearest = function (items) {
+    const pos = Chart.Tooltip.positioners.average(items);
+    if (pos === false) {
+      return false;
+    }
+    return {
+      x: pos.x,
+      y: pos.y - 30, // 데이터 상단에서 30px 위로
+    };
+  };
+
   const labels = ["1분기", "2분기", "3분기", "4분기"];
   const beforeOut_Data = [30, 40, 35, 42];
   const beforeRest_Data = [15, 56, 43, 47];
@@ -136,7 +148,11 @@ function userSecession_chart() {
   const options = {
     responsive: false,
     maintainAspectRatio: false,
-    layout: {},
+    layout: {
+      padding: {
+        top: 20,
+      },
+    },
     scales: {
       x: {
         offset: true, // 레이블을 축 끝에서 약간 떨어뜨림 true
@@ -179,6 +195,66 @@ function userSecession_chart() {
       legend: {
         display: false,
       },
+      tooltip: {
+        mode: "nearest", // 툴팁 표시도 가장 가까운 데이터만
+        displayColors: true, // false 네모 색상박스 제거
+        usePointStyle: true, // pointStyle 적용
+        yAlign: "none",
+        position: "nearest",
+        // position: "top",
+
+        bodyAlign: "center", // 본문 중앙 정렬
+        borderWidth: 0.5,
+        borderColor: "#222",
+        backgroundColor: "#fff",
+
+        padding: {
+          top: 5,
+          left: 15,
+          bottom: 5,
+          right: 15,
+        },
+        titleAlign: "center", // 제목 중앙 정렬
+        titleColor: "#777",
+        titleFont: {
+          weight: "normal",
+          size: 6,
+          lineHeight: .5,
+        },
+
+        bodyColor: "#222",
+        bodyFont: {
+          size: 6,
+        },
+
+        callbacks: {
+          title: function (tooltipItems) {
+            const currentYear = new Date().getFullYear(); // 현재 연도 가져오기 (예: 2025)
+            const idx = tooltipItems[0].dataIndex; // 툴팁 대상 데이터 인덱스
+            const quarterLabel = labels[idx]; // ["1분기", "2분기", ...]에서 분기명 가져오기
+            return `${currentYear}년 ${quarterLabel}`; // 예: "2025년 2분기"
+          },
+          label: function (tooltipItem) {
+            let value = "";
+            let dataValue = 0;
+
+            if (tooltipItem.datasetIndex === 0) {
+              value = "기존 탈퇴";
+              dataValue = beforeOut_Data[tooltipItem.dataIndex];
+            } else if (tooltipItem.datasetIndex === 1) {
+              value = "기존 휴면게정";
+              dataValue = beforeRest_Data[tooltipItem.dataIndex];
+            } else if (tooltipItem.datasetIndex === 2) {
+              value = "신규 탈퇴";
+              dataValue = newOut_Data[tooltipItem.dataIndex];
+            } else if (tooltipItem.datasetIndex === 3) {
+              value = "신규 휴면계정";
+              dataValue = newRest_Data[tooltipItem.dataIndex];
+            }
+            return [" " + value, dataValue + "%"];
+          },
+        },
+      },
     },
     interaction: {
       mode: "nearest", // hover 시 가까운 데이터 요소에 반응
@@ -187,8 +263,13 @@ function userSecession_chart() {
     datasets: {
       line: {
         borderWidth: 1,
-        pointRadius: 1.5,
+        pointRadius: 1.5, // 각 데이터셋의 포인트 기본 크기
         tension: 0.3,
+      },
+    },
+    elements: {
+      point: {
+        hoverRadius: 1.5, // hover 시 포인트 크기
       },
     },
     animation: 1000,
@@ -354,12 +435,11 @@ function topReader() {
 
   // 데이터 새로고침
   refreshBtn.addEventListener("click", function () {
-    bookList_lists.forEach(
-      (list, idx) =>
-        list.querySelectorAll("span").forEach((span) => {
-          span.style.transform = "translateY(150%)";
-          span.style.opacity = 0;
-        })
+    bookList_lists.forEach((list, idx) =>
+      list.querySelectorAll("span").forEach((span) => {
+        span.style.transform = "translateY(150%)";
+        span.style.opacity = 0;
+      })
     );
     setTimeout(() => {
       bookList_lists.forEach((list, idx) =>

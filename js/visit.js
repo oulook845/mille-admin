@@ -234,7 +234,7 @@ function usersReturn_chart() {
 }
 usersReturn_chart();
 
-// 방문시간 별 사용자 수 ####################################################
+// 방문 시간 별 사용자 수 ####################################################
 function usersVisitTime() {
   const ctx = document.getElementById("users-visitTime").querySelector("canvas").getContext("2d");
 
@@ -434,6 +434,50 @@ function usersVisitTime() {
     plugins: {
       legend: {
         display: false, // false 범례 숨기기
+      },
+      tooltip: {
+        mode: "index", // index 위치기준으로 데이터 한번에 표시
+        position: "top",
+        displayColors: true, // false 네모 색상박스 제거
+        usePointStyle: true, // pointStyle 적용
+        yAlign: "none", // 툴팁 제거
+        intersect: false,
+
+        titleFont: {
+          size: 0,
+          lineHeight: 0,
+        },
+        backgroundColor: "#fff",
+        borderColor: "#484848",
+        borderWidth: 1,
+        bodyColor: "#222", // 제목 색상
+        bodyFont: {
+          lineHeight: 1.5,
+        },
+        padding: {
+          top: 10,
+          left: 20,
+          bottom: 10,
+          right: 20,
+        },
+
+        callbacks: {
+          label: function (context) {
+            const allowedDatasets = [2, 3]; // 표시할 데이터셋 인덱스 배열
+            if (allowedDatasets.includes(context.datasetIndex)) {
+              let member = "";
+              if (context.datasetIndex === 2) {
+                member = "회원";
+              } else if (context.datasetIndex === 3) {
+                member = "비회원";
+              }
+              return member + " " + context.formattedValue + "명";
+            }
+
+            // 표시하지 않을 데이터셋은 툴팁에 나타나지 않도록 빈 문자열 반환
+            return null;
+          },
+        },
       },
     },
     interaction: {
@@ -735,4 +779,3 @@ function usersTraffic_currentTime() {
   currentTime.textContent = `${nowData.year}.${nowData.month} 기준`;
 }
 usersTraffic_currentTime();
-

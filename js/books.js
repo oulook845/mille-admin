@@ -566,7 +566,7 @@ let content_array = [
   "밀리 시리즈",
   "에디터의 선택",
 ];
-let article_array = ["밀리 아티클", "밀리의 발견", "밀리로그", "우리동네 책방", "독서 트렌드"];
+let article_array = ["밀리 아티클", "밀리의 발견", "밀리로그", "우리동네 책방", "독서 트렌드"];``
 
 /* 인기 컨텐츠 카테고리 순위 */
 function miile_popularContent() {

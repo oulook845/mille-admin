@@ -26,9 +26,6 @@ a.block-anchor {
   white-space: nowrap;
   border: 0;
 }
-.txtAlign-center{
-  text-align: center;
-}
 
 .flex {
   display: flex;
@@ -46,10 +43,6 @@ a.block-anchor {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-}
-
-.flex-reverse_R{
-  flex-direction: row-reverse;
 }
 
 h3.title {
