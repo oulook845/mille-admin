@@ -24,7 +24,6 @@ const genreStatsdElem = document.getElementById("genreStats"),
 let category = categorylistElems[0].getAttribute("data-category"); // 카테고리 공통 저장
 categorylistElems.forEach((list, idx) => {
   list.addEventListener("click", function () {
-    categoryIdx = idx;
     category = this.getAttribute("data-category");
     categorylistElems.forEach((remove) => {
       remove.classList.remove("on");
