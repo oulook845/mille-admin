@@ -26,6 +26,9 @@ a.block-anchor {
   white-space: nowrap;
   border: 0;
 }
+.txtAlign-center{
+  text-align: center;
+}
 
 .flex {
   display: flex;
