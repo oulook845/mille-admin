@@ -219,7 +219,7 @@ function userSecession_chart() {
         titleFont: {
           weight: "normal",
           size: 6,
-          lineHeight: .5,
+          lineHeight: 0.5,
         },
 
         bodyColor: "#222",
@@ -422,30 +422,31 @@ function topReader() {
 
   // 책 리스트 애니메이션
   bookList_lists.forEach((list, idx) =>
-    list
-      .querySelectorAll("span")
-      .forEach(
-        (span) => (
-          (span.style.transform = "translateY(0)"),
-          (span.style.opacity = 1),
-          (span.style.transitionDelay = `${idx * 0.05}s`)
-        )
-      )
+    list.querySelectorAll("span").forEach((span) => {
+      (span.style.transform = "translateY(0)"), 
+      (span.style.opacity = 1), 
+      (span.style.transitionDelay = `0s`);
+    })
   );
 
   // 데이터 새로고침
   refreshBtn.addEventListener("click", function () {
     bookList_lists.forEach((list, idx) =>
       list.querySelectorAll("span").forEach((span) => {
-        span.style.transform = "translateY(150%)";
-        span.style.opacity = 0;
+        (span.style.transition = 0),
+          (span.style.transform = "translateY(150%)"),
+          (span.style.opacity = 0),
+          (span.style.transitionDelay = `0s`);
       })
     );
     setTimeout(() => {
       bookList_lists.forEach((list, idx) =>
-        list
-          .querySelectorAll("span")
-          .forEach((span) => ((span.style.transform = "translateY(0)"), (span.style.opacity = 1)))
+        list.querySelectorAll("span").forEach((span) => {
+          (span.style.transition = "0.5s"),
+          (span.style.transform = "translateY(0)"),
+            (span.style.opacity = 1),
+            (span.style.transitionDelay = `${idx * 0.05}s`);
+        })
       );
     }, 1000);
   });
