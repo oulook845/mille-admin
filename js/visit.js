@@ -520,7 +520,7 @@ function usersVisitTime() {
           data: guestData,
           order: 2,
           pointBackgroundColor: "#FFEB60",
-        },  
+        },
       ],
     },
     options: options,
@@ -714,6 +714,9 @@ function usersTraffic_chart() {
     plugins: {
       legend: {
         display: false,
+      },
+      tooltip: {
+        enabled: false,
       },
     },
     animation: {
