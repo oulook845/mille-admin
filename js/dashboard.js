@@ -398,7 +398,7 @@ function trafficSource() {
         }
         data_liElems.forEach((data_liElem, idx) => {
           data_liElem.addEventListener("mouseenter", function () {
-            current_Content = this.textContent;
+            current_Content = this.querySelectorAll("span")[0].textContent;
             tiptool_value.textContent = current_Content;
             tiptool_data.textContent = `${per[idx]}명 유입`;
           });
@@ -533,9 +533,9 @@ function contentStatus() {
   const tooltip_value = status_tooltip.querySelector(".value");
   const tooltip_per = status_tooltip.querySelector(".lastM_per");
 
-  contentStatus_elem.querySelector("canvas").addEventListener("mouseleave",function(){
+  contentStatus_elem.querySelector("canvas").addEventListener("mouseleave", function () {
     status_tooltip.style.opacity = 0;
-  })
+  });
 
   const contentStatus_data = {
     labels: ["전자책", "오디오북", "챗북", "그 외"], // X축 값
@@ -595,8 +595,7 @@ function contentStatus() {
         },
         tooltip: {
           enabled: false, // 기본 툴팁 비활성화
-          external: function (context) {
-          },
+          external: function (context) {},
         },
         //     tooltip: {
         //   enabled: false,
