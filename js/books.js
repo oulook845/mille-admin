@@ -191,6 +191,34 @@ function genreStats_chart() {
   const ctx = document.getElementById("genreStats").querySelector("canvas").getContext("2d");
   const labelsElem = document.getElementById("genreStats_list");
 
+  Chart.Tooltip.positioners.outer = function (elements) {
+    if (!elements.length) {
+      return false;
+    }
+
+    // 첫 번째 slice의 중심 좌표
+    const el = elements[0].element;
+
+    // 각 slice의 중간 각도 계산
+    const midAngle = (el.startAngle + el.endAngle) / 2;
+
+    // 원 중심 좌표
+    const cx = el.x;
+    const cy = el.y;
+
+    // 바깥쪽 이동 거리
+    const distance = el.outerRadius * 1.5;
+
+    // 새 위치 계산 (polar to cartesian)
+    const x = cx + distance * Math.cos(midAngle);
+    const y = cy + distance * Math.sin(midAngle);
+
+    return {
+      x: x,
+      y: y,
+    };
+  };
+
   const labels_array = [
     "취미/실용",
     "매거진",
@@ -217,14 +245,60 @@ function genreStats_chart() {
   });
 
   const options = {
+    rotation: 100, // 기본단위 deg
     responsive: true, // false 크기를 고정으로
     maintainAspectRatio: true, // 기본값 true, 비율 유지
+    animation: {
+      duration: 1000,
+    },
     plugins: {
       legend: {
         display: false, // false 범례 숨기기
       },
+      tooltip: {
+        mode: "nearest", // 툴팁 표시도 가장 가까운 데이터만
+        displayColors: false, // false 네모 색상박스 제거
+        yAlign: "none",
+        position: "outer",
+
+        bodyAlign: "center", // 본문 중앙 정렬
+        borderWidth: 0.5,
+        borderColor: "#222",
+        backgroundColor: "#fff",
+
+        padding: {
+          top: 10,
+          left: 10,
+          bottom: 5,
+          right: 10,
+        },
+
+        titleColor: "#222",
+        titleFont: {
+          weight: "normal",
+          size: 8,
+          lineHeight: 0.5,
+        },
+
+        bodyColor: "#9747FF",
+        bodyFont: {
+          size: 8,
+        },
+
+        callbacks: {
+          title: function (tooltipItems) {
+            // 여러 tooltipItem이 있을 수 있으므로 첫 번째만 사용
+            const idx = tooltipItems[0].dataIndex;
+            return labels_array[idx];
+          },
+          label: function (tooltipItem) {
+            const idx = tooltipItem.dataIndex;
+            const value = data[idx];
+            return value + "%";
+          },
+        },
+      },
     },
-    animation: 1000,
   };
   const config = {
     type: "pie",
@@ -566,7 +640,8 @@ let content_array = [
   "밀리 시리즈",
   "에디터의 선택",
 ];
-let article_array = ["밀리 아티클", "밀리의 발견", "밀리로그", "우리동네 책방", "독서 트렌드"];``
+let article_array = ["밀리 아티클", "밀리의 발견", "밀리로그", "우리동네 책방", "독서 트렌드"];
+``;
 
 /* 인기 컨텐츠 카테고리 순위 */
 function miile_popularContent() {
@@ -601,8 +676,7 @@ function popularContent_ani() {
     opacity: 0,
     transform: "translateY(100%)",
     transition: "0s",
-  })
-
+  });
 
   // 올라오는 애니메이션
   setTimeout(() => {

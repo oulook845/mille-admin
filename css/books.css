@@ -225,7 +225,6 @@
 #container section#books .column.right_area article.dragger#genreStats .content .canvas_wrap .canvas_box canvas {
   width: 208px;
   height: 208px;
-  transform: rotate(100deg);
 }
 #container section#books .column.right_area article.dragger#genreStats .content .canvas_wrap .canvas_box ul#genreStats_list {
   display: flex;
