@@ -378,19 +378,19 @@ function usersVisitTime() {
     elements: {
       point: {
         // 짝수 시간만 표시
-        pointBackgroundColor: label.map((label, idx, arr) => {
+        pointHoverRadius: label.map((label, idx, arr) => {
           const hour = parseInt(label.split(":")[0], 10);
           const isOddHour = hour % 2 !== 0;
           const isFirstOrLast = idx === 0 || idx === arr.length - 1;
 
-          return isOddHour || isFirstOrLast ? "transparent" : "#A451F7";
+          return isOddHour || isFirstOrLast ? 0 : 3;
         }),
-        pointBorderColor: label.map((label, idx, arr) => {
+        pointRadius: label.map((label, idx, arr) => {
           const hour = parseInt(label.split(":")[0], 10);
           const isOddHour = hour % 2 !== 0;
           const isFirstOrLast = idx === 0 || idx === arr.length - 1;
 
-          return isOddHour || isFirstOrLast ? "transparent" : "#000";
+          return isOddHour || isFirstOrLast ? 0 : 3;
         }),
       },
     },
@@ -439,7 +439,7 @@ function usersVisitTime() {
         mode: "index", // index 위치기준으로 데이터 한번에 표시
         position: "top",
         displayColors: true, // false 네모 색상박스 제거
-        usePointStyle: true, // pointStyle 적용
+        usePointStyle: true, // true pointStyle 적용
         yAlign: "none", // 툴팁 제거
         intersect: false,
 
@@ -513,19 +513,14 @@ function usersVisitTime() {
           type: "line",
           data: memberData,
           order: 1,
+          pointBackgroundColor: "#A451F7",
         },
         {
           type: "line",
           data: guestData,
           order: 2,
-          pointBackgroundColor: label.map((label, idx, arr) => {
-            const hour = parseInt(label.split(":")[0], 10);
-            const isOddHour = hour % 2 !== 0;
-            const isFirstOrLast = idx === 0 || idx === arr.length - 1;
-
-            return isOddHour || isFirstOrLast ? "transparent" : "#FFEB60";
-          }),
-        },
+          pointBackgroundColor: "#FFEB60",
+        },  
       ],
     },
     options: options,
@@ -604,11 +599,11 @@ function usersDemographics() {
         display: false, // false 범례 숨기기
       },
       tooltip: {
+        mode: "index", // index 위치기준으로 데이터 한번에 표시
         position: "top",
         displayColors: true, // false 네모 색상박스 제거
         usePointStyle: true, // pointStyle 적용
         yAlign: "none", // 툴팁 제거
-        mode: "index", // index 위치기준으로 데이터 한번에 표시
         intersect: false,
 
         titleFont: {
